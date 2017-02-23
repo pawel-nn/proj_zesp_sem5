@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+      
+    <head>
+	    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    	<link href="../static/css/css_file.css"
+           	  th:href="@{/css/core1.css}"
+              rel="stylesheet" media="screen" />
+		<title>Employee register form</title>
+	</head>
+    <body>
+		<header>
+			<h1>
+				Employee register form
+			</h1>
+			<ul> <li><a th:href="@{/home}">Return to homepage</a></li> </ul>
+		</header>	
+		<hr/>
+		<div id="pageContent">
+        	<form id="myForm" th:action="@{/admin/registerEmployee}" th:object="${userDTO}" method="post">
+     			<div>
+            		<table>
+            	   		<tr id="myTr" >
+            				<th colspan="2"><div id="myFormTitle"> New Form: </div></th>
+            			</tr>
+                		<tr id="myTr" >
+                    		<td>Username:</td>
+                    		<td><input type="text" th:field="*{username}" /></td>
+                    		<td th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Username Error</td>
+                		</tr>
+                		<tr id="myTr">
+                    		<td>Password:</td>
+                    		<td><input type="password" th:field="*{password}" /></td>
+                    		<td th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password Error</td>
+                		</tr>
+                		<tr id="myTr">
+                    		<td>Repeat password:</td>
+                    		<td><input type="password" th:field="*{confirmPassword}" /></td>
+                    		<td th:if="${#fields.hasErrors('confirmPassword')}" th:errors="*{confirmPassword}">Password Error</td>
+                		</tr>         
+                 		<tr id="myTr">
+                    		<td>First name:</td>
+                    		<td><input type="text" th:field="*{firstName}" /></td>
+                    		<td th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">First name Error</td>
+                		</tr>              	
+                  		<tr id="myTr">
+                    		<td>Last name:</td>
+                    		<td><input type="text" th:field="*{lastName}" /></td>
+                    		<td th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">Last name Error</td>
+                		</tr>            	
+                 		<tr id="myTr">
+                    		<td>Email:</td>
+                    		<td><input type="email" th:field="*{email}" /></td>
+                    		<td th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Email Error</td>
+                		</tr>     
+                 		<tr id="myTr">
+                    		<td>Position:</td>
+                    		<td><input type="text" th:field="*{position}" /></td>
+                    		<td th:if="${#fields.hasErrors('position')}" th:errors="*{position}">Position Error</td>
+                		</tr>
+                		<tr id="myTr">
+                    		<td>Salary*:</td>
+                    		<td><input type="text" th:field="*{salary}" placeholder="ex. 2500 PLN" /></td>
+                    		<td th:if="${#fields.hasErrors('salary')}" th:errors="*{salary}">Salary Error</td>
+                		</tr>                     	       	  
+            		</table>
+            		<button type="submit" id="send" >Submit</button>
+            		<div>Fields with * are optional</div>
+            	</div>
+        	</form>
+        </div>
+    </body>
+</html>

@@ -3,15 +3,25 @@ package projApp.controller;
 import java.util.Collection;
 import java.util.Iterator;
 
+import javax.validation.Valid;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.*;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+
+import projApp.formDTO.NewPasswordDTO;
+import projApp.service.UserService;
 
 @Controller
 public class MainController {
+	
+	@Autowired
+	private UserService us;
 
 	@GetMapping("/")
 	String index() {
@@ -55,6 +65,27 @@ public class MainController {
 		return "access_denied";
 	}
 
+    @GetMapping("/changePassword")
+    public String changePassword(NewPasswordDTO newPasswordDTO) {
+    	return "change_password";
+   	}
+
+    @PostMapping("/changePassword")
+    public String changePasswordValidation(@Valid NewPasswordDTO newPasswordDTO, BindingResult bindingResult, Model m) {
+        if (bindingResult.hasErrors() || !newPasswordDTO.arePasswordsEquals()) {
+            return "change_password";
+        }
+    	Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+    	String username = auth.getName();
+        boolean status = us.updateUserPassword(newPasswordDTO, username);
+        if(!status) {
+        	m.addAttribute("msg", "Error! Password can not be changed.");
+            return "change_password_result";	
+        }
+        m.addAttribute("msg", "Success! Password has been changed.");
+        return "change_password_result";
+    }
+	
 	@GetMapping("/error")
 	public String error() {
 		return "error";

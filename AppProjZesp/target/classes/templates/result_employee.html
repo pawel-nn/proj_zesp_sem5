@@ -1,22 +1,24 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
-
     <head>
 	    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     	<link href="../static/css/css_file.css"
            	  th:href="@{/css/core1.css}"
               rel="stylesheet" media="screen" />
-        <title>Employee homepage</title>
+		<title>Result page</title>
 	</head>
     <body>
-    	<header>
+		<header>
 			<h1>
-				Employee page 
+				Result page
 			</h1>
-		</header>
+			<ul> <li><a th:href="@{/home}">Return to homepage</a></li> </ul>
+		</header>		
+		<hr/>
 		<div id="pageContent">
-			<p th:text="${usernameMsg}">username</p>
-			<p th:text="${roleMsg}">role</p>
-		</div>	
+        	<div>
+        		<p th:text="${msg}">msg</p>    	
+       		</div>
+		</div>
     </body>
 </html>

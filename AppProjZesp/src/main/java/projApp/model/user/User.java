@@ -1,5 +1,7 @@
-package projApp.user;
+package projApp.model.user;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -9,6 +11,8 @@ import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import projApp.model.user.UserRole;
 
 
 @Entity
@@ -38,8 +42,7 @@ public class User {
 	}
 
 	@Id
-	@Column(name = "username", unique = true,
-		nullable = false, length = 45)
+	@Column(name = "username", unique = true, nullable = false, length = 45)
 	public String getUsername() {
 		return this.username;
 	}
@@ -48,8 +51,7 @@ public class User {
 		this.username = username;
 	}
 
-	@Column(name = "password",
-		nullable = false, length = 60)
+	@Column(name = "password", nullable = false, length = 60)
 	public String getPassword() {
 		return this.password;
 	}
@@ -74,6 +76,28 @@ public class User {
 
 	public void setUserRole(Set<UserRole> userRole) {
 		this.userRole = userRole;
+	}
+	
+	public boolean hasAdminRole() {
+    	Iterator<UserRole> it = userRole.iterator();
+    	while(it.hasNext()) {
+    		UserRole ur = (UserRole) it.next();
+    		if(ur.getRole().equals("ROLE_ADMIN"))
+    			return true;
+    	}
+		return false;
+	}
+	
+	public String userRoleToString() {
+		String roles = null;
+		ArrayList<String> al = new ArrayList<String>();
+    	Iterator<UserRole> it = userRole.iterator();
+    	if(it.hasNext()) {
+    		UserRole ur = (UserRole) it.next();
+    		roles = ur.getRole();
+    	}
+    	if(roles == null) roles = "Roles: empty!";
+		return roles;
 	}
 
 }

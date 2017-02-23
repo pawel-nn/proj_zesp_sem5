@@ -14,7 +14,15 @@
 				Admin page 
 			</h1>
 		</header>
-		<p th:text="${usernameMsg}">username</p>
-		<p th:text="${roleMsg}">role</p>
+		<div id="pageContent">
+			<ul id="ulRet">
+				<li><a th:href="@{/admin/accountsControl}">Accounts control</a></li>
+				<li><a th:href="@{/admin/registerEmployee}">Register employee</a></li>
+				<li><a th:href="@{/changePassword}">Change password</a></li>
+				<li><form th:action="@{/logout}" method="post"><input type="submit" id="logout" value="Sign Out"/></form></li>
+			</ul>
+			<p th:text="${usernameMsg}">username</p>
+			<p th:text="${roleMsg}">role</p>
+		</div>
     </body>
 </html>

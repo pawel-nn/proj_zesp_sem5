@@ -5,9 +5,8 @@ body {
     margin-top: 50px;
 }
 
-#myNewId {
-	margin-top: 2cm;
-	margin-bottom: 2cm;
+#pageContent {
+	margin-left: 1cm;
 }
 
 .myNewClass {

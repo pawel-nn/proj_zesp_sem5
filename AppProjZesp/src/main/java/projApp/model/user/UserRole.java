@@ -1,4 +1,4 @@
-package projApp.user;
+package projApp.model.user;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
