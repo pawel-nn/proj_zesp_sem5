@@ -105,13 +105,18 @@ public class Employee {
 		this.position = position;
 	}
 
-	@Column(name = "salary", nullable = true, length = 12)
+	@Column(name = "salary", nullable = false, length = 12)
 	public String getSalary() {
 		return salary;
 	}
 
 	public void setSalary(String salary) {
 		this.salary = salary;
+	}
+	
+	@Override
+	public String toString() {
+		return "Employee Id=" + employeeId + ", Name=" + firstName + "." + lastName + ", email=" + email;
 	}
 	
 }

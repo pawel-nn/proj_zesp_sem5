@@ -16,7 +16,7 @@ import projApp.model.user.UserRole;
 
 
 @Entity
-@Table(name = "users") 
+@Table(name = "spring_users") 
 public class User {
 
 	private String username;

@@ -90,5 +90,4 @@ public class MainController {
 	public String error() {
 		return "error";
 	}
-
 }

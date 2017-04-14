@@ -3,7 +3,9 @@ package projApp.formDTO;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-public class UserDTO {
+/* FOR TESTING PURPOSE ONLY ~!!!! */
+
+public class ClientDTO {
 
     @NotNull
     @Size(min=3, max=45)
@@ -28,12 +30,6 @@ public class UserDTO {
     @NotNull
     @Size(min=6, max=45)
     private String email;
-    
-    @NotNull
-    @Size(min=3, max=45)
-    private String position;
-    
-    private String salary;
     
     public boolean arePasswordsEquals() {
     	return password.equals(confirmPassword);
@@ -86,21 +82,5 @@ public class UserDTO {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
-	public String getPosition() {
-		return position;
-	}
-
-	public void setPosition(String position) {
-		this.position = position;
-	}
-
-	public String getSalary() {
-		return salary;
-	}
-
-	public void setSalary(String salary) {
-		this.salary = salary;
-	}
-	
+    
 }

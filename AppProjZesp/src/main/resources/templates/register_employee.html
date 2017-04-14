@@ -14,11 +14,15 @@
 			<h1>
 				Employee register form
 			</h1>
-			<ul> <li><a th:href="@{/home}">Return to homepage</a></li> </ul>
+						<div id="shortLinks">
+				<ul>
+					<li><a th:href="@{/home}">Return to homepage</a></li>
+				</ul>	
+			</div>
 		</header>	
 		<hr/>
 		<div id="pageContent">
-        	<form id="myForm" th:action="@{/admin/registerEmployee}" th:object="${userDTO}" method="post">
+        	<form id="myForm" th:action="@{/admin/registerEmployee}" th:object="${employeeDTO}" method="post">
      			<div>
             		<table>
             	   		<tr id="myTr" >

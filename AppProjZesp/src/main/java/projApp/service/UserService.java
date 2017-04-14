@@ -7,8 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import projApp.model.client.Client;
+import projApp.formDTO.ClientDTO;
+import projApp.model.client.ClientDao;
 import projApp.formDTO.NewPasswordDTO;
-import projApp.formDTO.UserDTO;
+import projApp.formDTO.EmployeeDTO;
 import projApp.model.employee.Employee;
 import projApp.model.employee.EmployeeDao;
 import projApp.model.user.User;
@@ -26,16 +29,17 @@ public class UserService {
 	@Autowired
 	private EmployeeDao employeeDao;
 	
-	public boolean saveNewUser(UserDTO udto) {
+	
+	public boolean saveNewUser(EmployeeDTO edto) {
 		try {
-			if((userDao.findByUsername(udto.getUsername()) != null) || (employeeDao.findByEmail(udto.getEmail()) != null))
+			if((userDao.findByUsername(edto.getUsername()) != null) || (employeeDao.findByEmail(edto.getEmail()) != null))
 				return false;
-			User user = new User(udto.getUsername() , udto.getPassword(), true);
+			User user = new User(edto.getUsername() , edto.getPassword(), true);
 			UserRole userRole = new UserRole( user, "ROLE_EMPLOYEE");
 			Set<UserRole> userRoleSet = new HashSet<UserRole>(0);
 			userRoleSet.add(userRole);
 			user.setUserRole(userRoleSet);
-			Employee employee = new Employee(udto.getFirstName(),udto.getLastName(),udto.getEmail(), udto.getPosition(),udto.getSalary(), user);	
+			Employee employee = new Employee(edto.getFirstName(),edto.getLastName(),edto.getEmail(), edto.getPosition(),edto.getSalary(), user);	
 			employeeDao.save(employee);
 		}
 		catch (Exception e) {
@@ -100,6 +104,33 @@ public class UserService {
 		}
 		return user;
 	}
+	
+	
+	/* FOR TESTING PURPOSE !!! */
+	@Autowired
+	private ClientDao clientDao;
+	
+	public Iterable<Client> findAllClients() {
+		return clientDao.findAll();
+    }	
+	
+	public Iterable<Employee> findAllEmployees() {
+		return employeeDao.findAll();
+    }	
+	
+	public boolean saveUserClient(ClientDTO cdto) {
+		try {
+			if(clientDao.findByEmail(cdto.getEmail()) != null)
+				return false;
+			Client client = new Client(cdto.getFirstName(),cdto.getLastName(),cdto.getEmail(), cdto.getPassword());		
+			clientDao.save(client);
+		}
+		catch (Exception e) {
+			return false;
+		}
+		return true;
+	}
+	
 	
 }
 

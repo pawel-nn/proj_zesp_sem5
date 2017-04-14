@@ -14,7 +14,7 @@ import javax.persistence.UniqueConstraint;
 
 
 @Entity
-@Table(name = "user_roles", uniqueConstraints = @UniqueConstraint( columnNames = { "role", "username" }))
+@Table(name = "spring_user_roles", uniqueConstraints = @UniqueConstraint( columnNames = { "role", "username" }))
 public class UserRole{
 
 	private Integer userRoleId;

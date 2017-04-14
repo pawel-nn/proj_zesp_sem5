@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import projApp.service.UserService;
-import projApp.formDTO.UserDTO;
+import projApp.formDTO.EmployeeDTO;
 import projApp.model.user.User;
 
 
@@ -27,16 +27,16 @@ public class AdminController {
     private static int MAX_ROWS_PER_PAGE = 5;
 	
     @GetMapping("/admin/registerEmployee")
-    public String registerEmployee(UserDTO userDTO) {
+    public String registerEmployee(EmployeeDTO userDTO) {
       return "register_employee";
     }
 
     @PostMapping("/admin/registerEmployee")
-    public String registerEmployeeValidation(@Valid UserDTO userDTO, BindingResult bindingResult, Model m) {
-        if (bindingResult.hasErrors() || !userDTO.arePasswordsEquals()) {
+    public String registerEmployeeValidation(@Valid EmployeeDTO employeeDTO, BindingResult bindingResult, Model m) {
+        if (bindingResult.hasErrors() || !employeeDTO.arePasswordsEquals()) {
             return "register_employee";
         }
-        boolean status = us.saveNewUser(userDTO);
+        boolean status = us.saveNewUser(employeeDTO);
         if(!status) {
         	m.addAttribute("msg", "Error! Employee can not be created.");
             return "result_admin";	

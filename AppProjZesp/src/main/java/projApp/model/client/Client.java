@@ -75,4 +75,8 @@ public class Client {
 		this.password = password;
 	}
 	
+	@Override
+	public String toString() {
+		return "Client Id=" + clientId + ", Names=" + firstName + "." + lastName + ", email=" + email;
+	}
 }

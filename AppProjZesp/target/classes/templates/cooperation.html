@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+      
+    <head>
+	    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    	<link href="../static/css/core3.css"
+          th:href="@{/css/core3.css}"
+          rel="stylesheet" media="screen" />
+		<title>Car</title>
+	</head>
+	
+    <body>
+
+		<header>
+			<h1 id="title">
+				Car details
+			</h1>
+			<ul id="ulRet">
+				<li id="liRet"><a th:href="@{/employee/cars}">Go to cars</a></li>
+				<li id="liRet"><a th:href="@{/home}">Return to homepage</a></li> 
+			</ul> <div class="lineBreak0cm5"></div>
+		</header>
+		
+		<hr id="hr1" />
+		<div class="lineBreak1cm0"></div>
+
+		<div>		
+		
+			<div th:if="${car.client != null}">
+				<table>
+					<tr>
+						<td>Client:</td>
+						<td th:text="${car.client}">Client</td>
+					</tr>
+				</table>
+			</div>	
+			<div th:unless="${car.client != null}">
+				<table>
+					<tr>
+						<td>Client:</td>
+						<td>No client assigned</td>
+					</tr>
+				</table>
+			</div> <div class="lineBreak0cm5"></div>
+			
+			<table>
+				<tr>
+					<td>Car id:</td>
+					<td th:text="${car.carId}">Car id</td>
+				</tr>
+				<tr>
+					<td>Brand:</td>
+					<td th:text="${car.brand}">Brand</td>
+				</tr>
+				<tr>		
+					<td>Model:</td>
+					<td th:text="${car.model}">Model</td>
+				</tr>
+				<tr>		
+					<td>Production year:</td>
+					<td th:text="${car.yearOfProduction}">Production year</td>
+				</tr>				
+				<tr>		
+					<td>VIN number:</td>
+					<td th:text="${car.WIN}">WIN</td>
+				</tr>
+				<tr>		
+					<td>Date of last action:</td>
+					<div th:if="${car.dateOfLastAction != null}">
+						<td th:text="${#dates.format(car.dateOfLastAction, 'dd-MMM-yyyy')}">Date of last action</td>
+					</div>
+					<div th:unless="${car.dateOfLastAction != null}">
+						<td>---</td>
+					</div>
+				</tr>
+				<tr>	
+					<td>Operations:</td>
+					<td><a th:href="@{/employee/cars/updateCar(carId=${car.carId})}"><span>Update</span></a>/<a th:href="@{/employee/cars/deleteCar(carId=${car.carId})}"><span>Delete</span></a></td>
+				</tr>
+			</table>
+		</div> <div class="lineBreak1cm0"></div>			
+		
+		<div th:if="${car.actions.size() > 0}">
+			<table>
+				<tr>
+					<th>Action id</th>
+					<th>Name</th>
+					<th>Start date</th>
+					<th>End date</th>
+				</tr>
+				<tr th:each="action : ${car.actions}">
+					<td><a th:href="@{/employee/actions/action(actionId=${action.actionId})}"><span th:text="${action.actionId}">id</span></a></td>
+					<td th:text="${action.name}">Name</td>
+					<td th:text="${#dates.format(action.fromDate, 'dd-MMM-yyyy')}">Start date</td>
+					<div th:if="${action.toDate != null}">
+						<td th:text="${#dates.format(action.toDate, 'dd-MMM-yyyy')}">End date</td>
+					</div>	
+					<div th:unless="${action.toDate != null}">
+						<td>None</td>
+					</div>
+				</tr>
+			</table>
+		</div>		
+		<div th:unless="${car.actions.size() > 0}">
+			<table>
+				<tr>
+					<td>Actions:</td>
+					<td>None</td>
+				</tr>
+			</table>
+		</div> <div class="lineBreak1cm0"></div>
+		
+		<div>
+			<a type="button" th:href="@{/employee/actions/addAction(carId=${car.carId})}" id="addButton" ><span>Add new Action!</span></a>
+		</div> <div class="lineBreak1cm0"></div>
+		
+    </body>
+</html>

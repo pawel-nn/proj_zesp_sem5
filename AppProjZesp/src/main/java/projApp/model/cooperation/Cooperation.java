@@ -24,31 +24,36 @@ import projApp.model.event.Event;
 
 
 @Entity
-@Table(name = "cooperation")
+@Table(name = "cooperations")
 public class Cooperation {
 
 	private Integer cooperationId;
 	private Date dateOfLastEvent;
 	private String typeOfCooperation;
+	private String description;
 	private Client client;
 	private Employee employee;
 	private List<Event> events = new ArrayList<Event>();
 	
 	public Cooperation() {}
 	
-	public Cooperation(Date dateOfLastEvent, Client client, Employee employee, List<Event> events) {
+	public Cooperation(String typeOfCooperation, String description, Date dateOfLastEvent, Client client, Employee employee, List<Event> events) {
 		this.dateOfLastEvent = dateOfLastEvent;
 		this.client = client;
 		this.employee = employee;
 		this.events = events;
+		this.description = description;
+		this.typeOfCooperation = typeOfCooperation;
 	}
 	
-	public Cooperation(Integer cooperationId, Date dateOfLastEvent, Client client, Employee employee, List<Event> events) {
+	public Cooperation(Integer cooperationId, String typeOfCooperation, String description, Date dateOfLastEvent, Client client, Employee employee, List<Event> events) {
 		this.dateOfLastEvent = dateOfLastEvent;
 		this.client = client;
 		this.employee = employee;
 		this.events = events;
 		this.cooperationId = cooperationId;
+		this.description = description;
+		this.typeOfCooperation = typeOfCooperation;
 	}
 	
 	@Id
@@ -93,6 +98,7 @@ public class Cooperation {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, cascade = {CascadeType.ALL}, mappedBy = "cooperation")
+	@OrderBy("event_date")
 	public List<Event> getEvents() {
 		return events;
 	}
@@ -110,4 +116,13 @@ public class Cooperation {
 		this.typeOfCooperation = typeOfCooperation;
 	}
 
+	@Column(name = "description", nullable = false, length = 45)
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	
 }
