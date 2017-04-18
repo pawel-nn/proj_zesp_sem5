@@ -3,8 +3,11 @@
 
     <head>
 	    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    	<link href="../static/css/css_file.css"
-           	  th:href="@{/css/core1.css}"
+	    <link href="../static/css/f..."
+           	  th:href="@{/css/global.css}"
+              rel="stylesheet" media="screen" />	
+    	<link href="../static/css/f..."
+           	  th:href="@{/css/after_login.css}"
               rel="stylesheet" media="screen" />
         <title>Employee homepage</title>
 	</head>
@@ -15,8 +18,8 @@
 			</h1>
 			<div id="shortLinks">
 				<ul id="ulRet">
-					<li><a th:href="@{/admin/cooperations}">Cooperations</a></li>
-					<li><a th:href="@{/admin/cooperations/add_cooperation}">Add cooperation</a></li>
+					<li><a th:href="@{/employee/cooperationOffersList}">Cooperations offer from client</a></li>
+					<li><a th:href="@{/employee/cooperationsList}">Cooperations</a></li>
 					<li><a th:href="@{/changePassword}">Change password</a></li>
 					<li><form th:action="@{/logout}" method="post"><input type="submit" id="logout" value="Sign Out"/></form></li>
 				</ul>

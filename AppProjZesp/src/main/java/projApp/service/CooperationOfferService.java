@@ -2,9 +2,11 @@ package projApp.service;
 
 
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import projApp.formDTO.CooperationOfferDTO;
@@ -31,26 +33,48 @@ public class CooperationOfferService {
 	
 	@Autowired
 	private CooperationDao cooperationDao;
-	
-	public Iterable<CooperationOffer> findAllEmployeeCooperationOffers(Employee employee, Sort sort) {
-		return cooperationOfferDao.findAllCooperationOffersByEmployee(employee, sort);
+
+	public int countAllCooperationOffers() {
+		return (int) cooperationOfferDao.count();
+	}
+
+	public int countAllEmployeeCooperationOffers(Employee employee) {
+		return ((List<CooperationOffer>) cooperationOfferDao.findAllByEmployee(employee)).size();
 	}
 	
-	// TEST TEST TEST
-	public Integer createCooperationOffer(CooperationOfferDTO codto) {
+	public Page<CooperationOffer> findAllCooperationOffers(Pageable pageable) {
+		return cooperationOfferDao.findAll(pageable);
+	}
+	
+	public Iterable<CooperationOffer> findAllEmployeeCooperationOffers(Employee employee, Pageable pageable) {
+		return cooperationOfferDao.findAllCooperationOffersByEmployee(employee, pageable);
+	}
+
+	public boolean existsCooperationOffer(Integer cooperationOfferId) {
+		boolean status;
+		try {
+			status = cooperationOfferDao.exists(cooperationOfferId);
+		}
+		catch (Exception e) {
+			return false;
+		}
+		return status;	
+	}
+
+	public CooperationOffer getEmployeeCooperationOffer(String username, Integer cooperationOfferId) {
 		CooperationOffer cooperationOffer;
 		try {
-			Client client = clientDao.findByClientId(codto.getClientId());
-			Employee employee = employeeDao.findByEmployeeId(codto.getEmployeeId());
-			Date date = new Date();
-			cooperationOffer = new CooperationOffer(codto.getTypeOfCooperation(), codto.getDescription(), date, client, employee);
-			cooperationOffer = cooperationOfferDao.save(cooperationOffer);
+			cooperationOffer = cooperationOfferDao.findByCooperationOfferId(cooperationOfferId);
 		}
 		catch (Exception e) {
 			return null;
 		}
-		return cooperationOffer.getCooperationOfferId();
+		if(cooperationOffer.getEmployee().getUser().getUsername().equals(username)) {
+			return cooperationOffer;
+		}
+		return null;
 	}
+	
 	
 	public Integer confirmCooperationOffer(CooperationOfferDTO codto) {
 		Cooperation cooperation;
@@ -75,6 +99,23 @@ public class CooperationOfferService {
 			return false;
 		}
 		return true;
+	}
+	
+	
+	// TEST TEST TEST
+	public Integer createCooperationOffer(CooperationOfferDTO codto) {
+		CooperationOffer cooperationOffer;
+		try {
+			Client client = clientDao.findByClientId(codto.getClientId());
+			Employee employee = employeeDao.findByEmployeeId(codto.getEmployeeId());
+			Date date = new Date();
+			cooperationOffer = new CooperationOffer(codto.getTypeOfCooperation(), codto.getDescription(), date, client, employee);
+			cooperationOffer = cooperationOfferDao.save(cooperationOffer);
+		}
+		catch (Exception e) {
+			return null;
+		}
+		return cooperationOffer.getCooperationOfferId();
 	}
 	
 }

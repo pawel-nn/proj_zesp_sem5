@@ -21,7 +21,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             	.antMatchers("/registerClient", "/addCooperationOffer").permitAll() // TEST
             	.antMatchers("/admin/**").access("hasRole('ROLE_ADMIN')")
             	.antMatchers("/employee/**").access("hasRole('ROLE_EMPLOYEE')")
-            	.antMatchers("/home").access("hasRole('ROLE_ADMIN') OR hasRole('ROLE_CLIENT') OR hasRole('ROLE_EMPLOYEE')")
+            	.antMatchers("/home").access("hasRole('ROLE_ADMIN') OR hasRole('ROLE_EMPLOYEE')")
             	.anyRequest().authenticated()
                 .and()
             .formLogin()

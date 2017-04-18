@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+      
+    <head>
+	    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	    <link href="../static/css/f..."
+           	  th:href="@{/css/global.css}"
+              rel="stylesheet" media="screen" />	
+    	<link href="../static/css/f..."
+           	  th:href="@{/css/cooperation_offer.css}"
+              rel="stylesheet" media="screen" />
+		<title>Cooperation offer details</title>
+	</head>
+	
+    <body>
+		<header>
+			<h1>
+				Cooperation offer details
+			</h1>
+			<div>
+				<ul> 
+					<li><a th:href="@{/employee/cooperationOffersList}">Go Back</a></li>
+					<li><a th:href="@{/home}">Return to homepage</a></li> 
+				</ul>
+			</div>
+		</header>
+		<hr id="hr1" />
+		<div id="pageContent">	
+			<div>
+				<table>
+					<tr>
+						<td>Client:</td>
+						<td th:text="${cooperationOffer.client.toString()}">text</td>
+					</tr>
+				</table>
+			</div>
+			<div>	
+				<table>
+					<tr>
+						<td>Cooperation offer id:</td>
+						<td th:text="${cooperationOffer.cooperationOfferId}">text</td>
+					</tr>
+					<tr>
+						<td>Type of cooperation:</td>
+						<td th:text="${cooperationOffer.typeOfCooperation}">text</td>
+					</tr>
+					<tr>		
+						<td>Description:</td>
+						<td th:text="${cooperationOffer.description}">text</td>
+					</tr>
+					<tr>		
+						<td>Date of offer creation:</td>
+						<td th:text="${cooperationOffer.dateOfOfferCreation}">text</td>
+					</tr>				
+					<tr>	
+						<td>Actions:</td>
+						<td><a th:href="@{/employee/cooperationOffer/acceptCooperationOffer(cooperationOffer=${cooperationOffer.cooperationOfferId})}"><span>Accept</span></a>/<a th:href="@{/employee/cooperationOffer/rejectCooperationOffer(cooperationOffer=${cooperationOffer.cooperationOfferId})}"><span>Reject</span></a></td>
+					</tr>
+				</table>
+			</div>
+        </div>
+    </body>
+</html>

@@ -105,6 +105,10 @@ public class UserService {
 		return user;
 	}
 	
+	public Employee findEmployee(String username) {
+		User user = userDao.findByUsername(username);
+		return employeeDao.findByUser(user);
+	}
 	
 	/* FOR TESTING PURPOSE !!! */
 	@Autowired

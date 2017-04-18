@@ -1,10 +1,11 @@
 package projApp.model.cooperationOffer;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
 
@@ -22,5 +23,7 @@ public interface CooperationOfferDao extends PagingAndSortingRepository<Cooperat
 
 	  public long count();
 
-	  public Iterable<CooperationOffer> findAllCooperationOffersByEmployee(Employee employee, Sort sort);
+	  public Page<CooperationOffer> findAllCooperationOffersByEmployee(Employee employee, Pageable pageable);
+
+	  public List<CooperationOffer> findAllByEmployee(Employee employee);
 }

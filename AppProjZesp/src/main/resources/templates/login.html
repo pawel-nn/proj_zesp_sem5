@@ -1,13 +1,17 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+      
 	<head>
 	    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    	<link href="../static/css/css_file.css"
-           	  th:href="@{/css/core1.css}"
+	    <link href="../static/css/f..."
+           	  th:href="@{/css/global.css}"
+              rel="stylesheet" media="screen" />	
+    	<link href="../static/css/f..."
+           	  th:href="@{/css/before_login.css}"
               rel="stylesheet" media="screen" />
 		<title>Login</title>
 	</head>
+	
     <body>     
 		<header>
 			<h1>
@@ -23,6 +27,7 @@
 		<div id="pageContent">
        		<form th:action="@{/login}" method="post">
      			<div> New Form: </div>
+     			<div id="pageBreak"></div>
             	<table>
                 	<tr>
                     	<td>User Name:</td>
@@ -33,6 +38,7 @@
                     	<td><input type="password" name="password" /></td>
                 	</tr>
             	</table>
+            	<div id="pageBreak"></div>
             	<input type="submit" value="Sign In"/>        
        		</form>
         

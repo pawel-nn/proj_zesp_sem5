@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+      
+    <head>
+	    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	    <link href="../static/css/f..."
+           	  th:href="@{/css/global.css}"
+              rel="stylesheet" media="screen" />	
+    	<link href="../static/css/f..."
+           	  th:href="@{/css/c_list.css}"
+              rel="stylesheet" media="screen" />
+		<title>Cooperations list</title>
+	</head>
+	
+    <body>
+		<header>
+			<h1>
+				Cooperations list
+			</h1>
+			<div id="shortLinks">
+				<ul> 
+					<li><a th:href="@{/home}">Return to homepage</a></li> 
+				</ul>
+			</div>
+		</header>	
+		<hr/>
+		<div id="pageContent">
+			<div class="dataList">
+				<div th:if="${cooperationsList.getSize() > 0}">
+					<h2 id="title">Cooperations list:</h2>
+					<div th:each="cooperation : ${cooperationsList}">
+						<table>
+							<tr>
+								<th>Cooperation id</th>
+								<th>Type of cooperation</th>
+								<th>Date of last event</th>
+								<th>Client</th>
+								<th>Actions</th>
+							</tr>
+							<tr>
+								<td><a th:href="@{/employee/cooperationsList/cooperation(cooperationId=${cooperation.cooperationId})}"><span th:text="${cooperation.cooperationId}">text</span></a></td>
+								<td th:text="${cooperation.typeOfCooperation}">text</td>
+								
+								
+								<div th:if="${cooperation.dateOfLastEvent != null}">	
+									<td th:text="${#dates.format(cooperation.dateOfLastEvent, 'dd-MMM-yyyy')}">text</td>
+								</div>	
+								<div th:unless="${cooperation.dateOfLastEvent != null}">
+									<td>No date</td>
+								</div>				
+								<td> <div th:text="${cooperation.client.firstName}">text</div> <div th:text="${cooperation.client.lastName}">text</div> </td>
+								<td><a th:href="@{/employee/cooperationsList/acceptCooperation(cooperation=${cooperation.cooperationId})}"><span>View</span></a>/<a th:href="@{/employee/cooperationsList/rejectCooperation(cooperation=${cooperation.cooperationId})}"><span>Reject</span></a></td>
+							</tr>
+						</table>
+						<div id="pageBreak"></div>
+					</div>
+					
+					<div id="pageNavigation">
+					 	<ul class="pager">
+			 				<div>
+			 					<li th:class="${pageNumber == 1?'disabled':''}">
+			 						<a type="button" th:href="@{/employee/cooperationsList(page=1)}" id="pageNavigationField" ><span>First</span></a>
+			 					</li>
+								<li th:class="${pageNumber &lt;= 1?'disabled':''}" >
+									<a type="button" th:href="@{/employee/cooperationsList(page=${pageNumber-1})}" id="pageNavigationField" ><span>Previous</span></a>
+								</li>
+			 					<li style="float:right" th:class="${pageNumber == maxPagesNumber?'disabled':''}" >
+			 						<a type="button" th:href="@{/employee/cooperationsList(page=${maxPagesNumber})}" id="pageNavigationField" ><span>Last</span></a>
+			 					</li>
+								<li style="float:right" th:class="${pageNumber &gt;= maxPagesNumber?'disabled':''}" >
+									<a type="button" th:href="@{/employee/cooperationsList(page=${pageNumber+1})}" id="pageNavigationField"  th:disabled="${nextInp}" ><span>Next</span></a>
+								</li>
+							</div>
+						</ul>
+					</div> 
+				</div>	
+				<div th:unless="${cooperationsList.getSize() > 0}">
+					<div id="attention">No data to be displayed!</div>
+				</div>
+			</div>
+		</div>
+    </body>
+</html>
