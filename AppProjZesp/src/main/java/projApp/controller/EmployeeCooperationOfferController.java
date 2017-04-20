@@ -64,7 +64,7 @@ public class EmployeeCooperationOfferController {
 	public String acceptCooperationOfferGET(@RequestParam(value="elementId", required=false) Integer elementId, ConfirmationDTO confirmationDTO, Model m) {
 		if(!cos.existsCooperationOffer(elementId))
 			return "bad_request";
-		m.addAttribute("msg", "Confirm accepting the cooperation.");
+		m.addAttribute("msg", "Potwierdz akceptacjê oferty wspó³pracy.");
 		m.addAttribute("elementId", elementId);
 		m.addAttribute("route", "/employee/cooperationOffersList/acceptCooperationOffer");
 		return "confirmation_page";
@@ -75,15 +75,15 @@ public class EmployeeCooperationOfferController {
 		if(!cos.existsCooperationOffer(elementId))
 			return "bad_request";
 		if( confirmationDTO.getConf() == null || confirmationDTO.getConf().equals("no")) {
-			m.addAttribute("msg", "Error! Not accepted!");
+			m.addAttribute("msg", "B³¹d! Oferta nie zosta³a zaakceptowana.");
 			return "result_employee";	
 		}
 		Integer result = cos.acceptCooperationOffer(elementId);
 		if(result == null) {
-			m.addAttribute("msg", "Error! Not accepted!");
+			m.addAttribute("msg", "B³¹d! Oferta nie zosta³a zaakceptowana.");
 			return "result_employee";	
 		}
-		m.addAttribute("msg", "Accepted!");
+		m.addAttribute("msg", "Oferta zaakceptowana!");
 		return "result_employee";
 	}
 	
@@ -91,7 +91,7 @@ public class EmployeeCooperationOfferController {
 	public String rejectCooperationOfferGET(@RequestParam(value="elementId", required=false) Integer elementId, ConfirmationDTO confirmationDTO, Model m) {
 		if(!cos.existsCooperationOffer(elementId))
 			return "bad_request";
-		m.addAttribute("msg", "Confirm rejecting the cooperation.");
+		m.addAttribute("msg", "PotwierdŸ odrzucenie oferty wspó³pracy.");
 		m.addAttribute("elementId", elementId);
 		m.addAttribute("route", "/employee/cooperationOffersList/rejectCooperationOffer");
 		return "confirmation_page";
@@ -102,15 +102,15 @@ public class EmployeeCooperationOfferController {
 		if(!cos.existsCooperationOffer(elementId))
 			return "bad_request";
 		if( confirmationDTO.getConf() == null || confirmationDTO.getConf().equals("no")) {
-			m.addAttribute("msg", "Error! Not rejected!");
+			m.addAttribute("msg", "B³¹d! Oferta nie zosta³a odrzucona.");
 			return "result_employee";	
 		}
 		Integer result = cos.rejectCooperationOffer(elementId);
 		if(result == null) {
-			m.addAttribute("msg", "Error! Not rejected!");
+			m.addAttribute("msg", "B³¹d! Oferta nie zosta³a odrzucona.");
 			return "result_employee";	
 		}
-		m.addAttribute("msg", "Rejected!");
+		m.addAttribute("msg", "Oferta zosta³a odrzucona.");
 		return "result_employee";
 	}
 

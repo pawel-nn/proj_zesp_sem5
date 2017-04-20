@@ -9,17 +9,17 @@
     	<link href="../static/css/f..."
            	  th:href="@{/css/css_file_example.css}"
               rel="stylesheet" media="screen" />
-		<title>Add cooperation offer</title>
+		<title>Dodawanie oferty współpracy</title>
 	</head>
 	
     <body>
 		<header>
 			<h1>
-				Add new cooperation offer
+				Dodawanie oferty współpracy
 			</h1>
 			<div>
 				<ul> 
-					<li><a th:href="@{/}">Return to index</a></li> 
+					<li><a th:href="@{/}">Wróć do strony startowej</a></li> 
 				</ul>
 			</div>
 		</header>
@@ -27,31 +27,31 @@
 		<div id="pageContent">
         	<form id="myForm" th:action="@{/addCooperationOffer}" th:object="${cooperationOfferDTO}" method="post">
      			<div>
-     				<div> New Form: </div>
+     				<div> Nowy formularz: </div>
             		<table>
                 		<tr id="myTr">
-                    		<td>Client:</td>
-                    		<td> <select th:field="*{clientId}"> <option value="" selected="true">Choose your client here</option> <option th:each="cli : ${allClients}" th:value="${cli.clientId}" th:text="${cli.toString()}">Opt</option> </select></td>	
-                    		<td th:if="${#fields.hasErrors('clientId')}" th:errors="*{clientId}">Print Error</td>
+                    		<td>Klient:</td>
+                    		<td> <select th:field="*{clientId}"> <option value="" selected="true">Wybierz swojego klienta</option> <option th:each="cli : ${allClients}" th:value="${cli.clientId}" th:text="${cli.toString()}">Opt</option> </select></td>	
+                    		<td th:if="${#fields.hasErrors('clientId')}" th:errors="*{clientId}">Error</td>
                 		</tr>
                 		<tr id="myTr">
-                    		<td>Employee:</td>
-                    		<td> <select th:field="*{employeeId}"> <option value="" selected="true">Choose your employee here</option> <option th:each="emp : ${allEmployees}" th:value="${emp.employeeId}" th:text="${emp.toString()}">Opt</option> </select></td>	
-                    		<td th:if="${#fields.hasErrors('employeeId')}" th:errors="*{employeeId}">Print Error</td>
+                    		<td>Pracownik:</td>
+                    		<td> <select th:field="*{employeeId}"> <option value="" selected="true">Wybierz swojego pracownika</option> <option th:each="emp : ${allEmployees}" th:value="${emp.employeeId}" th:text="${emp.toString()}">Opt</option> </select></td>	
+                    		<td th:if="${#fields.hasErrors('employeeId')}" th:errors="*{employeeId}">Error</td>
                 		</tr>
                 		<tr id="myTr">
-                    		<td>Type of cooperation:</td>
-                    		<td> <select th:field="*{typeOfCooperation}"> <option value="" selected="true">Choose type of cooperation</option> <option th:each="type : ${allTypesOfCooperation}" th:value="${type}" th:text="${type}">Opt</option> </select></td>	
-                    		<td th:if="${#fields.hasErrors('typeOfCooperation')}" th:errors="*{typeOfCooperation}">Print Error</td>
+                    		<td>Rodzaj współpracy:</td>
+                    		<td> <select th:field="*{typeOfCooperation}"> <option value="" selected="true">Wybierz rodzaj współpracy</option> <option th:each="type : ${allTypesOfCooperation}" th:value="${type}" th:text="${type}">Opt</option> </select></td>	
+                    		<td th:if="${#fields.hasErrors('typeOfCooperation')}" th:errors="*{typeOfCooperation}">Error</td>
                 		</tr>             	
                  		<tr id="myTr">
-                    		<td>Problem description:</td>
+                    		<td>Opis problemu:</td>
                     		<td><input type="text" th:field="*{description}" /></td>
-                    		<td th:if="${#fields.hasErrors('description')}" th:errors="*{description}">Print Error</td>
+                    		<td th:if="${#fields.hasErrors('description')}" th:errors="*{description}">Error</td>
                 		</tr>                	                 	       	                  	
             		</table>
-            		<div> <button type="submit" id="send" >Submit</button> </div>
-            		<div>Fields with * are optional</div>
+            		<div> <button type="submit" id="send" >Utwórz</button> </div>
+            		<div>Pola z * są opcjonalne</div>
             	</div>
         	</form>
         </div>

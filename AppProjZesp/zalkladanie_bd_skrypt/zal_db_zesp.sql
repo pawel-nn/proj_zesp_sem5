@@ -17,7 +17,5 @@ CREATE TABLE spring_user_roles (
 
 insert into spring_users (username, password, enabled) values ('adm','adm1', 1);
 insert into spring_user_roles (username, role) values ('adm','ROLE_ADMIN');
-insert into spring_users (username, password, enabled) values ('emp','emp1', 1);
-insert into spring_user_roles (username, role) values ('emp','ROLE_EMPLOYEE');
 
 select * from spring_users

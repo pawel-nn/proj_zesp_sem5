@@ -47,7 +47,7 @@ public class MainController {
 	public String home(Model model) {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		String username = auth.getName();
-		model.addAttribute("usernameMsg","Welcome: "+username);
+		model.addAttribute("usernameMsg","Witaj: "+username);
 		Collection<SimpleGrantedAuthority> authorities = (Collection<SimpleGrantedAuthority>) auth.getAuthorities();
 		Iterator<SimpleGrantedAuthority> it = authorities.iterator();
 		String authority = null;
@@ -56,10 +56,10 @@ public class MainController {
 			authority = sga.getAuthority();
 		}
 		if(authority.equals("ROLE_ADMIN")) {
-			model.addAttribute("roleMsg","Your role: Admin");
+			model.addAttribute("roleMsg","Twoja rola: Admin");
 			return "home_admin";
 		} else if(authority.equals("ROLE_EMPLOYEE")) {
-			model.addAttribute("roleMsg","Your role: Employee");
+			model.addAttribute("roleMsg","Twoja rola: Employee");
 			return "home_employee";
 		}
 		return "access_denied";
@@ -79,10 +79,10 @@ public class MainController {
     	String username = auth.getName();
         boolean status = us.updateUserPassword(newPasswordDTO, username);
         if(!status) {
-        	m.addAttribute("msg", "Error! Password can not be changed.");
+        	m.addAttribute("msg", "B章d! Has這 nie zosta這 zmienione.");
             return "change_password_result";	
         }
-        m.addAttribute("msg", "Success! Password has been changed.");
+        m.addAttribute("msg", "Sukces! Has這 zosta這 zminione.");
         return "change_password_result";
     }
 	

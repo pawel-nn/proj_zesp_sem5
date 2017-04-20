@@ -9,32 +9,32 @@
     	<link href="../static/css/f..."
            	  th:href="@{/css/before_login.css}"
               rel="stylesheet" media="screen" />
-		<title>Login</title>
+		<title>Zaloguj</title>
 	</head>
 	
     <body>     
 		<header>
 			<h1>
-				Login form 
+				Formularz logowania 
 			</h1>
 			<div id="shortLinks">
 				<ul>
-					<li><a th:href="@{/}">Main page</a></li>
+					<li><a th:href="@{/}">Wróć do strony domowej</a></li>
 				</ul>	
 			</div>		
 		</header>		
 		<hr/>
 		<div id="pageContent">
        		<form th:action="@{/login}" method="post">
-     			<div> New Form: </div>
+     			<div> Formuarz logowania: </div>
      			<div id="pageBreak"></div>
             	<table>
                 	<tr>
-                    	<td>User Name:</td>
+                    	<td>Nazwa użytkownika:</td>
                     	<td><input type="text" name="username" /></td>
                 	</tr>
                 	<tr>
-                    	<td>Password:</td>
+                    	<td>Hasło:</td>
                     	<td><input type="password" name="password" /></td>
                 	</tr>
             	</table>
@@ -44,11 +44,11 @@
         
         	<div th:if="${param.error}">
         		<p>Error:</p>
-        		<p>Invalid username and password.</p>
+        		<p>Niepoprawne dane logowania.</p>
         	</div>
         	<div th:if="${param.logout}">
         		<p>Information:</p>
-        		<p>You have been logged out.</p>
+        		<p>Wylogowałeś się.</p>
        		</div>  
   		</div>
     </body>

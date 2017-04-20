@@ -9,17 +9,17 @@
     	<link href="../static/css/f..."
            	  th:href="@{/css/css_file_example.css}"
               rel="stylesheet" media="screen" />
-		<title>Client register form</title>
+		<title>Rejestracja klienta</title>
 	</head>
 	
     <body>
 		<header>
 			<h1>
-				Client register form
+				Rejestracja klienta
 			</h1>
 						<div id="shortLinks">
 				<ul>
-					<li><a th:href="@{/}">Return to root page</a></li>
+					<li><a th:href="@{/}">Wróć do strony domowej</a></li>
 				</ul>	
 			</div>
 		</header>	
@@ -29,38 +29,38 @@
      			<div>
             		<table>
                 		<tr>
-                 	   		<td>Username:</td>
+                 	   		<td>Nazwa użytkownika:</td>
                     		<td><input type="text" th:field="*{username}" /></td>
                     		<td th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Error</td>
                 		</tr>
                 		<tr>
-                    		<td>Password:</td>
+                    		<td>Nowe hasło:</td>
                     		<td><input type="password" th:field="*{password}" /></td>
                     		<td th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Error</td>
                 		</tr>
                 		<tr>
-                    		<td>Repeat password:</td>
+                    		<td>Powtórz hasło:</td>
                     		<td><input type="password" th:field="*{confirmPassword}" /></td>
                     		<td th:if="${#fields.hasErrors('confirmPassword')}" th:errors="*{confirmPassword}">Error</td>
                 		</tr>	
                  		<tr>
-                    		<td>First name:</td>
+                    		<td>Imię:</td>
                     		<td><input type="text" th:field="*{firstName}" /></td>
                     		<td th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">Error</td>
                 		</tr>          	
                   		<tr>
-                    		<td>Last name:</td>
+                    		<td>Nazwisko:</td>
                     		<td><input type="text" th:field="*{lastName}" /></td>
                     		<td th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">Error</td>
                 		</tr>             	
                  		<tr>
-                    		<td>Email:</td>
+                    		<td>Adress e-mail:</td>
                     		<td><input type="email" th:field="*{email}" /></td>
                     		<td th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Error</td>
                 		</tr>              	  
             		</table>
-            		<button type="submit" id="send" >Submit</button>
-            		<div>Fields with * are optional</div>
+            		<button type="submit" id="send" >Zarejesruj</button>
+            		<div>Pola z * są opcjonalne</div>
             	</div>
         	</form>
         </div>

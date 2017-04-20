@@ -9,20 +9,20 @@
     	<link href="../static/css/f..."
            	  th:href="@{/css/after_login.css}"
               rel="stylesheet" media="screen" />
-        <title>Admin homepage</title>
+        <title>Strona domowa admina</title>
 	</head>
 	
     <body>
     	<header>
 			<h1>
-				Admin page 
+				Strona admina
 			</h1>
 			<div id="shortLinks">
 				<ul id="ulRet">
-					<li><a th:href="@{/admin/accountsControl}">Accounts control</a></li>
-					<li><a th:href="@{/admin/registerEmployee}">Register employee</a></li>
-					<li><a th:href="@{/changePassword}">Change password</a></li>
-					<li><form th:action="@{/logout}" method="post"><input type="submit" id="logout" value="Sign Out"/></form></li>
+					<li><a th:href="@{/admin/accountsControl}">Zarządzaj kontami</a></li>
+					<li><a th:href="@{/admin/registerEmployee}">Utwórz nowego pracownika</a></li>
+					<li><a th:href="@{/changePassword}">Zmień hasło</a></li>
+					<li><form th:action="@{/logout}" method="post"><input type="submit" id="logout" value="Wyloguj się"/></form></li>
 				</ul>
 			</div>
 		</header>

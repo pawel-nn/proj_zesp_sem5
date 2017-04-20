@@ -44,10 +44,10 @@ public class ControllerForTesting {
         }
         boolean status = us.saveUserClient(clientDTO);
         if(!status) {
-        	m.addAttribute("msg", "Error! User can not be created.");
+        	m.addAttribute("msg", "B³¹d! Klient nie mo¿e zostaæ utworzony.");
             return "FOR_TEST_register_client_result";	
         }
-        m.addAttribute("msg", "Success! User has been created.");
+        m.addAttribute("msg", "Sukces! Klient zosta³ utworzony.");
         return "FOR_TEST_register_client_result";
     }
 	
@@ -73,10 +73,10 @@ public class ControllerForTesting {
         }
         Integer status = cos.createCooperationOffer(cooperationOfferDTO);
         if(status == null) {
-        	m.addAttribute("msg", "Error! User can not be created.");
+        	m.addAttribute("msg", "B³¹d! Oferta wspó³pracy nie zosta³a utworzona.");
             return "FOR_TEST_add_cooperation_offer_result";	
         }
-        m.addAttribute("msg", "Success! User has been created.");
+        m.addAttribute("msg", "Sukces! Oferta wspó³pracy zosta³a utworzona.");
         return "FOR_TEST_add_cooperation_offer_result";
     }
 }

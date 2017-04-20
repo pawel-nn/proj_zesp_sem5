@@ -1,4 +1,5 @@
 package projApp.model.user;
+
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -13,7 +14,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import projApp.model.user.UserRole;
-
 
 @Entity
 @Table(name = "spring_users") 

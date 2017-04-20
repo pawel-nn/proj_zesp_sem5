@@ -2,9 +2,6 @@ package projApp.formDTO;
 
 import javax.validation.constraints.NotNull;
 
-import projApp.model.client.Client;
-import projApp.model.employee.Employee;
-
 public class CooperationOfferDTO {
 
 	private Integer cooperationOfferId;

@@ -29,51 +29,51 @@
      			<div>
             		<table>
             	   		<tr id="myTr" >
-            				<th colspan="2"><div id="myFormTitle"> New Form: </div></th>
+            				<th colspan="2"><div id="myFormTitle"> Nowy formularz rejestracji pracownika: </div></th>
             			</tr>
                 		<tr id="myTr" >
-                    		<td>Username:</td>
+                    		<td>Nazwa użytkownika:</td>
                     		<td><input type="text" th:field="*{username}" /></td>
-                    		<td th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Username Error</td>
+                    		<td th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Error</td>
                 		</tr>
                 		<tr id="myTr">
-                    		<td>Password:</td>
+                    		<td>Nowe hasło:</td>
                     		<td><input type="password" th:field="*{password}" /></td>
-                    		<td th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password Error</td>
+                    		<td th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Error</td>
                 		</tr>
                 		<tr id="myTr">
-                    		<td>Repeat password:</td>
+                    		<td>Powtórz hasło:</td>
                     		<td><input type="password" th:field="*{confirmPassword}" /></td>
-                    		<td th:if="${#fields.hasErrors('confirmPassword')}" th:errors="*{confirmPassword}">Password Error</td>
+                    		<td th:if="${#fields.hasErrors('confirmPassword')}" th:errors="*{confirmPassword}">Error</td>
                 		</tr>         
                  		<tr id="myTr">
-                    		<td>First name:</td>
+                    		<td>Imię:</td>
                     		<td><input type="text" th:field="*{firstName}" /></td>
-                    		<td th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">First name Error</td>
+                    		<td th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">Error</td>
                 		</tr>              	
                   		<tr id="myTr">
-                    		<td>Last name:</td>
+                    		<td>Nazwisko:</td>
                     		<td><input type="text" th:field="*{lastName}" /></td>
-                    		<td th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">Last name Error</td>
+                    		<td th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">Error</td>
                 		</tr>            	
                  		<tr id="myTr">
-                    		<td>Email:</td>
+                    		<td>Adress e-mail:</td>
                     		<td><input type="email" th:field="*{email}" /></td>
-                    		<td th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Email Error</td>
+                    		<td th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Error</td>
                 		</tr>     
                  		<tr id="myTr">
-                    		<td>Position:</td>
+                    		<td>Stanowisko:</td>
                     		<td><input type="text" th:field="*{position}" /></td>
-                    		<td th:if="${#fields.hasErrors('position')}" th:errors="*{position}">Position Error</td>
+                    		<td th:if="${#fields.hasErrors('position')}" th:errors="*{position}">Error</td>
                 		</tr>
                 		<tr id="myTr">
-                    		<td>Salary*:</td>
+                    		<td>Pensja*:</td>
                     		<td><input type="text" th:field="*{salary}" placeholder="ex. 2500 PLN" /></td>
-                    		<td th:if="${#fields.hasErrors('salary')}" th:errors="*{salary}">Salary Error</td>
+                    		<td th:if="${#fields.hasErrors('salary')}" th:errors="*{salary}">Error</td>
                 		</tr>                     	       	  
             		</table>
-            		<button type="submit" id="send" >Submit</button>
-            		<div>Fields with * are optional</div>
+            		<button type="submit" id="send" >Zarejesruj</button>
+            		<div>Pola z * są opcjonalne</div>
             	</div>
         	</form>
         </div>

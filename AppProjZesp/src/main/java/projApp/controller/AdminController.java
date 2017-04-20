@@ -17,7 +17,6 @@ import projApp.service.UserService;
 import projApp.formDTO.EmployeeDTO;
 import projApp.model.user.User;
 
-
 @Controller
 public class AdminController {
 	
@@ -38,10 +37,10 @@ public class AdminController {
         }
         boolean status = us.saveNewUser(employeeDTO);
         if(!status) {
-        	m.addAttribute("msg", "Error! Employee can not be created.");
+        	m.addAttribute("msg", "B³¹d! Pracownik nie mo¿e zostaæ utworzony.");
             return "result_admin";	
         }
-        m.addAttribute("msg", "Success! Employee has been created.");
+        m.addAttribute("msg", "Sukces! Pracownik zosta³ utworzony.");
         return "result_admin";
     }
 
@@ -69,10 +68,10 @@ public class AdminController {
     public String blockUser(@RequestParam(value="user", required=true) String username, Model m) {
     	boolean status = us.blockUser(username);
     	if(!status) {
-    		m.addAttribute("msg", "Error! User can not be blocked!");
+    		m.addAttribute("msg", "B³¹d! U¿ytkownik nie mo¿e zostaæ zablokowany.");
     		return "result_admin";	
     	}
-    	m.addAttribute("msg", "Success! User has been blocked.");
+    	m.addAttribute("msg", "Sukces! U¿ytkownik zosta³ zablokowany.");
 	    return "result_admin";
 	}
     
@@ -80,10 +79,10 @@ public class AdminController {
     public String unlockUser(@RequestParam(value="user", required=true) String username, Model m) {
     	boolean status = us.unlockUser(username);
     	if(!status) {
-    		m.addAttribute("msg", "Error! User can not be unlocked!");
+    		m.addAttribute("msg", "B³ad! U¿ytkownik nie mo¿e zostaæ odblokowany.");
     		return "result_admin";	
     	}
-    	m.addAttribute("msg", "Success! User has been unlocked.");
+    	m.addAttribute("msg", "Sukces!  U¿ytkownik zosta³ odblokowany.");
 	    return "result_admin";
 	}
 }
