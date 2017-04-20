@@ -54,8 +54,7 @@
 					</tr>				
 					<tr>	
 						<td>Actions:</td>
-						<td><a th:href="@{/employee/cooperationOffer/acceptCooperationOffer(cooperationOffer=${cooperationOffer.cooperationOfferId})}"><span>Accept</span></a>/<a th:href="@{/employee/cooperationOffer/rejectCooperationOffer(cooperationOffer=${cooperationOffer.cooperationOfferId})}"><span>Reject</span></a></td>
-					</tr>
+						<td><a th:href="@{/employee/cooperationOffersList/cooperationOffer(cooperationOfferId=${cooperationOffer.cooperationOfferId})}"><span>View</span></a>/<a th:href="@{/employee/cooperationOffersList/acceptCooperationOffer(elementId=${cooperationOffer.cooperationOfferId})}"><span>Accept</span></a>/<a th:href="@{/employee/cooperationOffersList/rejectCooperationOffer(elementId=${cooperationOffer.cooperationOfferId})}"><span>Reject</span></a></td>					</tr>
 				</table>
 			</div>
         </div>

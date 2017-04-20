@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+
+    <head>
+	    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	    <link href="../static/css/f..."
+           	  th:href="@{/css/global.css}"
+              rel="stylesheet" media="screen" />	
+    	<link href="../static/css/f..."
+           	  th:href="@{/css/after_login.css}"
+              rel="stylesheet" media="screen" />
+        <title>Confirm your decision</title>
+	</head>
+    <body>
+    	<header>
+			<h1>
+				Confirmation page 
+			</h1>
+			<div id="shortLinks">
+				<ul id="ulRet">
+					<li><a th:href="@{/home}">Return to homepage</a></li>
+				</ul>
+			</div>
+		</header>
+		<div id="pageContent">
+		    <div> 
+		    	<p th:text="${msg}">text</p>
+		    </div>
+       		<form id="deleteForm" th:action="@{${route}(elementId=${elementId})}" th:object="${confirmationDTO}" method="post">
+     			<div>
+            		<table>
+            			<tr>
+            				<th colspan="2"><div> Confirm your action: </div></th>
+            			</tr>
+                    	<tr>
+                    		<td><input type="radio" name="conf" value="yes" />Yes</td>
+  							<td><input type="radio" name="conf" value="no" />No</td>
+                		</tr>       	
+            		</table>
+            		<button type="submit" id="send" >Submit</button>
+            	</div>
+        	</form>
+		</div>	
+    </body>
+</html>

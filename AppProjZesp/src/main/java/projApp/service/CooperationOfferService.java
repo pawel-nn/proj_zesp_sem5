@@ -1,6 +1,5 @@
 package projApp.service;
 
-
 import java.util.Date;
 import java.util.List;
 
@@ -75,30 +74,31 @@ public class CooperationOfferService {
 		return null;
 	}
 	
+	public Integer rejectCooperationOffer(Integer elementId) {
+		CooperationOffer cooperationOffer;
+		try {
+			cooperationOffer = cooperationOfferDao.findByCooperationOfferId(elementId);
+			cooperationOfferDao.delete(cooperationOffer);
+		}
+		catch (Exception e) {
+			return null;
+		}
+		return 0;
+	}
 	
-	public Integer confirmCooperationOffer(CooperationOfferDTO codto) {
+	public Integer acceptCooperationOffer(Integer elementId) {
+		CooperationOffer cooperationOffer;
 		Cooperation cooperation;
 		try {
-			CooperationOffer cooperationOffer = cooperationOfferDao.findByCooperationOfferId(codto.getCooperationOfferId());
-			cooperation = new Cooperation(cooperationOffer.getTypeOfCooperation(), cooperationOffer.getDescription(), null, cooperationOffer.getClient(), cooperationOffer.getEmployee(), null);
+			cooperationOffer = cooperationOfferDao.findByCooperationOfferId(elementId);
+			cooperation = new Cooperation( cooperationOffer.getTypeOfCooperation(), cooperationOffer.getDescription(), null, cooperationOffer.getClient(), cooperationOffer.getEmployee(), null );
 			cooperation = cooperationDao.save(cooperation);
+			cooperationOfferDao.delete(cooperationOffer);
 		}
 		catch (Exception e) {
 			return null;
 		}
 		return cooperation.getCooperationId();
-	}
-	
-	public boolean rejectCooperationOffer(CooperationOfferDTO codto) {
-		CooperationOffer cooperationOffer;
-		try {
-			cooperationOffer = cooperationOfferDao.findByCooperationOfferId(codto.getCooperationOfferId());
-			cooperationOfferDao.delete(cooperationOffer);
-		}
-		catch (Exception e) {
-			return false;
-		}
-		return true;
 	}
 	
 	

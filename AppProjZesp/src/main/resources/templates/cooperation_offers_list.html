@@ -42,7 +42,7 @@
 								<td th:text="${cooperationOffer.typeOfCooperation}">text</td>
 								<td th:text="cooperationOffer.dateOfOfferCreation">text</td>
 								<td> <div th:text="${cooperationOffer.client.firstName}">text</div> <div th:text="${cooperationOffer.client.lastName}">text</div> </td>
-								<td><a th:href="@{/employee/cooperationOffersList/acceptCooperationOffer(cooperationOffer=${cooperationOffer.cooperationOfferId})}"><span>View</span></a>/<a th:href="@{/employee/cooperationOffersList/rejectCooperationOffer(cooperationOffer=${cooperationOffer.cooperationOfferId})}"><span>Reject</span></a></td>
+								<td><a th:href="@{/employee/cooperationOffersList/cooperationOffer(cooperationOfferId=${cooperationOffer.cooperationOfferId})}"><span>View</span></a>/<a th:href="@{/employee/cooperationOffersList/acceptCooperationOffer(elementId=${cooperationOffer.cooperationOfferId})}"><span>Accept</span></a>/<a th:href="@{/employee/cooperationOffersList/rejectCooperationOffer(elementId=${cooperationOffer.cooperationOfferId})}"><span>Reject</span></a></td>
 							</tr>
 						</table>
 						<div id="pageBreak"></div>

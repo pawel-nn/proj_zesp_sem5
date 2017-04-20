@@ -9,8 +9,10 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import projApp.formDTO.ConfirmationDTO;
 import projApp.model.cooperationOffer.CooperationOffer;
 import projApp.model.employee.Employee;
 import projApp.service.CooperationOfferService;
@@ -42,7 +44,6 @@ public class EmployeeCooperationOfferController {
 			else pageNumber = pageReq;
 		Page<CooperationOffer> cooperationOffersList = (Page<CooperationOffer>) cos.findAllEmployeeCooperationOffers(employee, new PageRequest(pageNumber - 1, MAX_ROWS_PER_PAGE, Sort.Direction.DESC, "dateOfOfferCreation"));
 		model.addAttribute("cooperationOffersList", cooperationOffersList);
-		System.out.println("aaaSize= " + cooperationOffersList.getNumberOfElements());
 		model.addAttribute("pageNumber",pageNumber);
 		model.addAttribute("maxPagesNumber",maxPagesNumber);
 		return "cooperation_offers_list";
@@ -59,11 +60,58 @@ public class EmployeeCooperationOfferController {
 		return "cooperation_offer";
 	}
 
-	@GetMapping("/employee/cooperationOffersList/acceptCooperationOffer") // !!!!!!!!!!!!!
-	public String acceptCooperationOffer(@RequestParam(value="cooperationOfferId", required=false) Integer cooperationOfferId, Model m) {
-        //save
-		// redirect/refresh
-		return "cooperation_offer";
+	@GetMapping("/employee/cooperationOffersList/acceptCooperationOffer")
+	public String acceptCooperationOfferGET(@RequestParam(value="elementId", required=false) Integer elementId, ConfirmationDTO confirmationDTO, Model m) {
+		if(!cos.existsCooperationOffer(elementId))
+			return "bad_request";
+		m.addAttribute("msg", "Confirm accepting the cooperation.");
+		m.addAttribute("elementId", elementId);
+		m.addAttribute("route", "/employee/cooperationOffersList/acceptCooperationOffer");
+		return "confirmation_page";
+	}
+
+	@PostMapping("/employee/cooperationOffersList/acceptCooperationOffer")
+	public String acceptCooperationOfferPOST(@RequestParam(value="elementId", required=false) Integer elementId, ConfirmationDTO confirmationDTO, Model m) {
+		if(!cos.existsCooperationOffer(elementId))
+			return "bad_request";
+		if( confirmationDTO.getConf() == null || confirmationDTO.getConf().equals("no")) {
+			m.addAttribute("msg", "Error! Not accepted!");
+			return "result_employee";	
+		}
+		Integer result = cos.acceptCooperationOffer(elementId);
+		if(result == null) {
+			m.addAttribute("msg", "Error! Not accepted!");
+			return "result_employee";	
+		}
+		m.addAttribute("msg", "Accepted!");
+		return "result_employee";
+	}
+	
+	@GetMapping("/employee/cooperationOffersList/rejectCooperationOffer")
+	public String rejectCooperationOfferGET(@RequestParam(value="elementId", required=false) Integer elementId, ConfirmationDTO confirmationDTO, Model m) {
+		if(!cos.existsCooperationOffer(elementId))
+			return "bad_request";
+		m.addAttribute("msg", "Confirm rejecting the cooperation.");
+		m.addAttribute("elementId", elementId);
+		m.addAttribute("route", "/employee/cooperationOffersList/rejectCooperationOffer");
+		return "confirmation_page";
+	}
+	
+	@PostMapping("/employee/cooperationOffersList/rejectCooperationOffer")
+	public String rejectCooperationOfferPOST(@RequestParam(value="elementId", required=false) Integer elementId, ConfirmationDTO confirmationDTO, Model m) {
+		if(!cos.existsCooperationOffer(elementId))
+			return "bad_request";
+		if( confirmationDTO.getConf() == null || confirmationDTO.getConf().equals("no")) {
+			m.addAttribute("msg", "Error! Not rejected!");
+			return "result_employee";	
+		}
+		Integer result = cos.rejectCooperationOffer(elementId);
+		if(result == null) {
+			m.addAttribute("msg", "Error! Not rejected!");
+			return "result_employee";	
+		}
+		m.addAttribute("msg", "Rejected!");
+		return "result_employee";
 	}
 
 }
