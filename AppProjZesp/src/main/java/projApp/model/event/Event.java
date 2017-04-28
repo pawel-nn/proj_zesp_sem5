@@ -26,8 +26,9 @@ import projApp.model.document.Document;
 @Table(name = "events")
 public class Event {
 
-	private Integer actionId;
-	private String topic;
+	private Integer eventId;
+	private String subject;
+	private String eventType;
 	private String content;
 	private Date registrationDate;
 	private Cooperation cooperation;
@@ -35,41 +36,43 @@ public class Event {
 	
 	public Event() {}
 	
-	public Event(String topic, String content, Date registrationDate, Cooperation cooperation, List <Document> documents) {
-		this.topic = topic;
+	public Event(String subject, String eventType, String content, Date registrationDate, Cooperation cooperation, List <Document> documents) {
+		this.subject = subject;
 		this.content = content;
 		this.registrationDate = registrationDate;
 		this.cooperation = cooperation;
 		this.documents = documents;
+		this.eventType = eventType;
 	}
 
-	public Event(Integer actionId, String topic, String content, Date registrationDate, Cooperation cooperation, List <Document> documents) {
-		this.actionId = actionId;
-		this.topic = topic;
+	public Event(Integer eventId, String eventType, String subject, String content, Date registrationDate, Cooperation cooperation, List <Document> documents) {
+		this.eventId = eventId;
+		this.subject = subject;
 		this.content = content;
 		this.registrationDate = registrationDate;
 		this.cooperation = cooperation;
 		this.documents = documents;
+		this.eventType = eventType;
 	}
 
 	@Id
 	@GeneratedValue(strategy = IDENTITY)
-	@Column(name = "ecent_id", unique = true, nullable = false)
-	public Integer getActionId() {
-		return this.actionId;
+	@Column(name = "event_id", unique = true, nullable = false)
+	public Integer getEventId() {
+		return this.eventId;
 	}
 	
-	public void setActionId(Integer actionId) {
-		this.actionId = actionId;
+	public void setEventId(Integer eventId) {
+		this.eventId = eventId;
 	}
 
-	@Column(name = "topic", nullable = false, length = 45)
-	public String getTopic() {
-		return topic;
+	@Column(name = "subject", nullable = false, length = 45)
+	public String getSubject() {
+		return subject;
 	}
 
-	public void setTopic(String topic) {
-		this.topic = topic;
+	public void setSubject(String subject) {
+		this.subject = subject;
 	}
 	
 	@Column(name = "content", nullable = false, length = 45)
@@ -92,7 +95,7 @@ public class Event {
 	}
 	
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "cooperationId", nullable = false)
+	@JoinColumn(name = "cooperation_id", nullable = false)
 	public Cooperation getCooperation() {
 		return this.cooperation;
 	}
@@ -108,6 +111,15 @@ public class Event {
 
 	public void setDocuments(List<Document> documents) {
 		this.documents = documents;
+	}
+
+	@Column(name = "event_type", nullable = false)
+	public String getEventType() {
+		return eventType;
+	}
+
+	public void setEventType(String eventType) {
+		this.eventType = eventType;
 	}
 
 }

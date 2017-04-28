@@ -1,4 +1,4 @@
-/* Opis: Strony home oraz change_password */
+/* Opis: Strona home & accounts control */
 /*  */
 /*  Style definition   : Common page elements     */
 
@@ -23,15 +23,29 @@ body {
 	margin-bottom: 2cm;
 }
 
+/* odkomentowac aby blokowalo Prev Next przy granicy
+.disabled {
+    pointer-events:none;
+    opacity:0.6;
+}
+*/
 
 /*  <<< END >>>        : Global elements       */
 /*  */
 /*  Style definition   : Table              */
 
+tr:nth-child(even){background-color: #00ff80}
+tr:nth-child(odd){background-color: #ffffff}
+
 th, td {
 	min-width: 150px;
     text-align: left;
     padding: 8px;
+}
+
+table tr:hover td {
+	background: #75f9ad;
+	color: #339;
 }
 
 /*  <<< END >>>        : Table               */

@@ -98,7 +98,7 @@ public class Cooperation {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, cascade = {CascadeType.ALL}, mappedBy = "cooperation")
-	@OrderBy("event_date")
+	@OrderBy("registration_date")
 	public List<Event> getEvents() {
 		return events;
 	}

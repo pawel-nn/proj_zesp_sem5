@@ -1,4 +1,4 @@
-package projApp.ZforWWWAppONLY_TEST;
+package projApp.wwwApp;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -7,16 +7,17 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "client_accounts_web") 
-public class For_WWW_APP_TEST {
+public class WebUser {
 
 	private String username;
 	private String password;
 	private boolean enabled;
+	private Integer sessionId;
 
-	public For_WWW_APP_TEST() {
+	public WebUser() {
 	}
 
-	public For_WWW_APP_TEST(String username, String password, boolean enabled) {
+	public WebUser(String username, String password, boolean enabled) {
 		this.username = username;
 		this.password = password;
 		this.enabled = enabled;
@@ -48,6 +49,15 @@ public class For_WWW_APP_TEST {
 
 	public void setEnabled(boolean enabled) {
 		this.enabled = enabled;
+	}
+
+	@Column(name = "session_id", nullable = true)
+	public Integer getSessionId() {
+		return sessionId;
+	}
+
+	public void setSessionId(Integer sessionId) {
+		this.sessionId = sessionId;
 	}
 }
 

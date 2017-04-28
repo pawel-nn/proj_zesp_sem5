@@ -35,6 +35,26 @@ public class EmployeeDTO {
     
     private String salary;
     
+    @NotNull
+    @Size(min=1, max=45)
+    private String city;
+    
+    @NotNull
+    @Size(min=1, max=45)
+    private String cityPostCode;
+    
+    @NotNull
+    @Size(min=1, max=45)
+    private String street;
+    
+    @NotNull
+    @Size(min=1, max=45)
+    private String accommodationNumber;
+    
+    @NotNull
+    @Size(min=1, max=45)
+    private String mobile;
+    
     public boolean arePasswordsEquals() {
     	return password.equals(confirmPassword);
     }
@@ -102,5 +122,46 @@ public class EmployeeDTO {
 	public void setSalary(String salary) {
 		this.salary = salary;
 	}
+
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+	public String getCityPostCode() {
+		return cityPostCode;
+	}
+
+	public void setCityPostCode(String cityPostCode) {
+		this.cityPostCode = cityPostCode;
+	}
+
+	public String getStreet() {
+		return street;
+	}
+
+	public void setStreet(String street) {
+		this.street = street;
+	}
+
+	public String getAccommodationNumber() {
+		return accommodationNumber;
+	}
+
+	public void setAccommodationNumber(String accommodationNumber) {
+		this.accommodationNumber = accommodationNumber;
+	}
+
+	public String getMobile() {
+		return mobile;
+	}
+
+	public void setMobile(String mobile) {
+		this.mobile = mobile;
+	}
+	
 	
 }

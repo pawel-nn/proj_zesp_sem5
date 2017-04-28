@@ -1,4 +1,4 @@
-/* EXAMPLE */
+/* Opis: wszystkie (add) forms i results */
 /*  */
 /*  Style definition   : Common page elements     */
 
@@ -23,22 +23,23 @@ body {
 	margin-bottom: 2cm;
 }
 
+
 /*  <<< END >>>        : Global elements       */
 /*  */
 /*  Style definition   : Table              */
 
-tr:nth-child(even){background-color: #808080}
-tr:nth-child(odd){background-color: #c0c0c0}
+
+table {
+	border: 1px solid #ff0000;
+}
+
+tr:nth-child(even){background-color: #dec2f5}
+tr:nth-child(odd){background-color: #dec2f5}
 
 th, td {
 	min-width: 150px;
     text-align: left;
     padding: 8px;
-}
-
-table tr:hover td {
-	background: #75f9ad;
-	color: #339;
 }
 
 /*  <<< END >>>        : Table               */

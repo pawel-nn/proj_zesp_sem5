@@ -34,6 +34,7 @@
 					</tr>
 				</table>
 			</div>
+			<div id="pageBreak"></div>
 			<div>	
 				<table>
 					<tr>
@@ -62,10 +63,37 @@
 					</div>						
 					<tr>	
 						<td>Operacje:</td>
-						<td><a th:href="@{/employee/cooperation/updateCooperation(cooperation=${cooperation.cooperationId})}"><span>Edytuj</span></a><td>
+						<td><a th:href="@{/employee/cooperation/updateCooperation(cooperation=${cooperation.cooperationId})}"><span>Edytuj</span></a></td>
 					</tr>
 				</table>
 			</div>
-        </div>
+			<div id="pageBreak"></div>
+			<div>
+				<a type="button" th:href="@{/employee/cooperationsList/cooperation/addEvent(cooperationId=${cooperation.cooperationId})}" id="addButton" ><span>Dodaj wydarzenie</span></a>
+			</div>
+			<div id="pageBreak"></div>
+			<div th:if="${cooperation.events.size() > 0}">
+				<table>
+					<tr>
+						<th>Indefikator</th>
+						<th>Temat</th>
+						<th>Operations</th>
+					</tr>
+					<tr th:each="event : ${cooperation.events}">
+						<td th:text="${event.eventId}">text</td>
+						<td th:text="${event.subject}">text</td>
+						<td><a th:href="@{/employee/cooperationsList/cooperation/event(eventId=${event.eventId})}"><span>Wyświetl</span></a></td>
+					</tr>
+				</table>	
+			</div>		
+			<div th:unless="${cooperation.events.size() > 0}">
+				<table>
+					<tr>
+						<td>Wydarzenia:</td>
+						<td>Brak aktualnych wydarzeń</td>
+					</tr>
+				</table>
+			</div>
+   	    </div>
     </body>
 </html>

@@ -25,26 +25,41 @@ public class Employee {
 	private String lastName;
 	private String position;
 	private String salary;
+	private String city;
+	private String cityPostCode;
+	private String street;
+	private String accommodationNumber;
+	private String mobile;
 	
 	private User user;
 	
 	public Employee() {}
 	
-	public Employee( String firstName, String lastName, String email, String position, String salary ) {
+	public Employee( String firstName, String lastName, String email, String position, String salary, String city, String cityPostCode, String street, String accommodationNumber, String mobile ) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
 		this.position = position;
 		this.salary = salary;
+		this.city = city;
+		this.cityPostCode = cityPostCode;
+		this.street = street;
+		this.accommodationNumber = accommodationNumber;
+		this.mobile = mobile;
 	}
 
-	public Employee( String firstName, String lastName, String email, String position, String salary, User user ) {
+	public Employee( String firstName, String lastName, String email, String position, String salary, User user, String city, String cityPostCode, String street, String accommodationNumber, String mobile ) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
 		this.position = position;
 		this.salary = salary;
-		this.user = user;		
+		this.user = user;	
+		this.city = city;
+		this.cityPostCode = cityPostCode;
+		this.street = street;
+		this.accommodationNumber = accommodationNumber;
+		this.mobile = mobile;
 	}	
 	
 	@Id
@@ -112,6 +127,51 @@ public class Employee {
 
 	public void setSalary(String salary) {
 		this.salary = salary;
+	}
+	
+	@Column(name = "city", nullable = false, length = 45)
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+	
+	@Column(name = "street", nullable = false, length = 45)
+	public String getStreet() {
+		return street;
+	}
+
+	public void setStreet(String street) {
+		this.street = street;
+	}
+	
+	@Column(name = "city_post_code", nullable = false, length = 45)
+	public String getCityPostCode() {
+		return cityPostCode;
+	}
+
+	public void setCityPostCode(String cityPostCode) {
+		this.cityPostCode = cityPostCode;
+	}
+	
+	@Column(name = "accommodation_number", nullable = false, length = 45)
+	public String getAccommodationNumber() {
+		return accommodationNumber;
+	}
+
+	public void setAccommodationNumber(String accommodationNumber) {
+		this.accommodationNumber = accommodationNumber;
+	}
+	
+	@Column(name = "mobile", nullable = false, length = 45)
+	public String getMobile() {
+		return mobile;
+	}
+
+	public void setMobile(String mobile) {
+		this.mobile = mobile;
 	}
 	
 	@Override

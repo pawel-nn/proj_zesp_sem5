@@ -39,7 +39,7 @@ public class UserService {
 			Set<UserRole> userRoleSet = new HashSet<UserRole>(0);
 			userRoleSet.add(userRole);
 			user.setUserRole(userRoleSet);
-			Employee employee = new Employee(edto.getFirstName(),edto.getLastName(),edto.getEmail(), edto.getPosition(),edto.getSalary(), user);	
+			Employee employee = new Employee(edto.getFirstName(),edto.getLastName(),edto.getEmail(), edto.getPosition(),edto.getSalary(), user, edto.getCity(), edto.getCityPostCode(), edto.getStreet(), edto.getAccommodationNumber(), edto.getMobile());	
 			employeeDao.save(employee);
 		}
 		catch (Exception e) {
@@ -126,7 +126,7 @@ public class UserService {
 		try {
 			if(clientDao.findByEmail(cdto.getEmail()) != null)
 				return false;
-			Client client = new Client(cdto.getFirstName(),cdto.getLastName(),cdto.getEmail(), cdto.getPassword());		
+			Client client = new Client(cdto.getFirstName(),cdto.getLastName(),cdto.getEmail(), cdto.getCity(), cdto.getCityPostCode(), cdto.getStreet(), cdto.getAccommodationNumber(), cdto.getMobile());		
 			clientDao.save(client);
 		}
 		catch (Exception e) {

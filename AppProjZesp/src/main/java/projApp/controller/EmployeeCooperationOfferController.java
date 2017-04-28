@@ -67,7 +67,7 @@ public class EmployeeCooperationOfferController {
 		m.addAttribute("msg", "Potwierdz akceptacjê oferty wspó³pracy.");
 		m.addAttribute("elementId", elementId);
 		m.addAttribute("route", "/employee/cooperationOffersList/acceptCooperationOffer");
-		return "confirmation_page";
+		return "confirmation_page_employee";
 	}
 
 	@PostMapping("/employee/cooperationOffersList/acceptCooperationOffer")
@@ -94,7 +94,7 @@ public class EmployeeCooperationOfferController {
 		m.addAttribute("msg", "PotwierdŸ odrzucenie oferty wspó³pracy.");
 		m.addAttribute("elementId", elementId);
 		m.addAttribute("route", "/employee/cooperationOffersList/rejectCooperationOffer");
-		return "confirmation_page";
+		return "confirmation_page_employee";
 	}
 	
 	@PostMapping("/employee/cooperationOffersList/rejectCooperationOffer")

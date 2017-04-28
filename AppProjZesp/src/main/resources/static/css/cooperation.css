@@ -28,10 +28,18 @@ body {
 /*  */
 /*  Style definition   : Table              */
 
+tr:nth-child(even){background-color: #008080}
+tr:nth-child(odd){background-color: #8080ff}
+
 th, td {
 	min-width: 150px;
     text-align: left;
     padding: 8px;
+}
+
+table tr:hover td {
+	background: #aeaeff;
+	color: #339;
 }
 
 /*  <<< END >>>        : Table               */
