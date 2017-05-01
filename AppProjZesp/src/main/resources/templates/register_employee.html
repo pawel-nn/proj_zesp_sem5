@@ -55,12 +55,7 @@
                     		<td>Nazwisko:</td>
                     		<td><input type="text" th:field="*{lastName}" /></td>
                     		<td th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">Error</td>
-                		</tr>            	
-                 		<tr id="myTr">
-                    		<td>Adress e-mail:</td>
-                    		<td><input type="email" th:field="*{email}" /></td>
-                    		<td th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Error</td>
-                		</tr>     
+                		</tr>            	 
                  		<tr id="myTr">
                     		<td>Stanowisko:</td>
                     		<td><input type="text" th:field="*{position}" /></td>
@@ -72,7 +67,7 @@
                     		<td th:if="${#fields.hasErrors('salary')}" th:errors="*{salary}">Error</td>
                 		</tr>                     	       	  
                 	</table>   
-                	<div> Dane kontaktowe: </div>>
+                	<div> Dane kontaktowe: </div>
                 	<table>    	
                  		<tr>
                     		<td>Adress e-mail:</td>

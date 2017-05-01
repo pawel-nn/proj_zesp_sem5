@@ -80,10 +80,10 @@ public class MainController {
         boolean status = us.updateUserPassword(newPasswordDTO, username);
         if(!status) {
         	m.addAttribute("msg", "B章d! Has這 nie zosta這 zmienione.");
-            return "change_password_result";	
+            return "result";	
         }
         m.addAttribute("msg", "Sukces! Has這 zosta這 zminione.");
-        return "change_password_result";
+        return "result";
     }
 	
 	@GetMapping("/error")

@@ -54,10 +54,10 @@ public class EmployeeEventController {
         Integer status = es.createEvent(eventDTO);
         if(status == null) {
         	m.addAttribute("msg", "B³¹d! Wydarzenie nie zosta³o utworzone.");
-            return "event_add_result";	
+            return "result";	
         }
         m.addAttribute("msg", "Sukces! Wydarzenie zosta³o utworzone.");
-        return "event_add_result";
+        return "result";
     }
 	
 }

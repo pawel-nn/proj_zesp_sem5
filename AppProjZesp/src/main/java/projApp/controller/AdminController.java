@@ -38,10 +38,10 @@ public class AdminController {
         boolean status = us.saveNewUser(employeeDTO);
         if(!status) {
         	m.addAttribute("msg", "B³¹d! Pracownik nie mo¿e zostaæ utworzony.");
-            return "result_admin";	
+            return "result";	
         }
         m.addAttribute("msg", "Sukces! Pracownik zosta³ utworzony.");
-        return "result_admin";
+        return "result";
     }
 
     @GetMapping("/admin/accountsControl")
@@ -69,10 +69,10 @@ public class AdminController {
     	boolean status = us.blockUser(username);
     	if(!status) {
     		m.addAttribute("msg", "B³¹d! U¿ytkownik nie mo¿e zostaæ zablokowany.");
-    		return "result_admin";	
+    		return "result";	
     	}
     	m.addAttribute("msg", "Sukces! U¿ytkownik zosta³ zablokowany.");
-	    return "result_admin";
+	    return "result";
 	}
     
     @GetMapping("/admin/accountsControl/unlockUser")
@@ -80,9 +80,9 @@ public class AdminController {
     	boolean status = us.unlockUser(username);
     	if(!status) {
     		m.addAttribute("msg", "B³ad! U¿ytkownik nie mo¿e zostaæ odblokowany.");
-    		return "result_admin";	
+    		return "result";	
     	}
     	m.addAttribute("msg", "Sukces!  U¿ytkownik zosta³ odblokowany.");
-	    return "result_admin";
+	    return "result";
 	}
 }

@@ -76,15 +76,15 @@ public class EmployeeCooperationOfferController {
 			return "bad_request";
 		if( confirmationDTO.getConf() == null || confirmationDTO.getConf().equals("no")) {
 			m.addAttribute("msg", "B³¹d! Oferta nie zosta³a zaakceptowana.");
-			return "result_employee";	
+			return "result";	
 		}
 		Integer result = cos.acceptCooperationOffer(elementId);
 		if(result == null) {
 			m.addAttribute("msg", "B³¹d! Oferta nie zosta³a zaakceptowana.");
-			return "result_employee";	
+			return "result";	
 		}
 		m.addAttribute("msg", "Oferta zaakceptowana!");
-		return "result_employee";
+		return "result";
 	}
 	
 	@GetMapping("/employee/cooperationOffersList/rejectCooperationOffer")
@@ -103,15 +103,15 @@ public class EmployeeCooperationOfferController {
 			return "bad_request";
 		if( confirmationDTO.getConf() == null || confirmationDTO.getConf().equals("no")) {
 			m.addAttribute("msg", "B³¹d! Oferta nie zosta³a odrzucona.");
-			return "result_employee";	
+			return "result";	
 		}
 		Integer result = cos.rejectCooperationOffer(elementId);
 		if(result == null) {
 			m.addAttribute("msg", "B³¹d! Oferta nie zosta³a odrzucona.");
-			return "result_employee";	
+			return "result";	
 		}
 		m.addAttribute("msg", "Oferta zosta³a odrzucona.");
-		return "result_employee";
+		return "result";
 	}
 
 }

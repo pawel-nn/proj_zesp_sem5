@@ -33,7 +33,7 @@ public class WebUser {
 		this.username = username;
 	}
 
-	@Column(name = "password", nullable = false, length = 60)
+	@Column(name = "password", nullable = false, length = 80)
 	public String getPassword() {
 		return this.password;
 	}
