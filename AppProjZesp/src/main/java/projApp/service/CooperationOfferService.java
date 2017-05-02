@@ -91,7 +91,7 @@ public class CooperationOfferService {
 		Cooperation cooperation;
 		try {
 			cooperationOffer = cooperationOfferDao.findByCooperationOfferId(elementId);
-			cooperation = new Cooperation( cooperationOffer.getTypeOfCooperation(), cooperationOffer.getDescription(), null, cooperationOffer.getClient(), cooperationOffer.getEmployee(), null );
+			cooperation = new Cooperation( cooperationOffer.getTypeOfCooperation(), cooperationOffer.getSubject(), cooperationOffer.getDescription(), null, cooperationOffer.getClient(), cooperationOffer.getEmployee(), null );
 			cooperation = cooperationDao.save(cooperation);
 			cooperationOfferDao.delete(cooperationOffer);
 		}
@@ -109,7 +109,7 @@ public class CooperationOfferService {
 			Client client = clientDao.findByClientId(codto.getClientId());
 			Employee employee = employeeDao.findByEmployeeId(codto.getEmployeeId());
 			Date date = new Date();
-			cooperationOffer = new CooperationOffer(codto.getTypeOfCooperation(), codto.getDescription(), date, client, employee);
+			cooperationOffer = new CooperationOffer(codto.getTypeOfCooperation(), codto.getSubject(), codto.getDescription(), date, client, employee);
 			cooperationOffer = cooperationOfferDao.save(cooperationOffer);
 		}
 		catch (Exception e) {

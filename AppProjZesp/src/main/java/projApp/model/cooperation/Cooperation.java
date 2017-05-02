@@ -29,6 +29,7 @@ public class Cooperation {
 
 	private Integer cooperationId;
 	private Date dateOfLastEvent;
+	private String subject;
 	private String typeOfCooperation;
 	private String description;
 	private Client client;
@@ -37,16 +38,17 @@ public class Cooperation {
 	
 	public Cooperation() {}
 	
-	public Cooperation(String typeOfCooperation, String description, Date dateOfLastEvent, Client client, Employee employee, List<Event> events) {
+	public Cooperation(String typeOfCooperation, String subject, String description, Date dateOfLastEvent, Client client, Employee employee, List<Event> events) {
 		this.dateOfLastEvent = dateOfLastEvent;
 		this.client = client;
 		this.employee = employee;
 		this.events = events;
 		this.description = description;
 		this.typeOfCooperation = typeOfCooperation;
+		this.subject = subject;
 	}
 	
-	public Cooperation(Integer cooperationId, String typeOfCooperation, String description, Date dateOfLastEvent, Client client, Employee employee, List<Event> events) {
+	public Cooperation(Integer cooperationId, String subject, String typeOfCooperation, String description, Date dateOfLastEvent, Client client, Employee employee, List<Event> events) {
 		this.dateOfLastEvent = dateOfLastEvent;
 		this.client = client;
 		this.employee = employee;
@@ -54,6 +56,7 @@ public class Cooperation {
 		this.cooperationId = cooperationId;
 		this.description = description;
 		this.typeOfCooperation = typeOfCooperation;
+		this.subject = subject;
 	}
 	
 	@Id
@@ -123,6 +126,15 @@ public class Cooperation {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	@Column(name = "subject", nullable = false, length = 60)
+	public String getSubject() {
+		return subject;
+	}
+
+	public void setSubject(String subject) {
+		this.subject = subject;
 	}
 	
 }

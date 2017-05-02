@@ -9,6 +9,8 @@ public class CooperationDTO {
 	private Integer cooperationId;
 	private Date dateOfLastEvent;
     @NotNull
+	private String subject;
+	@NotNull
 	private String typeOfCooperation;
     @NotNull
     private Integer clientId;
@@ -44,6 +46,12 @@ public class CooperationDTO {
 	}
 	public void setEmployeeId(Integer employeeId) {
 		this.employeeId = employeeId;
+	}
+    public String getSubject() {
+		return subject;
+	}
+	public void setSubject(String subject) {
+		this.subject = subject;
 	}
 	
 }

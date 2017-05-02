@@ -6,6 +6,8 @@ public class CooperationOfferDTO {
 
 	private Integer cooperationOfferId;
     @NotNull
+	private String subject;
+    @NotNull
 	private String typeOfCooperation;
     @NotNull
 	private String description;
@@ -43,5 +45,11 @@ public class CooperationOfferDTO {
 	}
 	public void setEmployeeId(Integer employeeId) {
 		this.employeeId = employeeId;
+	}
+    public String getSubject() {
+		return subject;
+	}
+	public void setSubject(String subject) {
+		this.subject = subject;
 	}
 }

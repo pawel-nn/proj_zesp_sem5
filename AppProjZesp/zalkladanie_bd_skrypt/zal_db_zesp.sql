@@ -2,7 +2,7 @@ use proj_zesp_db;
 
 CREATE  TABLE spring_users (
   username VARCHAR(45) NOT NULL ,
-  password VARCHAR(45) NOT NULL ,
+  password VARCHAR(80) NOT NULL ,
   enabled TINYINT NOT NULL DEFAULT 1 ,
   PRIMARY KEY (username));
   
@@ -26,8 +26,8 @@ insert into spring_user_roles (username, role) values ('emp','ROLE_EMPLOYEE');
 insert into client_accounts_web (username, password, enabled, session_id) values ('alama','alama', 1, null);
 insert into clients (client_id, accommodation_number, city, city_post_code, email, first_name, last_name, mobile, street, username) values (1,'23', "Miato 1", "20-200", "rrt@ffr.cd", "Ala", "Ma", "6775443567", "strasse 1", "alama");
 insert into employees (employee_id, accommodation_number, city, city_post_code, email, first_name, last_name, mobile, position, salary, street, username) values (1,'23', "Miato 1", "20-200", "rrt@ffr.cd", "Ada", "Kota", "1176453", "Klucznik", "1z³", "strasse 2", "emp");
-insert  into cooperations (cooperation_id, date_of_last_event, type_of_cooperation, client_id, employee_id, description) values (1,null, "Sprawa s¹dowa", 1, 1, "EEEeee1");
-insert  into cooperations (cooperation_id, date_of_last_event, type_of_cooperation, client_id, employee_id, description) values (2,null, "Doradztwo prawne", 1, 1, "EEEeee2");
+insert  into cooperations (cooperation_id, subject, date_of_last_event, type_of_cooperation, client_id, employee_id, description) values (1, "eee", null, "Sprawa s¹dowa", 1, 1, "EEEeee1");
+insert  into cooperations (cooperation_id, subject, date_of_last_event, type_of_cooperation, client_id, employee_id, description) values (2, "yyy", null, "Doradztwo prawne", 1, 1, "EEEeee2");
 
 insert into client_accounts_web (username, password, enabled) values ('ttt','ttt', 1);
 insert into clients (client_id, accommodation_number, city, city_post_code, email, first_name, last_name, mobile, street, username) values (0, '23', "ttt", "20-200", "ttt@ffr.cd", "ttt", "ttt", "6775443567", "strasse 1", "ttt");

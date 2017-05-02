@@ -22,6 +22,7 @@ import projApp.model.employee.Employee;
 public class CooperationOffer {
 	
 	private Integer cooperationOfferId;
+	private String subject;
 	private String typeOfCooperation;
 	private String description;
 	private Date dateOfOfferCreation;
@@ -30,20 +31,22 @@ public class CooperationOffer {
 	
 	public CooperationOffer() {}
 	
-	public CooperationOffer(String typeOfCooperation, String description, Date dateOfOfferCreation, Client client, Employee employee) {
+	public CooperationOffer(String typeOfCooperation, String subject, String description, Date dateOfOfferCreation, Client client, Employee employee) {
 		this.dateOfOfferCreation = dateOfOfferCreation;
+		this.subject = subject;
 		this.client = client;
 		this.employee = employee;
 		this.typeOfCooperation = typeOfCooperation;
 		this.description = description;
 	}
 	
-	public CooperationOffer(String typeOfCooperation, String description, Integer cooperationOfferId, Date dateOfOfferCreation, Client client, Employee employee) {
+	public CooperationOffer(String typeOfCooperation, String subject, String description, Integer cooperationOfferId, Date dateOfOfferCreation, Client client, Employee employee) {
 		this.dateOfOfferCreation = dateOfOfferCreation;
 		this.client = client;
 		this.employee = employee;
 		this.cooperationOfferId = cooperationOfferId;
 		this.typeOfCooperation = typeOfCooperation;
+		this.subject = subject;
 		this.description = description;
 	}
 	
@@ -98,6 +101,15 @@ public class CooperationOffer {
 	}
 	public void setEmployee(Employee employee) {
 		this.employee = employee;
+	}
+	
+	@Column(name = "subject", nullable = false, length = 60)
+	public String getSubject() {
+		return subject;
+	}
+
+	public void setSubject(String subject) {
+		this.subject = subject;
 	}
 
 }
