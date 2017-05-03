@@ -26,12 +26,13 @@
 		<hr/>
 		<div id="pageContent">
 			<div class="dataList">
-				<div th:if="${cooperationOffersList.getSize() > 0}">
+				<div th:if="${cooperationOffersList.getNumberOfElements() > 0}">
 					<h2 id="title">Lista ofert współpracy:</h2>
 					<div th:each="cooperationOffer : ${cooperationOffersList}">
 						<table>
 							<tr>
 								<th>Identyfikator oferty współpracy</th>
+								<th>Temat</th>
 								<th>Rodzaj współpracy</th>
 								<th>Data utworzenia oferty</th>
 								<th>Klient</th>
@@ -39,6 +40,7 @@
 							</tr>
 							<tr>
 								<td><a th:href="@{/employee/cooperationOffersList/cooperationOffer(cooperationOfferId=${cooperationOffer.cooperationOfferId})}"><span th:text="${cooperationOffer.cooperationOfferId}">text</span></a></td>
+								<td th:text="${cooperationOffer.subject}">text</td>
 								<td th:text="${cooperationOffer.typeOfCooperation}">text</td>
 								<td th:text="cooperationOffer.dateOfOfferCreation">text</td>
 								<td> <div th:text="${cooperationOffer.client.firstName}">text</div> <div th:text="${cooperationOffer.client.lastName}">text</div> </td>
@@ -67,8 +69,8 @@
 						</ul>
 					</div> 
 				</div>	
-				<div th:unless="${cooperationOffersList.getSize() > 0}">
-					<div id="attention">Uwaga! Brak rekordów w bazie danych.</div>
+				<div th:unless="${cooperationOffersList.getNumberOfElements() > 0}">
+					<div id="attention">Uwaga! Brak rekordów na tej stronie.</div>
 				</div>
 			</div>
 		</div>

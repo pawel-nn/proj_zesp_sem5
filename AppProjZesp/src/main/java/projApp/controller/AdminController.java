@@ -53,12 +53,12 @@ public class AdminController {
     		maxPagesNumber = 1;
     	if(pageReq != null)
     		pageNumber = pageReq;
-    	Page<User> userList = (Page<User>) us.findAllUsers(new PageRequest(pageNumber - 1, MAX_ROWS_PER_PAGE, Sort.Direction.ASC, "username"));
-    	if(userList.getNumberOfElements() == 0) 
+    	Page<User> usersList = (Page<User>) us.findAllUsers(new PageRequest(pageNumber - 1, MAX_ROWS_PER_PAGE, Sort.Direction.ASC, "username"));
+    	if(usersList.getNumberOfElements() == 0) 
     		model.addAttribute("isEmpty", true); 
     	else 
     		model.addAttribute("isEmpty", false);
-    	model.addAttribute("userList", userList);
+    	model.addAttribute("usersList", usersList);
     	model.addAttribute("pageNumber",pageNumber);
     	model.addAttribute("maxPagesNumber",maxPagesNumber);
     	return "accounts_control";

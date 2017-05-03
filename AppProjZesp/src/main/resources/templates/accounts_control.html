@@ -26,7 +26,7 @@
 		<hr/>
 		<div id="pageContent">
 			<div class="dataList">
-				<div th:if="${not isEmpty}">
+				<div th:if="${usersList.getNumberOfElements() > 0}">
 					<h2>Lista użytkowników:</h2>
 					<table>
 						<tr>
@@ -35,7 +35,7 @@
 							<th>Czy jest aktywny</th>
 							<th>Operacje</th>
 						</tr>
-						<tr th:each="user : ${userList}">
+						<tr th:each="user : ${usersList}">
 							<td th:text="${user.username}">Username</td>
 							<td th:text="${user.userRoleToString()}">Role</td>
 							<td th:text="${user.enabled}">Enabled</td>
@@ -45,25 +45,28 @@
 							</td>
 						</tr>
 					</table>
+					<div id="pageBreak"></div>
 					
-			 		<ul class="pager">
-			 			<div>
-			 				<li th:class="${pageNumber == 1?'disabled':''}">
-			 					<a type="button" th:href="@{/admin/accountsControl(page=1)}" id="menuField" ><span>Pierwsza strona</span></a>
-			 				</li>
-							<li th:class="${pageNumber &lt;= 1?'disabled':''}" >
-								<a type="button" th:href="@{/admin/accountsControl(page=${pageNumber-1})}" id="menuField" ><span>Wstecz</span></a>
-							</li>
-			 				<li style="float:right" th:class="${pageNumber == maxPagesNumber?'disabled':''}" >
-			 					<a type="button" th:href="@{/admin/accountsControl(page=${maxPagesNumber})}" id="menuField" ><span>Ostatnia strona</span></a>
-			 				</li>
-							<li style="float:right" th:class="${pageNumber &gt;= maxPagesNumber?'disabled':''}" >
-								<a type="button" th:href="@{/admin/accountsControl(page=${pageNumber+1})}" id="menuField"  th:disabled="${nextInp}" ><span>Dalej</span></a>
-							</li>
-						</div>
-					</ul>
-				</div> 
-				<div th:unless="${not isEmpty}">
+					<div id="pageNavigation">
+				 		<ul class="pager">
+				 			<div>
+				 				<li th:class="${pageNumber == 1?'disabled':''}">
+			 						<a type="button" th:href="@{/admin/accountsControl(page=1)}" id="pageNavigationField" ><span>Pierwsza strona</span></a>
+			 					</li>
+								<li th:class="${pageNumber &lt;= 1?'disabled':''}" >
+									<a type="button" th:href="@{/admin/accountsControl(page=${pageNumber-1})}" id="pageNavigationField" ><span>Wstecz</span></a>
+								</li>
+			 					<li style="float:right" th:class="${pageNumber == maxPagesNumber?'disabled':''}" >
+			 						<a type="button" th:href="@{/admin/accountsControl(page=${maxPagesNumber})}" id="pageNavigationField" ><span>Ostatnia strona</span></a>
+			 					</li>
+								<li style="float:right" th:class="${pageNumber &gt;= maxPagesNumber?'disabled':''}" >
+									<a type="button" th:href="@{/admin/accountsControl(page=${pageNumber+1})}" id="pageNavigationField"  th:disabled="${nextInp}" ><span>Dalej</span></a>
+								</li>
+							</div>
+						</ul>
+					</div>
+				</div>
+				<div th:unless="${usersList.getNumberOfElements() > 0}">
 					<div id="attention">Uwaga! Brak rekordów w bazie danych.</div>
 				</div>
 			</div>

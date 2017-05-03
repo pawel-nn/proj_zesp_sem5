@@ -43,10 +43,15 @@
                     		<td>Rodzaj współpracy:</td>
                     		<td> <select th:field="*{typeOfCooperation}"> <option value="" selected="true">Wybierz rodzaj współpracy</option> <option th:each="type : ${allTypesOfCooperation}" th:value="${type}" th:text="${type}">Opt</option> </select></td>	
                     		<td th:if="${#fields.hasErrors('typeOfCooperation')}" th:errors="*{typeOfCooperation}">Error</td>
-                		</tr>             	
+                		</tr>         
+                		<tr id="myTr">
+                    		<td>Temat współpracy prawnej:</td>
+                    		<td><input type="text" th:field="*{subject}" /></td>
+                    		<td th:if="${#fields.hasErrors('subject')}" th:errors="*{subject}">Error</td>
+                		</tr>      	
                  		<tr id="myTr">
                     		<td>Opis problemu:</td>
-                    		<td><input type="text" th:field="*{description}" /></td>
+                    		<td><textarea rows="3" cols="50" name="description"  th:field="*{description}" form="myForm" /></td>
                     		<td th:if="${#fields.hasErrors('description')}" th:errors="*{description}">Error</td>
                 		</tr>                	                 	       	                  	
             		</table>

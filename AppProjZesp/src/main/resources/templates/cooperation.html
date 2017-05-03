@@ -32,6 +32,10 @@
 						<td>Klient:</td>
 						<td th:text="${cooperation.client.toString()}">text</td>
 					</tr>
+					<tr>
+						<td>Temat współpracy:</td>
+						<td th:text="${cooperation.subject}">text</td>
+					</tr>
 				</table>
 			</div>
 			<div id="pageBreak"></div>
@@ -58,7 +62,7 @@
 					<div th:unless="${cooperation.dateOfLastEvent != null}">
 						<tr>
 							<td>Data ostatniego wydarzenia:</td>
-							<td>Brak daty</td>
+							<td>Brak ostatniej daty</td>
 						</tr>
 					</div>						
 					<tr>	

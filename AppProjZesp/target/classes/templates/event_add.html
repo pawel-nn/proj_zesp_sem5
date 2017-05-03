@@ -40,8 +40,8 @@
                     		<td th:if="${#fields.hasErrors('eventType')}" th:errors="*{eventType}">Error</td>
                 		</tr>             	
                  		<tr id="myTr">
-                    		<td>Opis problemu:</td>
-                    		<td><input type="text" th:field="*{content}" /></td>
+                    		<td>Opis wydarzenia:</td>
+                    		<td><textarea rows="3" cols="50" name="content"  th:field="*{content}" form="myForm" /></td>                		
                     		<td th:if="${#fields.hasErrors('content')}" th:errors="*{content}">Error</td>
                     		<td><input type="number" hidden="hidden" th:value="*{cooperationId}" th:field="*{cooperationId}" /></td>
                 		</tr>                	                 	       	                  	

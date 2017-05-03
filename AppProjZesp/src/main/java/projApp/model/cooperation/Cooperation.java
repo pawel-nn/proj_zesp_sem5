@@ -28,8 +28,8 @@ import projApp.model.event.Event;
 public class Cooperation {
 
 	private Integer cooperationId;
-	private Date dateOfLastEvent;
 	private String subject;
+	private Date dateOfLastEvent;
 	private String typeOfCooperation;
 	private String description;
 	private Client client;
@@ -68,6 +68,15 @@ public class Cooperation {
 
 	public void setCooperationId(Integer cooperationId) {
 		this.cooperationId = cooperationId;
+	}
+	
+	@Column(name = "subject", nullable = false, length = 60)
+	public String getSubject() {
+		return subject;
+	}
+
+	public void setSubject(String subject) {
+		this.subject = subject;
 	}
 
 	@Column(name = "date_of_last_event", nullable = true)
@@ -126,15 +135,6 @@ public class Cooperation {
 
 	public void setDescription(String description) {
 		this.description = description;
-	}
-
-	@Column(name = "subject", nullable = false, length = 60)
-	public String getSubject() {
-		return subject;
-	}
-
-	public void setSubject(String subject) {
-		this.subject = subject;
 	}
 	
 }

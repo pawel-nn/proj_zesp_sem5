@@ -60,6 +60,15 @@ public class CooperationOffer {
 		this.cooperationOfferId = cooperationOfferId;
 	}
 	
+	@Column(name = "subject", nullable = false, length = 60)
+	public String getSubject() {
+		return subject;
+	}
+
+	public void setSubject(String subject) {
+		this.subject = subject;
+	}
+	
 	@Column(name = "type_of_cooperation", nullable = false, length = 45)
 	public String getTypeOfCooperation() {
 		return typeOfCooperation;
@@ -101,15 +110,6 @@ public class CooperationOffer {
 	}
 	public void setEmployee(Employee employee) {
 		this.employee = employee;
-	}
-	
-	@Column(name = "subject", nullable = false, length = 60)
-	public String getSubject() {
-		return subject;
-	}
-
-	public void setSubject(String subject) {
-		this.subject = subject;
 	}
 
 }

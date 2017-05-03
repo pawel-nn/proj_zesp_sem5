@@ -26,12 +26,13 @@
 		<hr/>
 		<div id="pageContent">
 			<div class="dataList">
-				<div th:if="${cooperationsList.getSize() > 0}">
+				<div th:if="${cooperationsList.getNumberOfElements() > 0}">
 					<h2 id="title">Lista współprac:</h2>
 					<div th:each="cooperation : ${cooperationsList}">
 						<table>
 							<tr>
 								<th>Identyfikator współpracy</th>
+								<th>Temat</th>
 								<th>Rodzaj współpracy</th>
 								<th>Data ostatniego wydarzenia</th>
 								<th>Klient</th>
@@ -39,14 +40,13 @@
 							</tr>
 							<tr>
 								<td><a th:href="@{/employee/cooperationsList/cooperation(cooperationId=${cooperation.cooperationId})}"><span th:text="${cooperation.cooperationId}">text</span></a></td>
-								<td th:text="${cooperation.typeOfCooperation}">text</td>
-								
-								
+								<td th:text="${cooperation.subject}">text</td>
+								<td th:text="${cooperation.typeOfCooperation}">text</td>	
 								<div th:if="${cooperation.dateOfLastEvent != null}">	
 									<td th:text="${#dates.format(cooperation.dateOfLastEvent, 'dd-MMM-yyyy')}">text</td>
 								</div>	
 								<div th:unless="${cooperation.dateOfLastEvent != null}">
-									<td>Brak daty</td>
+									<td>Brak ostatniej daty</td>
 								</div>				
 								<td> <div th:text="${cooperation.client.firstName}">text</div> <div th:text="${cooperation.client.lastName}">text</div> </td>
 								<td><a th:href="@{/employee/cooperationsList/cooperation(cooperationId=${cooperation.cooperationId})}"><span>Wyświetl</span></a>/<a th:href="@{/employee/cooperation/updateCooperation(cooperation=${cooperation.cooperationId})}"><span>Edytuj</span></a></td>
@@ -74,8 +74,8 @@
 						</ul>
 					</div> 
 				</div>	
-				<div th:unless="${cooperationsList.getSize() > 0}">
-					<div id="attention">Uwaga! Brak rekordów w bazie danych.</div>
+				<div th:unless="${cooperationsList.getNumberOfElements() > 0}">
+					<div id="attention">Uwaga! Brak rekordów na tej stronie.</div>
 				</div>
 			</div>
 		</div>
