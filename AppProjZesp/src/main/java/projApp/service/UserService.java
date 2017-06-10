@@ -39,7 +39,7 @@ public class UserService {
 			Set<UserRole> userRoleSet = new HashSet<UserRole>(0);
 			userRoleSet.add(userRole);
 			user.setUserRole(userRoleSet);
-			Employee employee = new Employee(edto.getFirstName(),edto.getLastName(),edto.getEmail(), edto.getPosition(),edto.getSalary(), user, edto.getCity(), edto.getCityPostCode(), edto.getStreet(), edto.getAccommodationNumber(), edto.getMobile());	
+			Employee employee = new Employee(edto.getFirstName(),edto.getLastName(),edto.getEmail(), edto.getPosition(),edto.getSalary(), user, edto.getCity(), edto.getCityPostCode(), edto.getStreet(), edto.getAccommodationNumber(), edto.getMobile(), null, null);	
 			employeeDao.save(employee);
 		}
 		catch (Exception e) {
@@ -110,6 +110,23 @@ public class UserService {
 		return employeeDao.findByUser(user);
 	}
 	
+	public boolean updateEmployee(EmployeeDTO edto, String username) {
+		try {
+			User user = userDao.findByUsername(username);
+			Employee tmp = employeeDao.findByUser(user);
+			Employee employee = new Employee(edto.getEmployeeId(), edto.getFirstName(), edto.getLastName(), edto.getEmail(), 
+											tmp.getPosition(), tmp.getSalary(),  user,  edto.getCity(), edto.getCityPostCode(), edto.getStreet(),
+											edto.getAccommodationNumber(),  edto.getMobile(), edto.getProfileDescription(),  edto.getPathToProfilePhoto() );
+			employee = employeeDao.save(employee);
+		}
+		catch (Exception e) {
+			return false;
+		}
+		return true;
+	}
+	
+	
+	
 	/* FOR TESTING PURPOSE !!! */
 	@Autowired
 	private ClientDao clientDao;
@@ -134,7 +151,6 @@ public class UserService {
 		}
 		return true;
 	}
-	
 	
 }
 

@@ -3,6 +3,8 @@ package projApp.formDTO;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class EmployeeDTO {
 
     @NotNull
@@ -54,6 +56,10 @@ public class EmployeeDTO {
     @NotNull
     @Size(min=1, max=45)
     private String mobile;
+    
+    private String profileDescription;
+    private Integer employeeId;
+	private String pathToProfilePhoto;
     
     public boolean arePasswordsEquals() {
     	return password.equals(confirmPassword);
@@ -161,6 +167,30 @@ public class EmployeeDTO {
 
 	public void setMobile(String mobile) {
 		this.mobile = mobile;
+	}
+
+	public String getProfileDescription() {
+		return profileDescription;
+	}
+
+	public void setProfileDescription(String profileDescription) {
+		this.profileDescription = profileDescription;
+	}
+
+	public Integer getEmployeeId() {
+		return employeeId;
+	}
+
+	public void setEmployeeId(Integer employeeId) {
+		this.employeeId = employeeId;
+	}
+
+	public String getPathToProfilePhoto() {
+		return pathToProfilePhoto;
+	}
+
+	public void setPathToProfilePhoto(String pathToProfilePhoto) {
+		this.pathToProfilePhoto = pathToProfilePhoto;
 	}
 	
 	
