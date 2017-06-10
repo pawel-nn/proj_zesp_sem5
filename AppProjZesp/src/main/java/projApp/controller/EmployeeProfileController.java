@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import projApp.formDTO.EmployeeDTO;
+import projApp.formDTO.EmployeeUpdateDTO;
 import projApp.model.employee.Employee;
 import projApp.service.UserService;
 
@@ -38,29 +39,36 @@ public class EmployeeProfileController {
     }
 	
     @GetMapping("/employee/updateProfile")
-    public String registerEmployee(EmployeeDTO userDTO, Model model) {
+    public String registerEmployee(EmployeeUpdateDTO employeeUpdateDTO, Model model) {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		String username = auth.getName();	
 		Employee employee = us.findEmployee(username);
-		model.addAttribute("employee", employee);
+		employeeUpdateDTO.setUp(employee);
         return "employee_profile_update";
     }
 	
 	@RequestMapping(value = "/employee/updateProfile", method = RequestMethod.POST)
-	public String uploadFileHandler(@RequestParam("employeePhoto") MultipartFile employeePhoto, @Valid EmployeeDTO employeeDTO, BindingResult bindingResult, Model model) {
+	public String uploadFileHandler(@RequestParam("employeePhoto") MultipartFile employeePhoto, @Valid EmployeeUpdateDTO employeeUpdateDTO, BindingResult bindingResult, Model model) {
+        if (bindingResult.hasErrors()) {
+        	System.out.println("xxx " + bindingResult.getFieldError() );
+            return "employee_profile_update";
+        }
+        
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		String username = auth.getName();	
 		if (!employeePhoto.isEmpty()) {
 			try {
 				byte[] bytes = employeePhoto.getBytes();
 				
 				String rootPath = "C:\\Users\\Pawe³\\Desktop";
 				String dirPath = rootPath + File.separator + "projectFiles";
-				String filePath = dirPath + File.separator + employeeDTO.getEmployeeId() + "-" + employeeDTO.getUsername();
+				String filePath = dirPath + File.separator + employeeUpdateDTO.getEmployeeId() + "-" + username;
 				
 				File dir = new File(dirPath);
 				if (!dir.exists())
 					dir.mkdirs();
 
-				File convertedFile = new File(filePath);
+				File convertedFile = new File(filePath + ".png");
 				BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(convertedFile));
 				stream.write(bytes);
 				stream.close();				
@@ -70,7 +78,9 @@ public class EmployeeProfileController {
 		} else {
 			return "employee_profile_update";
 		}	
-		return "employee_profile";
+		Employee employee = us.findEmployee(username);
+		model.addAttribute("employee", employee);
+		return "redirect:/employee/profile";
 	}
 	
 }

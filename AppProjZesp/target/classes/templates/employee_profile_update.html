@@ -25,7 +25,7 @@
 		</header>
 		<hr id="hr1" />
 		<div id="pageContent">
-        	<form id="myForm" th:action="@{/employee/updateProfile}" th:object="${employeeDTO}" method="post" enctype="multipart/form-data">
+        	<form id="myForm" th:action="@{/employee/updateProfile}" th:object="${employeeUpdateDTO}" method="post" enctype="multipart/form-data">
      			<div>
             		<table>
             	   		<tr id="myTr" >
@@ -49,6 +49,7 @@
                 		<tr id="myTr">
                     		<td>Zdjęcie:</td>
                     		<td><input type="file" accept="image/x-png,image/gif,image/jpeg" name="employeePhoto" required="true"/></td>
+                    		<input type="number" hidden="hidden" th:value="*{employeeId}" th:field="*{employeeId}" />
                 		</tr>                	       	  
                 	</table>   
                 	<div> Dane kontaktowe: </div>
