@@ -20,6 +20,7 @@ import javax.persistence.Table;
 
 import projApp.model.cooperation.Cooperation;
 import projApp.model.document.Document;
+import projApp.model.eventMessage.EventMessage;
 
 
 @Entity
@@ -33,6 +34,7 @@ public class Event {
 	private Date registrationDate;
 	private Cooperation cooperation;
 	private List <Document> documents = new ArrayList<Document>();
+	private List <EventMessage> eventMessages = new ArrayList<EventMessage>();
 	
 	public Event() {}
 	
@@ -120,6 +122,15 @@ public class Event {
 
 	public void setEventType(String eventType) {
 		this.eventType = eventType;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, cascade = {CascadeType.ALL}, mappedBy = "event")
+	public List <EventMessage> getEventMessages() {
+		return eventMessages;
+	}
+
+	public void setEventMessages(List <EventMessage> eventMessages) {
+		this.eventMessages = eventMessages;
 	}
 
 }

@@ -187,6 +187,10 @@ public class Employee {
 		return "Employee Id=" + employeeId + ", Name=" + firstName + "." + lastName + ", email=" + email;
 	}
 
+	public String toStringForCommentary() {
+		return firstName + " " + lastName + ":";
+	}
+	
 	@Column(name = "profile_description", nullable = true, length = 120)
 	public String getProfileDescription() {
 		return profileDescription;

@@ -1,4 +1,4 @@
-package projApp.model.eventChat;
+package projApp.model.eventMessage;
 
 
 import javax.transaction.Transactional;
@@ -8,6 +8,6 @@ import org.springframework.stereotype.Repository;
 
 @Transactional
 @Repository
-public interface EventChatDao extends CrudRepository<EventChat, Integer>{
+public interface EventMessageDao extends CrudRepository<EventMessage, Integer>{
 	
 }
