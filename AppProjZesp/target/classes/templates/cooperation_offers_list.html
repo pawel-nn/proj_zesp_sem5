@@ -42,7 +42,12 @@
 								<td><a th:href="@{/employee/cooperationOffersList/cooperationOffer(cooperationOfferId=${cooperationOffer.cooperationOfferId})}"><span th:text="${cooperationOffer.cooperationOfferId}">text</span></a></td>
 								<td th:text="${cooperationOffer.subject}">text</td>
 								<td th:text="${cooperationOffer.typeOfCooperation}">text</td>
-								<td th:text="cooperationOffer.dateOfOfferCreation">text</td>
+								<div th:if="${cooperationOffer.dateOfOfferCreation != null}">	
+									<td th:text="${#dates.format(cooperationOffer.dateOfOfferCreation, 'dd-MMM-yyyy')}">text</td>
+								</div>	
+								<div th:unless="${cooperationOffer.dateOfOfferCreation != null}">
+									<td>Brak ostatniej daty</td>
+								</div>		
 								<td> <div th:text="${cooperationOffer.client.firstName}">text</div> <div th:text="${cooperationOffer.client.lastName}">text</div> </td>
 								<td><a th:href="@{/employee/cooperationOffersList/cooperationOffer(cooperationOfferId=${cooperationOffer.cooperationOfferId})}"><span>Wyświetl</span></a>/<a th:href="@{/employee/cooperationOffersList/acceptCooperationOffer(elementId=${cooperationOffer.cooperationOfferId})}"><span>Akceptuj</span></a>/<a th:href="@{/employee/cooperationOffersList/rejectCooperationOffer(elementId=${cooperationOffer.cooperationOfferId})}"><span>Odrzuć</span></a></td>
 							</tr>

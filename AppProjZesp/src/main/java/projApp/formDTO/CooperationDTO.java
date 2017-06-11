@@ -16,6 +16,8 @@ public class CooperationDTO {
     private Integer clientId;
     @NotNull
     private Integer employeeId;
+    @NotNull
+    private String description;
     
 	public Integer getCooperationId() {
 		return cooperationId;
@@ -52,6 +54,12 @@ public class CooperationDTO {
 	}
 	public void setSubject(String subject) {
 		this.subject = subject;
+	}
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
 	}
 	
 }

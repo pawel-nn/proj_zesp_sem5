@@ -132,6 +132,10 @@ public class Client {
 	public String toString() {
 		return "Client Id=" + clientId + ", Names=" + firstName + "." + lastName + ", email=" + email;
 	}
+	
+	public String toStringForCommentary() {
+		return firstName + " " + lastName + ":";
+	}
 
 	@OneToOne(fetch = FetchType.LAZY, cascade = {CascadeType.ALL})
 	@JoinColumn(name = "username", nullable = false)

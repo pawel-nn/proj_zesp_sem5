@@ -3,16 +3,16 @@ package projApp.formDTO;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-public class EmployeeDTO {
+import projApp.model.employee.Employee;
+
+public class EmployeeUpdateDTO {
 
     @Size(min=3, max=45)
     private String username;
 
-    @NotNull
     @Size(min=4, max=45)
     private String password;
 
-    @NotNull
     @Size(min=4, max=45)
     private String confirmPassword;
     
@@ -28,7 +28,6 @@ public class EmployeeDTO {
     @Size(min=6, max=45)
     private String email;
     
-    @NotNull
     @Size(min=3, max=45)
     private String position;
     
@@ -54,8 +53,32 @@ public class EmployeeDTO {
     @Size(min=1, max=45)
     private String mobile;
     
+    @NotNull
+    @Size(min=3, max=120)
     private String profileDescription;
+    
+    private Integer employeeId;
+    
 	private String pathToProfilePhoto;
+	
+    public void setUp(Employee employee) {
+		this.username = employee.getUser().getUsername();
+		this.password = employee.getUser().getPassword();
+		this.confirmPassword = employee.getUser().getPassword();
+		this.firstName = employee.getFirstName();
+		this.lastName = employee.getLastName();
+		this.email = employee.getEmail();
+		this.position = employee.getPosition();
+		this.salary = employee.getSalary();
+		this.city = employee.getCity();
+		this.cityPostCode = employee.getCityPostCode();
+		this.street = employee.getStreet();
+		this.accommodationNumber = employee.getAccommodationNumber();
+		this.mobile = employee.getMobile();
+		this.profileDescription = employee.getProfileDescription();
+		this.employeeId = employee.getEmployeeId();
+		this.pathToProfilePhoto = employee.getPathToProfilePhoto();
+	}
 
 	public boolean arePasswordsEquals() {
     	return password.equals(confirmPassword);
@@ -171,6 +194,14 @@ public class EmployeeDTO {
 
 	public void setProfileDescription(String profileDescription) {
 		this.profileDescription = profileDescription;
+	}
+
+	public Integer getEmployeeId() {
+		return employeeId;
+	}
+
+	public void setEmployeeId(Integer employeeId) {
+		this.employeeId = employeeId;
 	}
 
 	public String getPathToProfilePhoto() {
