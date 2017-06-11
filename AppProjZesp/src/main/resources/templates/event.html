@@ -55,10 +55,49 @@
 			<div>
 				<table>
 					<tr>
-						<td style="width:400px;height:50px;">Treść:</td>
+						<td style="width:400px;height:50px;">Treść wydarzenia:</td>
 						<td style="width:400px;height:50px;" th:text="${event.content}">text</td>
 					</tr>
 				</table>
+			</div>
+			<div>
+				<table>
+					<tr>
+						<th colspan="2"> Komentarze: </th>
+					</tr>
+					<div th:if="${event.eventMessages.isEmpty() != true}">		
+						<tr th:each="eventMessage : ${event.eventMessages}">
+							<div th:if="${event.eventMessage.client_id != null}">
+								<td th:text="${eventMessage.client.toStringForCommentary}">text</td>
+							</div>
+							<div th:unless="${event.eventMessage.client_id != null}">
+								<td th:text="${eventMessage.employee.toStringForCommentary}">text</td>
+							</div>
+							<td th:text="${eventMessage.message}">text</td>
+						</tr>
+					</div>	
+					<div th:unless="${event.eventMessages.isEmpty() != true}">
+						<tr>
+							<td colspan="2">Brak wiadomości</td>
+						</tr>
+					</div>	
+				</table>
+				<div id="pageBreak"></div>
+				<form id="myForm" th:action="@{/employee/cooperationsList/cooperation/event/eventMessage(eventId=${event.eventId})}" th:object="${eventMessageDTO}" method="post">
+     				<div>
+            			<table>
+            				<tr>
+            					<th colspan="2"><div>Wpisz swój komentarz: </div></th>
+            				</tr>
+                			<tr>
+								<td>
+									<textarea rows="2" cols="50" name="message"  th:field="*{message}" form="myForm" />
+								</td>
+                			</tr>   	
+            			</table>
+            			<button type="submit" id="send" >Wyślij wiadomość</button>
+            		</div>
+        		</form>
 			</div>
         </div>
     </body>

@@ -30,25 +30,15 @@ public class Employee {
 	private String street;
 	private String accommodationNumber;
 	private String mobile;
+	private String profileDescription;
+	private String pathToProfilePhoto;
 	
 	private User user;
 	
 	public Employee() {}
 	
-	public Employee( String firstName, String lastName, String email, String position, String salary, String city, String cityPostCode, String street, String accommodationNumber, String mobile ) {
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.email = email;
-		this.position = position;
-		this.salary = salary;
-		this.city = city;
-		this.cityPostCode = cityPostCode;
-		this.street = street;
-		this.accommodationNumber = accommodationNumber;
-		this.mobile = mobile;
-	}
-
-	public Employee( String firstName, String lastName, String email, String position, String salary, User user, String city, String cityPostCode, String street, String accommodationNumber, String mobile ) {
+	public Employee( Integer employeeId, String firstName, String lastName, String email, String position, String salary, User user, String city, String cityPostCode, String street, String accommodationNumber, String mobile, String profileDescription, String pathToProfilePhoto ) {
+		this.employeeId = employeeId;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
@@ -60,6 +50,24 @@ public class Employee {
 		this.street = street;
 		this.accommodationNumber = accommodationNumber;
 		this.mobile = mobile;
+		this.profileDescription = profileDescription;
+		this.pathToProfilePhoto = pathToProfilePhoto;
+	}	
+
+	public Employee( String firstName, String lastName, String email, String position, String salary, User user, String city, String cityPostCode, String street, String accommodationNumber, String mobile, String profileDescription, String pathToProfilePhoto ) {
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+		this.position = position;
+		this.salary = salary;
+		this.user = user;	
+		this.city = city;
+		this.cityPostCode = cityPostCode;
+		this.street = street;
+		this.accommodationNumber = accommodationNumber;
+		this.mobile = mobile;
+		this.profileDescription = profileDescription;
+		this.pathToProfilePhoto = pathToProfilePhoto;
 	}	
 	
 	@Id
@@ -177,6 +185,28 @@ public class Employee {
 	@Override
 	public String toString() {
 		return "Employee Id=" + employeeId + ", Name=" + firstName + "." + lastName + ", email=" + email;
+	}
+
+	public String toStringForCommentary() {
+		return firstName + " " + lastName + ":";
+	}
+	
+	@Column(name = "profile_description", nullable = true, length = 120)
+	public String getProfileDescription() {
+		return profileDescription;
+	}
+
+	public void setProfileDescription(String profileDescription) {
+		this.profileDescription = profileDescription;
+	}
+
+	@Column(name = "path_to_profile_photo", nullable = true, length = 160)
+	public String getPathToProfilePhoto() {
+		return pathToProfilePhoto;
+	}
+
+	public void setPathToProfilePhoto(String pathToProfilePhoto) {
+		this.pathToProfilePhoto = pathToProfilePhoto;
 	}
 	
 }

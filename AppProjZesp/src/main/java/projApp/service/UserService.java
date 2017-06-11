@@ -12,6 +12,7 @@ import projApp.formDTO.ClientDTO;
 import projApp.model.client.ClientDao;
 import projApp.formDTO.NewPasswordDTO;
 import projApp.formDTO.EmployeeDTO;
+import projApp.formDTO.EmployeeUpdateDTO;
 import projApp.model.employee.Employee;
 import projApp.model.employee.EmployeeDao;
 import projApp.model.user.User;
@@ -39,7 +40,7 @@ public class UserService {
 			Set<UserRole> userRoleSet = new HashSet<UserRole>(0);
 			userRoleSet.add(userRole);
 			user.setUserRole(userRoleSet);
-			Employee employee = new Employee(edto.getFirstName(),edto.getLastName(),edto.getEmail(), edto.getPosition(),edto.getSalary(), user, edto.getCity(), edto.getCityPostCode(), edto.getStreet(), edto.getAccommodationNumber(), edto.getMobile());	
+			Employee employee = new Employee(edto.getFirstName(),edto.getLastName(),edto.getEmail(), edto.getPosition(),edto.getSalary(), user, edto.getCity(), edto.getCityPostCode(), edto.getStreet(), edto.getAccommodationNumber(), edto.getMobile(), null, null);	
 			employeeDao.save(employee);
 		}
 		catch (Exception e) {
@@ -110,6 +111,23 @@ public class UserService {
 		return employeeDao.findByUser(user);
 	}
 	
+	public boolean updateEmployee(EmployeeUpdateDTO eudto, String username) {
+		try {
+			User user = userDao.findByUsername(username);
+			Employee tmp = employeeDao.findByUser(user);
+			Employee employee = new Employee(eudto.getEmployeeId(), eudto.getFirstName(), eudto.getLastName(), eudto.getEmail(), 
+											tmp.getPosition(), tmp.getSalary(),  user,  eudto.getCity(), eudto.getCityPostCode(), eudto.getStreet(),
+											eudto.getAccommodationNumber(),  eudto.getMobile(), eudto.getProfileDescription(),  eudto.getPathToProfilePhoto() );
+			employee = employeeDao.save(employee);
+		}
+		catch (Exception e) {
+			return false;
+		}
+		return true;
+	}
+	
+	
+	
 	/* FOR TESTING PURPOSE !!! */
 	@Autowired
 	private ClientDao clientDao;
@@ -134,7 +152,6 @@ public class UserService {
 		}
 		return true;
 	}
-	
 	
 }
 

@@ -14,8 +14,10 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import projApp.formDTO.EventDTO;
+import projApp.formDTO.EventMessageDTO;
 import projApp.model.event.Event;
 import projApp.service.EventService;
 
@@ -28,8 +30,23 @@ public class EmployeeEventController {
 	private static List<String> allTypesOfEvents = Arrays.asList("Informacja", "Sytuacja pilna", "Umuwienie na spotkanie", "Rozprawa s¹dowa", "Dostarczenie dokumentów");
 	
 	@GetMapping("/employee/cooperationsList/cooperation/event")
-	public String cooperation(@RequestParam(value="eventId", required=false) Integer eventId, Model m) {
+	public String eventGET(@RequestParam(value="eventId", required=false) Integer eventId, EventMessageDTO eventMessageDTO, Model m) {
     	Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+    	String username = auth.getName();
+    	Event event = es.getEmployeeEvent(username, eventId);
+		if(event == null)
+			return "bad_request";
+		m.addAttribute("event", event);
+		return "event";
+	}
+	
+	@PostMapping("/employee/cooperationsList/cooperation/event/eventMessage")
+	public String eventMessagePOST(@RequestParam(value="eventId", required=false) Integer eventId, RedirectAttributes redirectAttributes, EventMessageDTO eventMessageDTO, BindingResult bindingResult, Model m) {
+        if (bindingResult.hasErrors()) {
+            redirectAttributes.addFlashAttribute("eventId", eventId);
+            return "redirect:/employee/cooperationsList/cooperation/event";
+        }
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
     	String username = auth.getName();
     	Event event = es.getEmployeeEvent(username, eventId);
 		if(event == null)
