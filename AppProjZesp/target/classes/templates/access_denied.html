@@ -2,15 +2,27 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 
     <head>
+       <link href="../static/css/f..."
+           	  th:href="@{/css/nexus.css}"
+              rel="stylesheet" media="screen" />
+       <link href="../static/css/f..."
+           	  th:href="@{/css/bootstrap.css}"
+              rel="stylesheet" media="screen" />
         <title>403</title>
     </head>
     
     <body>
-    	<header>
-			<h1 id="title">
-				Acess denied 403
-			</h1>
-		</header>
-		<div id="pageContent"></div>
+		<div id="content">
+            <div class="container background-white">
+                <div class="row margin-vert-30">
+                    <div class="col-md-12">
+                        <div class="error-404-page text-center">
+                            <h2>404!</h2>
+                            <h3>Strona nie istnieje</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </body>
 </html>

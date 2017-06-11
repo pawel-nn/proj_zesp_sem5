@@ -3,14 +3,26 @@
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
     <head>
         <title>Bad request</title>
+         <link href="../static/css/f..."
+           	  th:href="@{/css/nexus.css}"
+              rel="stylesheet" media="screen" />
+       <link href="../static/css/f..."
+           	  th:href="@{/css/bootstrap.css}"
+              rel="stylesheet" media="screen" />
+        <title>403</title>
     </head>
     <body>
-    	<header>
-			<h1 id="title">
-				Bad request
-			</h1>
-			<p>Error 400</p>
-			<ul id="ulRet"> <li id="liRet"><a th:href="@{/}">Wróć do strony startowej</a></li> </ul>
-		</header>
+    	<div id="content">
+            <div class="container background-white">
+                <div class="row margin-vert-30">
+                    <div class="col-md-12">
+                        <div class="error-404-page text-center">
+                            <h2>Błąd 400!</h2>
+                            <h3><ul id="ulRet"> <li id="liRet"><a th:href="@{/}">Wróć do strony startowej</a></li> </ul></h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </body>
 </html>
