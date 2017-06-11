@@ -8,11 +8,17 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import projApp.model.client.Client;
+import projApp.model.employee.Employee;
+
 @Entity
 @Table(name = "event_chats")
 public class EventChat {
 
 	private Integer eventChatId;
+	private String message;
+	private Employee employee;
+	private Client client;
 	
 	public EventChat() {};
 	
@@ -25,6 +31,14 @@ public class EventChat {
 	
 	public void setEventChatId(Integer eventChatId) {
 		this.eventChatId = eventChatId;
+	}
+
+	public String getMessage() {
+		return message;
+	}
+
+	public void setMessage(String message) {
+		this.message = message;
 	}
 	
 }

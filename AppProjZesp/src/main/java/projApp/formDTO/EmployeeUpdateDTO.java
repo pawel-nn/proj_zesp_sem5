@@ -53,8 +53,12 @@ public class EmployeeUpdateDTO {
     @Size(min=1, max=45)
     private String mobile;
     
+    @NotNull
+    @Size(min=3, max=120)
     private String profileDescription;
+    
     private Integer employeeId;
+    
 	private String pathToProfilePhoto;
 	
     public void setUp(Employee employee) {

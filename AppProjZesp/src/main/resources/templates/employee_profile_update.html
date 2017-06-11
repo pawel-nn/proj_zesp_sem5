@@ -57,7 +57,10 @@
                  		<tr>
                     		<td>Adress e-mail:</td>
                     		<td><input type="email" th:field="*{email}" /></td>
+                    		<td>Telefon kontaktowy:</td>
+                    		<td><input type="text" th:field="*{mobile}" /></td>
                     		<td th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Error</td>
+                    		<td th:if="${#fields.hasErrors('mobile')}" th:errors="*{mobile}">Error</td>                  		
                 		</tr>         
                 		<tr>
                     		<td>Miasto:</td>
@@ -74,12 +77,7 @@
                     		<td><input type="text" th:field="*{accommodationNumber}" /></td>
                     		<td th:if="${#fields.hasErrors('street')}" th:errors="*{street}">Error</td>
                     		<td th:if="${#fields.hasErrors('accommodationNumber')}" th:errors="*{accommodationNumber}">Error</td>
-                		</tr>         	  
-                		<tr>
-                    		<td>Telefon kontaktowy:</td>
-                    		<td><input type="text" th:field="*{mobile}" /></td>
-                    		<td th:if="${#fields.hasErrors('mobile')}" th:errors="*{mobile}">Error</td>
-                		</tr>        
+                		</tr>         	      
             		</table>
             		<button type="submit" id="send" >Zarejesruj</button>
             		<div>Pola z * są opcjonalne</div>

@@ -35,14 +35,19 @@
                   	<tr id="myTr">
                    		<td>Nazwisko:</td>
                    		<td th:text="${employee.lastName}">text</td>
-                	</tr>            	 
+                	</tr>                      	 
                 	<tr id="myTr">
-                   		<td>Opis profilu:</td>
-                   		<td th:text="${employee.profileDescription}">text</td>
+                	    <td>Opis profilu:</td>
+                		<div th:if="${employee.profileDescription != null}">	
+							<td th:text="${employee.profileDescription}">text</td>
+						</div>	
+						<div th:unless="${employee.profileDescription != null}">
+							<td>Brak opisu profilu</td>
+						</div>	
                 	</tr>
                 	<tr id="myTr">
-                   		<td>Zdjęcie:</td>
-
+                	    <td>Zdjęcie:</td>
+						<td><img th:src="@{${'/employee/data/images/' + photoName + '.png'}}" /></td>
                 	</tr>                	       	  
                	</table>   
                	<div> Dane kontaktowe: </div>
@@ -50,6 +55,8 @@
                  	<tr>
                    		<td>Adress e-mail:</td>
                    		<td th:text="${employee.email}">text</td>
+                   		<td>Telefon kontaktowy:</td>
+                   		<td th:text="${employee.mobile}">text</td>
                 	</tr>         
                 	<tr>
                    		<td>Miasto:</td>
@@ -62,11 +69,7 @@
                    		<td th:text="${employee.street}">text</td>
                    		<td>Numer budynku/mieszkania:</td>
                    		<td th:text="${employee.accommodationNumber}">text</td>
-               		</tr>         	  
-               		<tr>
-                   		<td>Telefon kontaktowy:</td>
-                   		<td th:text="${employee.mobile}">text</td>
-                	</tr>        
+               		</tr>         	        
             	</table>
 			</div>
         </div>
