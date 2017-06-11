@@ -30,6 +30,7 @@ body{
     font-size: 16px;
     font-weight:300;
 }
+
 .row {
     margin-right: 0px;
     margin-left: 0px;
@@ -135,6 +136,14 @@ p {
     height: 100%;
     width: 98%;
     text-align: center;
+    border: 1px solid #ebebeb;
+  	border-radius: 5px;
+  	box-shadow: 0 0 3px #EEEEEE;
+  	color: #555555;
+  	padding: 30px;
+}
+.background label {
+  font-weight: normal;
 }
 .about-text-container {
     font-style: italic;

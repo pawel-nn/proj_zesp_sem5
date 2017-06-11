@@ -3,31 +3,53 @@
 
     <head>
 	    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-	    <link href="../static/css/f..."
+<!-- 	    <link href="../static/css/f..."
            	  th:href="@{/css/global.css}"
               rel="stylesheet" media="screen" />	
     	<link href="../static/css/f..."
            	  th:href="@{/css/after_login.css}"
+              rel="stylesheet" media="screen" />  -->
+              
+         <link href="../static/css/f..."
+           	  th:href="@{/css/bootstrap.css}"
               rel="stylesheet" media="screen" />
+
+	 <link href="../static/css/f..."
+           	  th:href="@{/css/templatemo-style.css}"
+              rel="stylesheet" media="screen" />
+              
+    
+              
+   <!--            <link rel="stylesheet" href="../static/css/bootstrap.css" rel="stylesheet">
+                <link rel="stylesheet" href="../static/css/templatemo-style.css" rel="stylesheet"> -->
+                
         <title>Strona domowa pracownika</title>
 	</head>
     <body>
-    	<header>
-			<h1>
-				Strona pracownika
-			</h1>
-			<div id="shortLinks">
-				<ul id="ulRet">
-					<li><a th:href="@{/employee/cooperationOffersList}">Lista ofert współpracy od klienta</a></li>
-					<li><a th:href="@{/employee/cooperationsList}">Lista współprac z klientem</a></li>
-					<li><a th:href="@{/changePassword}">Zmień hasło</a></li>
-					<li><form th:action="@{/logout}" method="post"><input type="submit" id="logout" value="Wyloguj się"/></form></li>
-				</ul>
-			</div>
-		</header>
-		<div id="pageContent">
-			<p th:text="${usernameMsg}">username</p>
-			<p th:text="${roleMsg}">role</p>
-		</div>	
+    	<div class="container">
+	        <section class="col-md-12 content" id="home">
+	           <div class="col-lg-6 col-md-6 content-item" style="height: 100%">
+	           		<div class="background" style="min-height: 450px; position: relative; text-align: center; ">
+		           		<div style="margin: 0; position: absolute; top: 50%; left: 50%; margin-right: -50%; transform: translate(-50%, -50%); ">
+			               <ul class="text-center" style="">
+								<li><h2 class="section-title"><a th:href="@{/employee/cooperationOffersList}">Lista ofert współpracy od klienta</a></h2></li>
+								<li><h2 class="section-title"><a th:href="@{/employee/cooperationsList}">Lista współprac z klientem</a></h2></li>
+								<li><h2 class="section-title"><a th:href="@{/changePassword}">Zmień hasło</a></h2></li>
+							</ul>
+						</div>
+					</div>
+	           </div>
+	           <div class="col-lg-6 col-md-6 content-item content-item-1" style="height: 100%">
+	               <div class="background" style="min-height: 450px;">
+						<h2 class="main-title text-center dark-blue-text" th:text="${usernameMsg}">username</h2>
+						<p style="text-align: center" th:text="${roleMsg}">role</p>
+						<p style="text-align: center">Strona Employee</p>
+						<form style="text-align: center" th:action="@{/logout}" method="post"><input type="submit" class="btn btn-big dark-blue-bordered-btn" id="logout" value="Wyloguj się"/></form>         
+					</div>
+				 </div>
+	       </section>
+       </div>
+    	
+
     </body>
 </html>
