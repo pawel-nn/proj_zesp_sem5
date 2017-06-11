@@ -1,0 +1,9 @@
+@CHARSET "UTF-8";
+
+
+.bimg{
+    background-image: url('../img/tlo.jpg');
+    min-height: 100%;
+    background-position: center;
+    background-size: cover;
+}

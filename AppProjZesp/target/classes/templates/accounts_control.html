@@ -9,25 +9,92 @@
     	<link href="../static/css/f..."
            	  th:href="@{/css/after_login.css}"
               rel="stylesheet" media="screen" />
+              
+        <link href="../static/css/f..."
+           	  th:href="@{/css/bootstrap.css}"
+              rel="stylesheet" media="screen" />	
+    	<link href="../static/css/f..."
+           	  th:href="@{/css/font-awesome.css}"
+              rel="stylesheet" media="screen" />
+              
+         <link href="../static/css/f..."
+           	  th:href="@{/css/nexus.css}"
+              rel="stylesheet" media="screen" />
+     	 <link href="../static/css/f..."
+           	  th:href="@{/css/pace/pace-theme-big-counter.css}"
+              rel="stylesheet" media="screen" />     
+              
+         <link href="../static/css/f..."
+           	  th:href="@{/css/style.css}"
+              rel="stylesheet" media="screen" />
+         <link href="../static/css/f..."
+           	  th:href="@{/css/main-style.css}"
+              rel="stylesheet" media="screen" />
+              
+          <link href="../static/css/f..."
+           	  th:href="@{/css/dataTables.bootstrap.css}"
+              rel="stylesheet" media="screen" />
+              
+          <!--         <link href="../static/css/bootstrap.css" rel="stylesheet" />
+	   	 <link href="../static/css/font-awesome.css" rel="stylesheet" />
+	   	 <link href="../static/css/pace/pace-theme-big-counter.css" rel="stylesheet" />
+	 	 <link href="../static/css/style.css" rel="stylesheet" />
+		 <link href="../static/css/main-style.css" rel="stylesheet" />
+		 <link rel="stylesheet" href="../static/css/nexus.css" rel="stylesheet">
+
+	     <link href="../static/css/dataTables/dataTables.bootstrap.css" rel="stylesheet" /> -->
+		 
 		<title>Panel zarządzania kontami</title>
 	</head>
 	
     <body>
 		<header>
-			<h1>
-				Panel zarządzania kontami
-			</h1>
 			<div id="shortLinks">
 				<ul>
 					<li><a th:href="@{/home}">Wróć do strony domowej</a></li>
 				</ul>
 			</div>
 		</header>	
-		<hr/>
-		<div id="pageContent">
+
+		<div class="container login-page">
 			<div class="dataList">
 				<div th:if="${usersList.getNumberOfElements() > 0}">
 					<h2>Lista użytkowników:</h2>
+					
+					
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                             Advanced Tables
+                        </div>
+                        <div class="panel-body">
+                            <div class="table-responsive">
+                                <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                    <thead>
+                                        <tr>
+                                            <th>Nazwa użytkownika</th>
+                                            <th>Rola</th>
+                                            <th>Czy jest aktywny(s)</th>
+                                            <th>Operacje</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="odd gradeX" th:each="user : ${usersList}">
+                                            <td th:text="${user.username}">Username</td>
+											<td th:text="${user.userRoleToString()}">Role</td>
+											<td th:text="${user.enabled}">Enabled</td>
+                                            <td>
+												<a th:href="@{/admin/accountsControl/blockUser(user=${user.username})}"><span>Block</span></a>/
+												<a th:href="@{/admin/accountsControl/unlockUser(user=${user.username})}"><span>Unlock</span></a>
+											</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            
+                        </div>
+                    </div>					
+					
+				
 					<table>
 						<tr>
 							<th>Nazwa użytkownika</th>
@@ -47,22 +114,21 @@
 					</table>
 					<div id="pageBreak"></div>
 					
-					<div id="pageNavigation">
-				 		<ul class="pager">
-				 			<div>
+					<div class="dataTables_paginate paging_simple_numbers">
+				 		<ul class="pagination">
+				 		
 				 				<li th:class="${pageNumber == 1?'disabled':''}">
-			 						<a type="button" th:href="@{/admin/accountsControl(page=1)}" id="pageNavigationField" ><span>Pierwsza strona</span></a>
+			 						<a th:href="@{/admin/accountsControl(page=1)}" class="paginate_button" ><span>Pierwsza strona</span></a>
 			 					</li>
 								<li th:class="${pageNumber &lt;= 1?'disabled':''}" >
-									<a type="button" th:href="@{/admin/accountsControl(page=${pageNumber-1})}" id="pageNavigationField" ><span>Wstecz</span></a>
+									<a  th:href="@{/admin/accountsControl(page=${pageNumber-1})}" class="paginate_button" ><span>Wstecz</span></a>
 								</li>
 			 					<li style="float:right" th:class="${pageNumber == maxPagesNumber?'disabled':''}" >
-			 						<a type="button" th:href="@{/admin/accountsControl(page=${maxPagesNumber})}" id="pageNavigationField" ><span>Ostatnia strona</span></a>
+			 						<a th:href="@{/admin/accountsControl(page=${maxPagesNumber})}" class="paginate_button" ><span>Ostatnia strona</span></a>
 			 					</li>
 								<li style="float:right" th:class="${pageNumber &gt;= maxPagesNumber?'disabled':''}" >
-									<a type="button" th:href="@{/admin/accountsControl(page=${pageNumber+1})}" id="pageNavigationField"  th:disabled="${nextInp}" ><span>Dalej</span></a>
+									<a  th:href="@{/admin/accountsControl(page=${pageNumber+1})}" class="paginate_button"  th:disabled="${nextInp}" ><span>Dalej</span></a>
 								</li>
-							</div>
 						</ul>
 					</div>
 				</div>

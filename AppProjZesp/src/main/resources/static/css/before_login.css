@@ -1,12 +1,11 @@
 /* Opis: Strony index oraz login */
 /*  */
 /*  Style definition   : Common page elements     */
-
 body {
 	margin-left: 3cm;
 	margin-right: 5cm;
-	background-color: #bdd7cc;
-    margin-top: 50px;
+	background-color: #c6bdd7;
+	margin-top: 50px;
 }
 
 #pageContent {
@@ -14,8 +13,8 @@ body {
 }
 
 #pageBreak {
-    margin-top:  20px;
-    margin-down: 20px;
+	margin-top: 20px;
+	margin-down: 20px;
 }
 
 .myNewClass {
@@ -23,60 +22,23 @@ body {
 	margin-bottom: 2cm;
 }
 
-
 /*  <<< END >>>        : Global elements       */
 /*  */
 /*  Style definition   : Table              */
-
-
 table {
 	border: 1px solid #ff0000;
 }
 
-tr:nth-child(even){background-color: #dec2f5}
-tr:nth-child(odd){background-color: #dec2f5}
+tr:nth-child(even) {
+	background-color: #dec2f5
+}
+
+tr:nth-child(odd) {
+	background-color: #dec2f5
+}
 
 th, td {
 	min-width: 150px;
-    text-align: left;
-    padding: 8px;
+	text-align: left;
+	padding: 8px;
 }
-
-/*  <<< END >>>        : Table               */
-/*  */
-/*  Style definition   : ????                */
-
-
-
-
-
-
-
-/*  <<< END >>>        : ????                */
-/*  */
-/*  Style definition   : ????                */
-
-
-
-
-
-/*  <<< END >>>        : ????                */
-/*  */
-/*  Style definition   : ????                */
-
-
-
-
-/*  <<< END >>>        : ????                */
-/*  */
-/*  Style definition   : ????                */
-
-
-
-/*  <<< END >>>        : ????                */
-/*  */
-/*  Style definition   : ????                */
-
-
-
-/*  <<< END >>>        : ????                */
