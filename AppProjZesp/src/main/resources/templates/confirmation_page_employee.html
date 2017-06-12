@@ -3,46 +3,61 @@
 
     <head>
 	    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-	    <link href="../static/css/f..."
-           	  th:href="@{/css/global.css}"
-              rel="stylesheet" media="screen" />	
-    	<link href="../static/css/f..."
-           	  th:href="@{/css/after_login.css}"
-              rel="stylesheet" media="screen" />
+
         <link href="../static/css/f..."
-           	  th:href="@{/css/font-awesome.css}"
+           	  th:href="@{/css/bootstrap.css}"
               rel="stylesheet" media="screen" />
+                <!-- Template CSS -->
+
+	 <link href="../static/css/f..."
+           	  th:href="@{/css/font-awesome.css}"
+              rel="stylesheet" media="screen" /> 
+     	 <link href="../static/css/f..."
+           	  th:href="@{/css/nexus.css}"
+              rel="stylesheet" media="screen" />
+
+                  
         <title>Strona potwierdzenia wyboru</title>
 	</head>
     <body>
     	<header>
-			<h1>
-				Strona potwierdzenia wyboru
-			</h1>
 			<div id="shortLinks">
 				<a class="list-group-item" th:href="@{/home}">
 					<i class="fa fa-home fa-fw"></i>&nbsp; Wróć
 				</a>	
 			</div>	
 		</header>
-		<div id="pageContent">
-		    <div> 
-		    	<p th:text="${msg}">text</p>
-		    </div>
-       		<form id="deleteForm" th:action="@{${route}(elementId=${elementId})}" th:object="${confirmationDTO}" method="post">
-     			<div>
-            		<table>
-            			<tr>
-            				<th colspan="2"><div>Potwierdź swój wybór: </div></th>
-            			</tr>
-                    	<tr>
-                    		<td><input type="radio" name="conf" value="yes" />TAK</td>
-  							<td><input type="radio" name="conf" value="no" />NIE</td>
-                		</tr>       	
-            		</table>
-            		<button type="submit" id="send" >Potwierdź</button>
-            	</div>
-        	</form>
-		</div>	
+		<div id="content">
+            <div class="container background-transparent">
+                <div class="container">
+                    <div class="row margin-vert-30">
+                        <!-- Login Box -->
+                        <div class="col-md-6 col-md-offset-3 col-sm-offset-3">
+                            <form class="login-page" id="deleteForm" th:action="@{${route}(elementId=${elementId})}" th:object="${confirmationDTO}" method="post">
+                                <div class="login-header margin-bottom-30">
+                                    <h2>Potwierdź swój wybór</h2>
+                                </div>
+                                <div class="input-group margin-bottom-20" style="margin: 0px auto;">
+                                 	<table style="width: 200px">
+				            			<tr>
+				            				<th colspan="2"><div> </div></th>
+				            			</tr>
+				                    	<tr id="podswietlenie">
+				                    		<td style="margin-right: 10%"><input type="radio" name="conf" value="yes" />TAK</td>
+				  							<td style="margin-left: 10%"><input type="radio" name="conf" value="no" />NIE</td>
+				                		</tr>       	
+			            			</table>
+			            		</div>
+                                <div class="row">
+                                    <div>
+                                        <button class="btn btn-primary pull-right" type="submit" id="send" >Potwierdź</button> 
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </body>
 </html>

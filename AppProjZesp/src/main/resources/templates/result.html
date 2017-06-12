@@ -3,31 +3,38 @@
 
     <head>
 	    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-	    <link href="../static/css/f..."
-           	  th:href="@{/css/global.css}"
-              rel="stylesheet" media="screen" />	
-    	<link href="../static/css/f..."
-           	  th:href="@{/css/forms_and_results.css}"
+         <link href="../static/css/f..."
+           	  th:href="@{/css/nexus.css}"
               rel="stylesheet" media="screen" />
+       <link href="../static/css/f..."
+           	  th:href="@{/css/bootstrap.css}"
+              rel="stylesheet" media="screen" />
+       <link href="../static/css/f..."
+           	  th:href="@{/css/font-awesome.css}"
+              rel="stylesheet" media="screen" />  
 		<title>Wynik operacji</title>
 	</head>	
 
     <body>
 		<header>
-			<h1>
-				Wynik operacji
-			</h1>
 			<div id="shortLinks">
 				<a class="list-group-item" th:href="@{/home}">
 					<i class="fa fa-home fa-fw"></i>&nbsp; Wróć
 				</a>	
 			</div>	
 		</header>	
-		<hr/>
-		<div id="pageContent">
-        	<div>
-        		<p th:text="${msg}">msg</p>    	
-        	</div>
+		<div id="content">
+            <div class="container background-white">
+                <div class="row margin-vert-30">
+                    <div class="col-md-12">
+                        <div class="error-404-page text-center">
+                            <h3 th:text="${msg}">msg</h3>    	
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </body>
 </html>
+
+

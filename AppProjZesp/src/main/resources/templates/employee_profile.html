@@ -66,18 +66,18 @@
 					     			<table>  
 					                 	<tr id="myTr">
 					                   		<td>Imię:</td>
-					                   		<td th:text="${employee.firstName}">text</td>
+					                   		<td style="padding-left: 10px" th:text="${employee.firstName}">text</td>
 					                	</tr>              	
 					                  	<tr id="myTr">
 					                   		<td>Nazwisko:</td>
-					                   		<td th:text="${employee.lastName}">text</td>
+					                   		<td style="padding-left: 10px" th:text="${employee.lastName}">text</td>
 					                	</tr>                      	 
 					                	<tr id="myTr">
 					                	    <td>Opis profilu:</td>
-					                		<div th:if="${employee.profileDescription != null}">	
+					                		<div style="padding-left: 10px" th:if="${employee.profileDescription != null}">	
 												<td th:text="${employee.profileDescription}">text</td>
 											</div>	
-											<div th:unless="${employee.profileDescription != null}">
+											<div style="padding-left: 10px" th:unless="${employee.profileDescription != null}">
 												<td>Brak opisu profilu</td>
 											</div>	
 					                	</tr>
@@ -117,3 +117,5 @@
         </div>
     </body>
 </html>
+
+
