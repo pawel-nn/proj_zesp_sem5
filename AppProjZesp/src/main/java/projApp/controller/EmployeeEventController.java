@@ -78,18 +78,18 @@ public class EmployeeEventController {
     }
 
     @PostMapping("/employee/cooperationsList/cooperation/addEvent")
-    public String addEventPOST(@Valid EventDTO eventDTO, BindingResult bindingResult, Model m) {
+    public String addEventPOST(@Valid EventDTO eventDTO, BindingResult bindingResult, RedirectAttributes redirectAttributes, Model m) {
         if (bindingResult.hasErrors()) {
         	m.addAttribute("allTypesOfEvents", allTypesOfEvents );
             return "event_add";
         }
-        Integer status = es.createEvent(eventDTO);
-        if(status == null) {
+        Integer eventId = es.createEvent(eventDTO);
+        if(eventId == null) {
         	m.addAttribute("msg", "B³¹d! Wydarzenie nie zosta³o utworzone.");
             return "result";	
         }
-        m.addAttribute("msg", "Sukces! Wydarzenie zosta³o utworzone.");
-        return "result";
+        redirectAttributes.addAttribute("eventId", eventId);
+        return "redirect:/employee/cooperationsList/cooperation/event";
     }
     
 }
