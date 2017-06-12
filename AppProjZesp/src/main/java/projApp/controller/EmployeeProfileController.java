@@ -5,6 +5,9 @@ import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 import javax.validation.Valid;
 
@@ -60,6 +63,11 @@ public class EmployeeProfileController {
 				stream = new BufferedInputStream(new FileInputStream(photo));
 				stream.read(bytes);
 				stream.close();	
+			} else {
+				InputStream is = EmployeeProfileController.class.getResourceAsStream("/no-photo.png");
+				bytes = new byte[1000];
+				is.read(bytes);
+			    return ResponseEntity.ok().contentType(MediaType.IMAGE_PNG).body(bytes);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
