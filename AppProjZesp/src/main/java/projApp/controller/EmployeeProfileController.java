@@ -6,8 +6,6 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.InputStream;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 
 import javax.validation.Valid;
 
@@ -36,7 +34,6 @@ public class EmployeeProfileController {
 	@Autowired
 	private UserService us;
 	
-//	private static final String rootPath = "C:\\Users\\Pawe³\\Desktop";
 	private static final String rootPath = "C:\\";
 	private static final String dirPath = rootPath + File.separator + "projectFiles";
 	
@@ -86,20 +83,19 @@ public class EmployeeProfileController {
     }
 	
 	@RequestMapping(value = "/employee/updateProfile", method = RequestMethod.POST)
-	public String uploadFileHandler(@RequestParam("employeePhoto") MultipartFile employeePhoto, @Valid EmployeeUpdateDTO employeeUpdateDTO, BindingResult bindingResult, Model model) {
+	public String uploadPhotoFileHandler(@RequestParam("employeePhoto") MultipartFile employeePhoto, @Valid EmployeeUpdateDTO employeeUpdateDTO, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
-        	System.out.println("xxx " + bindingResult.getFieldError() );
             return "employee_profile_update";
         }
-        
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		String username = auth.getName();	
+		
+//		if (!employeePhoto.isEmpty() && employeePhoto.getOriginalFilename().split("\\.")[1].equals("png")) {
 		if (!employeePhoto.isEmpty()) {
 			try {
 				byte[] bytes = employeePhoto.getBytes();
 				
-				String filePath = dirPath + File.separator + employeeUpdateDTO.getEmployeeId() + "-" + employeeUpdateDTO.getEmail();
-				
+				String filePath = dirPath + File.separator + employeeUpdateDTO.getEmployeeId() + "-" + employeeUpdateDTO.getEmail();			
 				File dir = new File(dirPath);
 				if (!dir.exists())
 					dir.mkdirs();
@@ -107,8 +103,7 @@ public class EmployeeProfileController {
 				File convertedFile = new File(filePath + ".png");
 				BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(convertedFile));
 				stream.write(bytes);
-				stream.close();				
-				
+				stream.close();								
 			} catch (Exception e) {
 				return "employee_profile_update";
 			}

@@ -7,6 +7,6 @@ import org.springframework.stereotype.Repository;
 
 @Transactional
 @Repository
-public interface DocumentDao extends CrudRepository<Document, Integer>{
+public interface EventDocumentDao extends CrudRepository<EventDocument, Integer>{
 	
 }

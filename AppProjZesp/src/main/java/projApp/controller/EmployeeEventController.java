@@ -1,6 +1,8 @@
 package projApp.controller;
 
-import java.io.UnsupportedEncodingException;
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.util.Arrays;
 import java.util.List;
 
@@ -15,10 +17,11 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import org.springframework.web.servlet.view.RedirectView;
 
 import projApp.formDTO.EventDTO;
+import projApp.formDTO.EventDocumentDTO;
 import projApp.formDTO.EventMessageDTO;
 import projApp.model.employee.Employee;
 import projApp.model.event.Event;
@@ -35,9 +38,11 @@ public class EmployeeEventController {
 	private UserService us;
 	
 	private static List<String> allTypesOfEvents = Arrays.asList("Informacja", "Sytuacja pilna", "Umuwienie na spotkanie", "Rozprawa s¹dowa", "Dostarczenie dokumentów");
+	private static final String rootPath = "C:\\";
+	private static final String dirPath = rootPath + File.separator + "projectFiles";
 	
 	@GetMapping("/employee/cooperationsList/cooperation/event")
-	public String eventGET(@RequestParam(value="eventId", required=false) Integer eventId, EventMessageDTO eventMessageDTO, Model m) {
+	public String eventGET(@RequestParam(value="eventId", required=false) Integer eventId, EventMessageDTO eventMessageDTO, EventDocumentDTO eventDocumentDTO, Model m) {
     	Authentication auth = SecurityContextHolder.getContext().getAuthentication();
     	String username = auth.getName();
     	Event event = es.getEmployeeEvent(username, eventId);
@@ -68,6 +73,61 @@ public class EmployeeEventController {
         }
           redirectAttributes.addAttribute("eventId", eventId);
           return "redirect:/employee/cooperationsList/cooperation/event";
+	}
+	
+	@GetMapping("/employee/cooperationsList/cooperation/event/eventDocument")
+	public String eventDocumentGET(@RequestParam(value="eventId", required=false) Integer eventId, @Valid EventDocumentDTO eventDocumentDTO, BindingResult bindingResult,  Model m, RedirectAttributes redirectAttributes) {
+		MultipartFile eventDocument = eventDocumentDTO.getEventDocument();
+		System.out.println("1");
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+    	String username = auth.getName();
+    	Employee employee = us.findEmployee(username);
+    	Event event = es.getEmployeeEvent(username, eventId);
+		System.out.println("2");
+		if(event == null || employee == null)
+			return "bad_request";
+		System.out.println("3");
+        if (bindingResult.hasErrors()) {
+        	m.addAttribute("event", event);
+            return "event";
+        }
+		System.out.println("4");
+		if (!eventDocument.isEmpty()) {
+			try {
+				byte[] bytes = eventDocument.getBytes();
+							
+				File dir1 = new File(dirPath);
+				if (!dir1.exists())
+					dir1.mkdirs();
+				File dir2 = new File(dirPath + File.separator + "documents");
+				if (!dir2.exists())
+					dir2.mkdirs();
+		
+				String filePath = dirPath + File.separator + "documents" + File.separator + eventDocument.getOriginalFilename();
+				File convertedFile = new File(filePath);
+				BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(convertedFile));
+				stream.write(bytes);
+				stream.close();		
+				
+				eventDocumentDTO.setName(eventDocument.getOriginalFilename().split("\\.")[0]);
+				eventDocumentDTO.setType(eventDocument.getOriginalFilename().split("\\.")[1]);
+				eventDocumentDTO.setPath(filePath);				
+			} catch (Exception e) {
+	        	m.addAttribute("msg", "B³¹d! Nie zapisano dokumentu.");
+	            return "result";
+			}
+		} else {
+        	m.addAttribute("msg", "B³¹d! Plik jest pusty.");
+            return "result";
+		}
+		
+		Integer result = es.saveDocument(eventDocumentDTO, eventId);
+		if(result == null) {
+			return "employee_profile_update";	
+		}
+        
+        redirectAttributes.addAttribute("eventId", eventId);
+        return "redirect:/employee/cooperationsList/cooperation/event";
 	}
 	
     @GetMapping("/employee/cooperationsList/cooperation/addEvent")

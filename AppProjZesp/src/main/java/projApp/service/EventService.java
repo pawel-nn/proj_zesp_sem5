@@ -7,11 +7,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import projApp.formDTO.EventDTO;
+import projApp.formDTO.EventDocumentDTO;
 import projApp.formDTO.EventMessageDTO;
 import projApp.model.client.Client;
 import projApp.model.client.ClientDao;
 import projApp.model.cooperation.Cooperation;
 import projApp.model.cooperation.CooperationDao;
+import projApp.model.document.EventDocument;
 import projApp.model.employee.Employee;
 import projApp.model.employee.EmployeeDao;
 import projApp.model.event.Event;
@@ -73,6 +75,22 @@ public class EventService {
 		}
 		catch (Exception e) {
 			e.printStackTrace();
+			return null;
+		}
+		return event.getEventId();
+	}
+
+	public Integer saveDocument(EventDocumentDTO eddto, Integer eventId) {
+		Event event;
+		try {
+			event = eventDao.findByEventId(eventId);
+			List<EventDocument> edList = event.getEventDocuments();
+			EventDocument ed = new EventDocument( eddto.getName(), eddto.getType(), eddto.getPath(), eddto.getDescription());
+			edList.add(ed);
+			event.setEventDocuments(edList);
+			eventDao.save(event);
+		}
+		catch (Exception e) {
 			return null;
 		}
 		return event.getEventId();

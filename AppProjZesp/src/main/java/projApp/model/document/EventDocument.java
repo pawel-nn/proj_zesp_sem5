@@ -17,26 +17,26 @@ import projApp.model.event.Event;
 
 @Entity
 @Table(name = "documents")
-public class Document {
+public class EventDocument {
 
-	private Integer documentId;
+	private Integer eventDocumentId;
 	private String name;
 	private String type;
 	private String path;
 	private String description;
 	private Event event;
 	
-	public Document() {}
+	public EventDocument() {}
 	
-	public Document(String name, String type, String path, String description) {
+	public EventDocument(String name, String type, String path, String description) {
 		this.name = name;
 		this.type = type;
 		this.path = path;
 		this.description = description;
 	}
 	
-	public Document(Integer documentId, String name, String type, String path, String description) {
-		this.documentId= documentId;
+	public EventDocument(Integer eventDocumentId, String name, String type, String path, String description) {
+		this.eventDocumentId= eventDocumentId;
 		this.name = name;
 		this.type = type;
 		this.path = path;
@@ -45,13 +45,13 @@ public class Document {
 
 	@Id
 	@GeneratedValue(strategy = IDENTITY)
-	@Column(name = "document_id", unique = true, nullable = false)
-	public Integer getDocumentId() {
-		return this.documentId;
+	@Column(name = "event_document_id", unique = true, nullable = false)
+	public Integer getEventDocumentId() {
+		return this.eventDocumentId;
 	}
 	
-	public void setDocumentId(Integer documentId) {
-		this.documentId = documentId;
+	public void setEventDocumentId(Integer eventDocumentId) {
+		this.eventDocumentId = eventDocumentId;
 	}
 	
 	@Column(name = "name", nullable = false, length = 45)

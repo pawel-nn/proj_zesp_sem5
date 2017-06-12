@@ -6,7 +6,7 @@ import java.util.List;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-import projApp.model.document.Document;
+import projApp.model.document.EventDocument;
 
 public class EventDTO {
 
@@ -21,7 +21,7 @@ public class EventDTO {
     @NotNull
     @Size(min=1, max=45)
     private String eventType;
-	private List <Document> documents = new ArrayList<Document>();
+	private List <EventDocument> documents = new ArrayList<EventDocument>();
 	public Integer getEventId() {
 		return eventId;
 	}
@@ -40,10 +40,10 @@ public class EventDTO {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	public List<Document> getDocuments() {
+	public List<EventDocument> getDocuments() {
 		return documents;
 	}
-	public void setDocuments(List<Document> documents) {
+	public void setDocuments(List<EventDocument> documents) {
 		this.documents = documents;
 	}
 	public Integer getCooperationId() {
@@ -58,6 +58,5 @@ public class EventDTO {
 	public void setEventType(String eventType) {
 		this.eventType = eventType;
 	}
-	
-    
+	   
 }

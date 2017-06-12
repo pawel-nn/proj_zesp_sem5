@@ -19,7 +19,7 @@ import javax.persistence.OrderBy;
 import javax.persistence.Table;
 
 import projApp.model.cooperation.Cooperation;
-import projApp.model.document.Document;
+import projApp.model.document.EventDocument;
 import projApp.model.eventMessage.EventMessage;
 
 
@@ -33,27 +33,27 @@ public class Event {
 	private String content;
 	private Date registrationDate;
 	private Cooperation cooperation;
-	private List <Document> documents = new ArrayList<Document>();
+	private List <EventDocument> eventDocuments = new ArrayList<EventDocument>();
 	private List <EventMessage> eventMessages = new ArrayList<EventMessage>();
 	
 	public Event() {}
 	
-	public Event(String subject, String eventType, String content, Date registrationDate, Cooperation cooperation, List <Document> documents) {
+	public Event(String subject, String eventType, String content, Date registrationDate, Cooperation cooperation, List <EventDocument> eventDocuments) {
 		this.subject = subject;
 		this.content = content;
 		this.registrationDate = registrationDate;
 		this.cooperation = cooperation;
-		this.documents = documents;
+		this.eventDocuments = eventDocuments;
 		this.eventType = eventType;
 	}
 
-	public Event(Integer eventId, String eventType, String subject, String content, Date registrationDate, Cooperation cooperation, List <Document> documents) {
+	public Event(Integer eventId, String eventType, String subject, String content, Date registrationDate, Cooperation cooperation, List <EventDocument> eventDocuments) {
 		this.eventId = eventId;
 		this.subject = subject;
 		this.content = content;
 		this.registrationDate = registrationDate;
 		this.cooperation = cooperation;
-		this.documents = documents;
+		this.eventDocuments = eventDocuments;
 		this.eventType = eventType;
 	}
 
@@ -107,12 +107,12 @@ public class Event {
 	}
 	
 	@OneToMany(fetch = FetchType.LAZY, cascade = {CascadeType.ALL}, mappedBy = "event")
-	public List<Document> getDocuments() {
-		return documents;
+	public List<EventDocument> getEventDocuments() {
+		return eventDocuments;
 	}
 
-	public void setDocuments(List<Document> documents) {
-		this.documents = documents;
+	public void setEventDocuments(List<EventDocument> eventDocumentId) {
+		this.eventDocuments = eventDocuments;
 	}
 
 	@Column(name = "event_type", nullable = false)
