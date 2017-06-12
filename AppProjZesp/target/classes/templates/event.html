@@ -19,7 +19,7 @@
 			</h1>
 			<div>
 				<ul> 
-					<li><a th:href="@{/employee/cooperationsList/cooperation}">Wróć do wspołpracy</a></li>
+					<li><a th:href="@{/employee/cooperationsList/cooperation(cooperationId=${event.cooperation.cooperationId})}">Wróć do wspołpracy</a></li>
 					<li><a th:href="@{/home}">Wróć do strony domowej</a></li> 
 				</ul>
 			</div>
@@ -60,20 +60,21 @@
 					</tr>
 				</table>
 			</div>
+		    <div id="pageBreak"></div>
 			<div>
 				<table>
 					<tr>
 						<th colspan="2"> Komentarze: </th>
 					</tr>
 					<div th:if="${event.eventMessages.isEmpty() != true}">		
-						<tr th:each="eventMessage : ${event.eventMessages}">
-							<div th:if="${event.eventMessage.client_id != null}">
-								<td th:text="${eventMessage.client.toStringForCommentary}">text</td>
+						<tr th:each="em : ${event.eventMessages}">
+							<div th:if="${em.client != null}">
+								<td th:text="${em.client.toStringForCommentary()}">text</td>
 							</div>
-							<div th:unless="${event.eventMessage.client_id != null}">
-								<td th:text="${eventMessage.employee.toStringForCommentary}">text</td>
+							<div th:unless="${em.client != null}">
+								<td th:text="${em.employee.toStringForCommentary()}">text</td>
 							</div>
-							<td th:text="${eventMessage.message}">text</td>
+							<td th:text="${em.message}">text</td>
 						</tr>
 					</div>	
 					<div th:unless="${event.eventMessages.isEmpty() != true}">
@@ -91,8 +92,10 @@
             				</tr>
                 			<tr>
 								<td>
-									<textarea rows="2" cols="50" name="message"  th:field="*{message}" form="myForm" />
+									<textarea rows="2" cols="50" name="chatMessage"  th:field="*{chatMessage}" form="myForm" />									
+									<input type="number" hidden="hidden" th:value="*{employeeId}" th:field="*{employeeId}" />
 								</td>
+								<td th:if="${#fields.hasErrors('chatMessage')}" th:errors="*{chatMessage}">Error</td>
                 			</tr>   	
             			</table>
             			<button type="submit" id="send" >Wyślij wiadomość</button>

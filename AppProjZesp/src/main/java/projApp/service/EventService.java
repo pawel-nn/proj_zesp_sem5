@@ -1,15 +1,22 @@
 package projApp.service;
 
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import projApp.formDTO.EventDTO;
+import projApp.formDTO.EventMessageDTO;
+import projApp.model.client.Client;
+import projApp.model.client.ClientDao;
 import projApp.model.cooperation.Cooperation;
 import projApp.model.cooperation.CooperationDao;
+import projApp.model.employee.Employee;
+import projApp.model.employee.EmployeeDao;
 import projApp.model.event.Event;
 import projApp.model.event.EventDao;
+import projApp.model.eventMessage.EventMessage;
 
 @Service("EventService")
 public class EventService {
@@ -20,6 +27,12 @@ public class EventService {
 	@Autowired
 	private CooperationDao cooperationDao;
 	
+	@Autowired
+	private EmployeeDao employeeDao;
+	
+	@Autowired
+	private ClientDao clientDao;
+	
 	public Event getEmployeeEvent(String username, Integer eventId) {
 		Event event;
 		try {
@@ -28,7 +41,7 @@ public class EventService {
 		catch (Exception e) {
 			return null;
 		}
-		if(event.getCooperation().getEmployee().getUser().getUsername().equals(username)) {
+		if(event != null && event.getCooperation().getEmployee().getUser().getUsername().equals(username)) {
 			return event;
 		}
 		return null;
@@ -48,4 +61,21 @@ public class EventService {
 		return event.getEventId();
 	}
 
+	public Integer saveEventMessage(EventMessageDTO emdto, Event event) {
+		try {
+			List<EventMessage> emList = event.getEventMessages();
+			Employee employee = employeeDao.findByEmployeeId(emdto.getEmployeeId());
+			Client client = clientDao.findByClientId(emdto.getClientId());
+			EventMessage em = new EventMessage(emdto.getChatMessage(), employee, client, event);
+			emList.add(em);
+			event.setEventMessages(emList);
+			eventDao.save(event);
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+		return event.getEventId();
+	}
+	
 }

@@ -5,10 +5,11 @@ import javax.validation.constraints.Size;
 
 public class EventMessageDTO {
 
-    @NotNull
-    @Size(min=3, max=120)
-    private String message;
-    
+	@NotNull
+    @Size(min=5, max=120)
+    private String chatMessage;
+
+	@NotNull
     private Integer employeeId;
     
     private Integer clientId;
@@ -29,12 +30,12 @@ public class EventMessageDTO {
 		this.clientId = clientId;
 	}
 
-	public String getMessage() {
-		return message;
+    public String getChatMessage() {
+		return chatMessage;
 	}
 
-	public void setMessage(String message) {
-		this.message = message;
+	public void setChatMessage(String chatMessage) {
+		this.chatMessage = chatMessage;
 	}
 	
 }
