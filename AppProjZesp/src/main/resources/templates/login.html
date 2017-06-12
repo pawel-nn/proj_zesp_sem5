@@ -1,36 +1,25 @@
 <!DOCTYPE html>
-
-<html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="http://www.thymeleaf.org"
-	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
-
-<head lang="en">
-
-<title>Logowanie</title>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<!-- 
-<link
-	href="http://cdn.jsdelivr.net/webjars/bootstrap/3.3.7/css/bootstrap.min.css"
-	th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}"
-	rel="stylesheet" media="screen" />
-
-<script src="http://cdn.jsdelivr.net/webjars/jquery/2.1.4/jquery.min.js"
-	th:src="@{/webjars/jquery/2.1.4/jquery.min.js}"></script>
-	 
-	  <link href="../static/css/f..."
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+      
+    <head>
+	    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	    <link href="../static/css/f..."
            	  th:href="@{/css/global.css}"
-              rel="stylesheet" media="screen" />-->
+              rel="stylesheet" media="screen" />	
+    	<link href="../static/css/f..."
+           	  th:href="@{/css/forms_and_results.css}"
+              rel="stylesheet" media="screen" />
               
-      <link href="../static/css/f..."
+        <link href="../static/css/f..."
            	  th:href="@{/css/bootstrap.css}"
               rel="stylesheet" media="screen" />
                 <!-- Template CSS -->
 	 <link href="../static/css/f..."
            	  th:href="@{/css/animate.css}"
               rel="stylesheet" media="screen" />
-<!--	 <link href="../static/css/f..."
+	<!-- <link href="../static/css/f..."
            	  th:href="@{/css/font-awesome.css}"
-              rel="stylesheet" media="screen" /> --> 
+              rel="stylesheet" media="screen" />   --> 
      	 <link href="../static/css/f..."
            	  th:href="@{/css/nexus.css}"
               rel="stylesheet" media="screen" />
@@ -44,7 +33,7 @@
            	  th:href="@{/css/strona_logowania.css}"
               rel="stylesheet" media="screen" />
               
-      <!--          
+           <!--          
                <link rel="stylesheet" href="../static/css/bootstrap.css" rel="stylesheet">
 
         <link rel="stylesheet" href="../static/css/animate.css" rel="stylesheet">
@@ -52,24 +41,19 @@
         <link rel="stylesheet" href="../static/css/nexus.css" rel="stylesheet">
         <link rel="stylesheet" href="../static/css/responsive.css" rel="stylesheet">
         <link rel="stylesheet" href="../static/css/custom.css" rel="stylesheet">
-             <link rel="stylesheet" href="../static/css/strona_logowania.css">
-             
-             
-      Google Fonts  
-     <link href="http://fonts.googleapis.com/css?family=Raleway:100,300,400" type="text/css" rel="stylesheet" />
-     <link href="http://fonts.googleapis.com/css?family=Roboto:400,300" type="text/css" rel="stylesheet" />
--->
+             <link rel="stylesheet" href="../static/css/strona_logowania.css"> -->
+              
+	<title>Logowanie</title>
+	</head>
+	<body>
 
-</head>
-<body>
-
-<header>
+		<header>
 			<div id="shortLinks">
-				<ul>
-					<li><a th:href="@{/}">Wróć do strony domowej</a></li>
-				</ul>	
-			</div>		
-</header>		
+				<a class="list-group-item" th:href="@{/}">
+					<i class="fa fa-home fa-fw"></i>&nbsp; Wróć
+				</a>	
+			</div>	
+		</header>	
 	
 		<div id="content">
             <div class="container background-transparent">
@@ -96,7 +80,7 @@
                                 <div class="row">
                                    
                                     <div>
-                                        <input class="btn btn-primary pull-right" type="submit" value="Sign In"/> 
+                                        <input class="btn btn-primary pull-right" type="submit" value="Zaloguj"/> 
                                     </div>
                                 </div>
                                 
@@ -117,36 +101,6 @@
             </div>
         </div>
 		
-<!-- 		
-		<div id="pageContent">
-       		<form th:action="@{/login}" method="post">
-     			<div> Formuarz logowania: </div>
-     			<div id="pageBreak"></div>
-            	<table>
-                	<tr>
-                    	<td>Nazwa użytkownika:</td>
-                    	<td><input type="text" name="username" /></td>
-                	</tr>
-                	<tr>
-                    	<td>Hasło:</td>
-                    	<td><input type="password" name="password" /></td>
-                	</tr>
-            	</table>
-            	<div id="pageBreak"></div>
-            	<input type="submit" value="Sign In"/>        
-       		</form>
-        
-        	<div th:if="${param.error}">
-        		<p>Error:</p>
-        		<p>Niepoprawne dane logowania.</p>
-        	</div>
-        	<div th:if="${param.logout}">
-        		<p>Information:</p>
-        		<p>Wylogowałeś się.</p>
-       		</div>  
-  		</div>
-  		
-  		-->
     </body>
     
 </html>

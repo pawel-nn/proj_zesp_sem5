@@ -4600,8 +4600,8 @@ a.thumbnail.active {
   display: block;
   padding: 10px 15px;
   margin-bottom: -1px;
-  background-color: transparent;
-  border: 1px solid rgba(0, 0, 0, 0.05);
+  background-color: rgba(163, 165, 167, 0.11);
+ /* border: 1px solid rgba(0, 0, 0, 0.05); */
 }
 .list-group-item:first-child {
   border-top-right-radius: 5px;
@@ -4627,7 +4627,7 @@ a.list-group-item .list-group-item-heading {
 a.list-group-item:hover,
 a.list-group-item:focus {
   text-decoration: none;
-  background-color: #f5f5f5;
+  background-color: rgba(160, 161, 162, 0.37);
 }
 a.list-group-item.active,
 a.list-group-item.active:hover,

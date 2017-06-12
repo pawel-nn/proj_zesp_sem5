@@ -17,9 +17,9 @@
 		<link href="../static/css/f..."
            	  th:href="@{/css/animate.css}"
               rel="stylesheet" media="screen" />
-<!--	 <link href="../static/css/f..."
+	 <link href="../static/css/f..."
            	  th:href="@{/css/font-awesome.css}"
-              rel="stylesheet" media="screen" /> --> 
+              rel="stylesheet" media="screen" /> 
      	 <link href="../static/css/f..."
            	  th:href="@{/css/nexus.css}"
               rel="stylesheet" media="screen" />
@@ -44,11 +44,11 @@
 	
     <body>
 		<header>
-			<div>
-				<ul> 
-					<li><a th:href="@{/home}">Wróć do strony domowej</a></li> 
-				</ul>
-			</div>
+			<div id="shortLinks">
+				<a class="list-group-item" th:href="@{/home}">
+					<i class="fa fa-home fa-fw"></i>&nbsp; Wróć
+				</a>	
+			</div>	
 		</header>
 		
 		<div id="content">
@@ -91,19 +91,19 @@
 					                 	<tr>
 					                   		<td>Adress e-mail:</td>
 					                   		<td th:text="${employee.email}">text</td>
-					                   		<td>Telefon kontaktowy:</td>
+					                   		<td style="padding-left: 10px">Telefon kontaktowy:</td>
 					                   		<td th:text="${employee.mobile}">text</td>
 					                	</tr>         
 					                	<tr>
 					                   		<td>Miasto:</td>
 					                   		<td th:text="${employee.city}">text</td>
-					                   		<td>Kod pocztowy:</td>
+					                   		<td style="padding-left: 10px">Kod pocztowy:</td>
 					                   		<td th:text="${employee.cityPostCode}">text</td>
 					                	</tr>
 					                	<tr>
 					                   		<td>Ulica:</td>
 					                   		<td th:text="${employee.street}">text</td>
-					                   		<td>Numer budynku/mieszkania:</td>
+					                   		<td style="padding-left: 10px">Numer budynku/mieszkania:</td>
 					                   		<td th:text="${employee.accommodationNumber}">text</td>
 					               		</tr>         	        
 					            	</table>

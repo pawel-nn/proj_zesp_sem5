@@ -7,70 +7,106 @@
            	  th:href="@{/css/global.css}"
               rel="stylesheet" media="screen" />	
     	<link href="../static/css/f..."
-           	  th:href="@{/css/c_list.css}"
+           	  th:href="@{/css/after_login.css}"
+              rel="stylesheet" media="screen" />
+              
+        <link href="../static/css/f..."
+           	  th:href="@{/css/bootstrap.css}"
+              rel="stylesheet" media="screen" />	
+    	<link href="../static/css/f..."
+           	  th:href="@{/css/font-awesome.css}"
+              rel="stylesheet" media="screen" />
+              
+         <link href="../static/css/f..."
+           	  th:href="@{/css/nexus.css}"
+              rel="stylesheet" media="screen" />
+     	 <link href="../static/css/f..."
+           	  th:href="@{/css/pace/pace-theme-big-counter.css}"
+              rel="stylesheet" media="screen" />     
+              
+         <link href="../static/css/f..."
+           	  th:href="@{/css/style.css}"
+              rel="stylesheet" media="screen" />
+         <link href="../static/css/f..."
+           	  th:href="@{/css/main-style.css}"
+              rel="stylesheet" media="screen" />
+              
+          <link href="../static/css/f..."
+           	  th:href="@{/css/dataTables.bootstrap.css}"
               rel="stylesheet" media="screen" />
 		<title>Lista ofert współpracy</title>
 	</head>
 	
     <body>
 		<header>
-			<h1>
-				Lista ofert współpracy
-			</h1>
 			<div id="shortLinks">
-				<ul> 
-					<li><a th:href="@{/home}">Wróć do strony domowej</a></li> 
-				</ul>
-			</div>
+				<a class="list-group-item" th:href="@{/home}">
+					<i class="fa fa-home fa-fw"></i>&nbsp; Wróć
+				</a>	
+			</div>	
 		</header>	
-		<hr/>
-		<div id="pageContent">
+		
+		<div class="container login-page">
 			<div class="dataList">
 				<div th:if="${cooperationOffersList.getNumberOfElements() > 0}">
-					<h2 id="title">Lista ofert współpracy:</h2>
-					<div th:each="cooperationOffer : ${cooperationOffersList}">
-						<table>
-							<tr>
-								<th>Identyfikator oferty współpracy</th>
-								<th>Temat</th>
-								<th>Rodzaj współpracy</th>
-								<th>Data utworzenia oferty</th>
-								<th>Klient</th>
-								<th>Operacje</th>
-							</tr>
-							<tr>
-								<td><a th:href="@{/employee/cooperationOffersList/cooperationOffer(cooperationOfferId=${cooperationOffer.cooperationOfferId})}"><span th:text="${cooperationOffer.cooperationOfferId}">text</span></a></td>
-								<td th:text="${cooperationOffer.subject}">text</td>
-								<td th:text="${cooperationOffer.typeOfCooperation}">text</td>
-								<div th:if="${cooperationOffer.dateOfOfferCreation != null}">	
-									<td th:text="${#dates.format(cooperationOffer.dateOfOfferCreation, 'dd-MMM-yyyy')}">text</td>
-								</div>	
-								<div th:unless="${cooperationOffer.dateOfOfferCreation != null}">
-									<td>Brak ostatniej daty</td>
-								</div>		
-								<td> <div th:text="${cooperationOffer.client.firstName}">text</div> <div th:text="${cooperationOffer.client.lastName}">text</div> </td>
-								<td><a th:href="@{/employee/cooperationOffersList/cooperationOffer(cooperationOfferId=${cooperationOffer.cooperationOfferId})}"><span>Wyświetl</span></a>/<a th:href="@{/employee/cooperationOffersList/acceptCooperationOffer(elementId=${cooperationOffer.cooperationOfferId})}"><span>Akceptuj</span></a>/<a th:href="@{/employee/cooperationOffersList/rejectCooperationOffer(elementId=${cooperationOffer.cooperationOfferId})}"><span>Odrzuć</span></a></td>
-							</tr>
-						</table>
+					
+					
+
+					<div class="panel panel-primary">
+                    	<div class="panel-heading">
+                             Lista ofert współpracy:
+                     	</div>
+                        <div class="panel-body">
+                            <div class="table-responsive">
+	                           <table class="table table-striped table-bordered table-hover" id="dataTables-example">     
+									<thead>
+									<tr>
+										<th>Identyfikator oferty współpracy</th>
+										<th>Temat</th>
+										<th>Rodzaj współpracy</th>
+										<th>Data utworzenia oferty</th>
+										<th>Klient</th>
+										<th>Operacje</th>
+									</tr>
+									</thead>
+									<tbody>
+										<tr th:each="cooperationOffer : ${cooperationOffersList}">
+											<td><a th:href="@{/employee/cooperationOffersList/cooperationOffer(cooperationOfferId=${cooperationOffer.cooperationOfferId})}"><span th:text="${cooperationOffer.cooperationOfferId}">text</span></a></td>
+											<td th:text="${cooperationOffer.subject}">text</td>
+											<td th:text="${cooperationOffer.typeOfCooperation}">text</td>
+											<div th:if="${cooperationOffer.dateOfOfferCreation != null}">	
+												<td th:text="${#dates.format(cooperationOffer.dateOfOfferCreation, 'dd-MMM-yyyy')}">text</td>
+											</div>	
+											<div th:unless="${cooperationOffer.dateOfOfferCreation != null}">
+												<td>Brak ostatniej daty</td>
+											</div>		
+											<td> <div th:text="${cooperationOffer.client.firstName}">text</div> <div th:text="${cooperationOffer.client.lastName}">text</div> </td>
+											<td><a th:href="@{/employee/cooperationOffersList/cooperationOffer(cooperationOfferId=${cooperationOffer.cooperationOfferId})}"><span>Wyświetl</span></a>/<a th:href="@{/employee/cooperationOffersList/acceptCooperationOffer(elementId=${cooperationOffer.cooperationOfferId})}"><span>Akceptuj</span></a>/<a th:href="@{/employee/cooperationOffersList/rejectCooperationOffer(elementId=${cooperationOffer.cooperationOfferId})}"><span>Odrzuć</span></a></td>
+										</tr>
+									</tbody>
+							</table>
+						 </div>    
+                      </div>
+                   </div>	
 						<div id="pageBreak"></div>
 					</div>
 					
-					<div id="pageNavigation">
-					 	<ul class="pager">
-			 				<div>
+					<div class="dataTables_paginate paging_simple_numbers">
+					 	<ul class="pagination">
+
 			 					<li th:class="${pageNumber == 1?'disabled':''}">
-			 						<a type="button" th:href="@{/employee/cooperationOffersList(page=1)}" id="pageNavigationField" ><span>Pierwsza strona</span></a>
+			 						<a th:href="@{/employee/cooperationOffersList(page=1)}" class="paginate_button" ><span>Pierwsza strona</span></a>
 			 					</li>
 								<li th:class="${pageNumber &lt;= 1?'disabled':''}" >
-									<a type="button" th:href="@{/employee/cooperationOffersList(page=${pageNumber-1})}" id="pageNavigationField" ><span>Wstecz</span></a>
+									<a th:href="@{/employee/cooperationOffersList(page=${pageNumber-1})}" class="paginate_button" ><span>Wstecz</span></a>
 								</li>
 			 					<li style="float:right" th:class="${pageNumber == maxPagesNumber?'disabled':''}" >
-			 						<a type="button" th:href="@{/employee/cooperationOffersList(page=${maxPagesNumber})}" id="pageNavigationField" ><span>Ostatnia strona</span></a>
+			 						<a th:href="@{/employee/cooperationOffersList(page=${maxPagesNumber})}" class="paginate_button" ><span>Ostatnia strona</span></a>
 			 					</li>
 								<li style="float:right" th:class="${pageNumber &gt;= maxPagesNumber?'disabled':''}" >
-									<a type="button" th:href="@{/employee/cooperationOffersList(page=${pageNumber+1})}" id="pageNavigationField"  th:disabled="${nextInp}" ><span>Dalej</span></a>
+									<a th:href="@{/employee/cooperationOffersList(page=${pageNumber+1})}" class="paginate_button"  th:disabled="${nextInp}" ><span>Dalej</span></a>
 								</li>
-							</div>
+
 						</ul>
 					</div> 
 				</div>	
@@ -78,6 +114,5 @@
 					<div id="attention">Uwaga! Brak rekordów na tej stronie.</div>
 				</div>
 			</div>
-		</div>
     </body>
 </html>
