@@ -42,114 +42,6 @@
 				</a>	
 			</div>	
 		</header>
-<<<<<<< HEAD
-		<hr id="hr1" />
-		<div id="pageContent">	
-			<div id="pageBreak"></div>
-			<div>	
-				<table>
-					<tr>
-						<td>Id:</td>
-						<td th:text="${event.eventId}">text</td>
-						<td>Temat - </td>
-						<td th:text="${event.subject}">text</td>
-					</tr>
-					<tr>		
-						<td colspan="2" >Współpraca:</td>
-						<td colspan="2" th:text="${event.cooperation.cooperationId}">text</td>
-					</tr>
-					<tr>
-						<div th:if="${event.registrationDate != null}">		
-								<td colspan="2">Data dodania:</td>
-								<td colspan="2" th:text="${#dates.format(event.registrationDate, 'dd-MMM-yyyy')}">text</td>
-						</div>	
-						<div th:unless="${event.registrationDate != null}">
-								<td colspan="2">Data dodania:</td>
-								<td colspan="2">---</td>
-						</div>	
-					</tr>					
-					<tr>
-						<td colspan="2"> Treść wydarzenia: </td>
-						<td colspan="2" th:text="${event.content}">text</td>
-					</tr>
-				</table>
-			</div>
-			<div id="pageBreak"></div>
-			<div>
-				<table>
-					<tr>
-						<th colspan="4"> Dokumenty: </th>
-					</tr>
-					<div th:if="${event.eventDocuments.size() > 0}">
-						<tr>
-							<th>Identyfikator</th>
-							<th>Nazwa</th>
-							<th>Opis</th>
-							<th>Opcje</th>
-						</tr>		
-						<tr th:each="ed : ${event.eventDocuments}">
-							<td th:text="${ed.eventDocumentId}">text</td>
-							<td th:text="${ed.name}">text</td>
-							<td th:text="${ed.description}">text</td>
-							<td><a th:href="@{${'/employee/data/documents/' + ed.eventDocumentId }}"><span>Wyświetl</span></a></td>
-						</tr>
-					</div>	
-					<div th:unless="${event.eventDocuments.size() > 0}">
-						<tr>
-							<td colspan="4">Brak dokumentów</td>
-						</tr>
-					</div>	
-				</table>
-				<div id="pageBreak"></div>
-				<div>
-					<a type="button" th:href="@{/employee/cooperationsList/cooperation/event/addEventDocument(eventId=${event.eventId})}" ><span>Załącz dokument</span></a>
-				</div>
-			</div>
-		    <div id="pageBreak"></div>
-			<div>
-				<table>
-					<tr>
-						<th colspan="2"> Komentarze: </th>
-					</tr>
-					<div th:if="${event.eventMessages.isEmpty() != true}">		
-						<tr th:each="em : ${event.eventMessages}">
-							<div th:if="${em.client != null}">
-								<td th:text="${em.client.toStringForCommentary()}">text</td>
-							</div>
-							<div th:unless="${em.client != null}">
-								<td th:text="${em.employee.toStringForCommentary()}">text</td>
-							</div>
-							<td th:text="${em.message}">text</td>
-						</tr>
-					</div>	
-					<div th:unless="${event.eventMessages.isEmpty() != true}">
-						<tr>
-							<td colspan="2">Brak wiadomości</td>
-						</tr>
-					</div>	
-				</table>
-				<div id="pageBreak"></div>
-				<form id="myForm" th:action="@{/employee/cooperationsList/cooperation/event/eventMessage(eventId=${event.eventId})}" th:object="${eventMessageDTO}" method="post">
-     				<div>
-            			<table>
-            				<tr>
-            					<th colspan="2"><div>Wpisz swój komentarz: </div></th>
-            				</tr>
-                			<tr>
-								<td>
-									<textarea rows="2" cols="50" name="chatMessage"  th:field="*{chatMessage}" form="myForm" />									
-									<input type="number" hidden="hidden" th:value="*{employeeId}" th:field="*{employeeId}" />
-								</td>
-								<td th:if="${#fields.hasErrors('chatMessage')}" th:errors="*{chatMessage}">Error</td>
-                			</tr>   	
-            			</table>
-            			<button type="submit" id="send" >Wyślij wiadomość</button>
-            		</div>
-        		</form>
-			</div>
-		</div>
-=======
-
 		<div id="content">
             <div class="container background-transparent">
                 <div class="container">
@@ -160,7 +52,7 @@
                                 <div class="login-header margin-bottom-30">
                                     <h2>Dane współpracy</h2>
                                 </div>
-                                <div id="myForm">
+                                <div>
 									<div style="width: 100%">	
 										<table>
 											<tr>
@@ -171,7 +63,7 @@
 											</tr>
 											<tr>		
 												<td class="input-group-addon" colspan="3" >Współpraca:</td>
-												<td class="form-control" colspan="2" th:text="${event.cooperation.cooperationId}">text</td>
+												<td class="form-control" colspan="2" th:text="${event.cooperation.toString()}">text</td>
 											</tr>
 											<tr>
 												<div th:if="${event.registrationDate != null}">		
@@ -198,47 +90,36 @@
 									<div>
 										<table>
 											<tr>
-												<th class="input-group-addon" colspan="2"> Dokumenty: </th>
+												<th class="input-group-addon" colspan="4"> Dokumenty: </th>
 											</tr>
-											<div th:if="${event.eventDocuments.isEmpty() != true}">
+											<div th:if="${event.eventMessages.isEmpty() != true}">
 												<tr>
 													<th>Identyfikator</th>
 													<th>Nazwa</th>
 													<th>Opis</th>
+													<th>Opcje</th>
 												</tr>		
 												<tr th:each="ed : ${event.eventDocuments}">
 													<td th:text="${ed.eventDocumentId}">text</td>
 													<td th:text="${ed.name}">text</td>
 													<td th:text="${ed.description}">text</td>
+													<td><a th:href="@{${'/employee/data/documents/' + ed.eventDocumentId }}"><span>Wyświetl</span></a></td>
 												</tr>
 											</div>	
-											<div th:unless="${event.eventDocuments.isEmpty() != true}">
+											<div th:unless="${event.eventMessages.isEmpty() != true}">
 												<tr>
-													<td class="form-control" colspan="2">Brak dokumentów</td>
+													<td class="form-control" colspan="4">Brak dokumentów</td>
 												</tr>
 											</div>	
 										</table>
-										<div id="pageBreak"></div>
-										<form id="myForm1" th:action="@{/employee/cooperationsList/cooperation/event/eventDocument(eventId=${event.eventId})}" th:object="${eventDocumentDTO}"  method="get" enctype="multipart/form-data">
-						     				<div style="margin-bottom: 40px;">
-						            			<table>
-						            				<tr>
-						            					<th class="input-group-addon" colspan="2"><div>Dodaj dokument: </div></th>
-						            				</tr>
-						                			<tr>
-										                <td colspan="2"><input type="file" accept=".pdf,.doc" name="eventDocument" th:field="*{eventDocument}" required="true"/></td>							
-						                			</tr>   	
-						                			<tr>
-						                			    <td class="input-group-addon">Opis:</td>
-						                				<td><textarea rows="2" cols="50" name="description"  th:field="*{description}" form="myForm1" /></td>									
-														<td th:if="${#fields.hasErrors('description')}" th:errors="*{description}">Error</td>
-						                			</tr>
-						            			</table>
-						            			<button class="btn btn-primary pull-left" type="submit" id="send" >Załącz</button>
-						            		</div>
-						        		</form>
 									</div>
-								    <div id="pageBreak"></div>
+									<div style="width: 100%">
+								    	<div>
+								    		<span>
+												<a type="button" class="btn btn-primary pull-left" th:href="@{/employee/cooperationsList/cooperation/event/addEventDocument(eventId=${event.eventId})}" ><span>Załącz dokument</span></a>
+											</span>
+										</div>
+									</div>
 									<div style="width: 100%">
 										<table>
 											<tr>
@@ -262,7 +143,7 @@
 											</div>	
 										</table>
 										<div id="pageBreak"></div>
-										<form id="myForm2" th:action="@{/employee/cooperationsList/cooperation/event/eventMessage(eventId=${event.eventId})}" th:object="${eventMessageDTO}" method="post">
+										<form id="myForm" th:action="@{/employee/cooperationsList/cooperation/event/eventMessage(eventId=${event.eventId})}" th:object="${eventMessageDTO}" method="post">
 						     				<div>
 						            			<table>
 						            				<tr>
@@ -270,7 +151,7 @@
 						            				</tr>
 						                			<tr>
 														<td>
-															<textarea class="form-control" rows="2" cols="50" name="chatMessage"  th:field="*{chatMessage}" form="myForm2" />									
+															<textarea class="form-control" rows="2" cols="50" name="chatMessage"  th:field="*{chatMessage}" form="myForm" />									
 															<input type="number" hidden="hidden" th:value="*{employeeId}" th:field="*{employeeId}" />
 														</td>
 														<td th:if="${#fields.hasErrors('chatMessage')}" th:errors="*{chatMessage}">Error</td>
@@ -286,6 +167,5 @@
                 </div>
             </div>
         </div>
->>>>>>> origin/master
     </body>
 </html>

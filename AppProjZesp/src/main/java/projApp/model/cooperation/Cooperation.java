@@ -136,5 +136,10 @@ public class Cooperation {
 	public void setDescription(String description) {
 		this.description = description;
 	}
+
+	@Override
+	public String toString() {
+		return "Wspó³praca Id=" + cooperationId + "  --  Temat:" + subject + "  --  Rodzaj:" + typeOfCooperation;
+	}
 	
 }
