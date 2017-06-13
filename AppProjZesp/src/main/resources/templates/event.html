@@ -7,27 +7,13 @@
            	  th:href="@{/css/bootstrap.css}"
               rel="stylesheet" media="screen" />
                 <!-- Template CSS -->
-		<link href="../static/css/f..."
-           	  th:href="@{/css/animate.css}"
-              rel="stylesheet" media="screen" />
+
 	 <link href="../static/css/f..."
            	  th:href="@{/css/font-awesome.css}"
               rel="stylesheet" media="screen" />  
      	 <link href="../static/css/f..."
            	  th:href="@{/css/nexus.css}"
-              rel="stylesheet" media="screen" />
-     	 <link href="../static/css/f..."
-           	  th:href="@{/css/responsive.css}"
-              rel="stylesheet" media="screen" />
-     	 <link href="../static/css/f..."
-           	  th:href="@{/css/custom.css}"
-              rel="stylesheet" media="screen" />
-         <link href="../static/css/f..."
-           	  th:href="@{/css/strona_logowania.css}"
-              rel="stylesheet" media="screen" />
- 		<link href="../static/css/f..."
-           	  th:href="@{/css/dataTables.bootstrap.css}"
-              rel="stylesheet" media="screen" />      
+              rel="stylesheet" media="screen" />  
 <!--        <link href="../static/css/f..."
            	  th:href="@{/css/templatemo-style.css}"
               rel="stylesheet" media="screen" /> -->
@@ -110,16 +96,13 @@
 												<tr>
 													<td class="form-control" colspan="4">Brak dokumentów</td>
 												</tr>
-											</div>	
+											</div>
 										</table>
+												<a type="button" class="btn btn-primary" th:href="@{/employee/cooperationsList/cooperation/event/addEventDocument(eventId=${event.eventId})}" ><span>Załącz dokument</span></a>
+
+
 									</div>
-									<div style="width: 100%">
-								    	<div>
-								    		<span>
-												<a type="button" class="btn btn-primary pull-left" th:href="@{/employee/cooperationsList/cooperation/event/addEventDocument(eventId=${event.eventId})}" ><span>Załącz dokument</span></a>
-											</span>
-										</div>
-									</div>
+
 									<div style="width: 100%">
 										<table>
 											<tr>
