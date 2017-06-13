@@ -22,6 +22,13 @@ import projApp.model.cooperation.Cooperation;
 import projApp.model.eventDocument.EventDocument;
 import projApp.model.eventMessage.EventMessage;
 
+/**
+ * @authors Pawe³ Miszkiel & Rafa³ Teodorowski
+ * 
+ * 		PW, Wydzia³ Elektryczny - Informatyka - semestr VI
+ *
+ * 2017-06-13
+ */
 
 @Entity
 @Table(name = "events")

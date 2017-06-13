@@ -17,6 +17,14 @@ import javax.persistence.Table;
 import projApp.model.client.Client;
 import projApp.model.employee.Employee;
 
+/**
+ * @authors Pawe³ Miszkiel & Rafa³ Teodorowski
+ * 
+ * 		PW, Wydzia³ Elektryczny - Informatyka - semestr VI
+ *
+ * 2017-06-13
+ */
+
 @Entity
 @Table(name = "cooperation_offers")
 public class CooperationOffer {

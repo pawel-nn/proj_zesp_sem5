@@ -19,7 +19,13 @@ import projApp.model.user.User;
 import projApp.model.user.UserDao;
 import projApp.model.user.UserRole;
 
-/* Reprezentuje logike aplikacji TO ZNACZY wykonuje polecenia z controller (Zapisz, usuñ tak jak adres url) i korzysta przy tym z MODELU */
+/**
+ * @authors Pawe³ Miszkiel & Rafa³ Teodorowski
+ * 
+ * 		PW, Wydzia³ Elektryczny - Informatyka - semestr VI
+ *
+ * 2017-06-13
+ */
 
 @Service("UserService")
 public class UserService {

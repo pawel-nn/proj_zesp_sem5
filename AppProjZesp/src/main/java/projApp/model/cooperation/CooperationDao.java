@@ -8,6 +8,14 @@ import org.springframework.data.repository.CrudRepository;
 
 import projApp.model.employee.Employee;
 
+/**
+ * @authors Pawe³ Miszkiel & Rafa³ Teodorowski
+ * 
+ * 		PW, Wydzia³ Elektryczny - Informatyka - semestr VI
+ *
+ * 2017-06-13
+ */
+
 public interface CooperationDao extends CrudRepository<Cooperation, Integer> {
 	
 	public Page<Cooperation> findAll(Pageable pageable);

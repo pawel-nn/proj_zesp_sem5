@@ -11,6 +11,14 @@ import projApp.model.cooperation.Cooperation;
 import projApp.model.cooperation.CooperationDao;
 import projApp.model.employee.Employee;
 
+/**
+ * @authors Pawe³ Miszkiel & Rafa³ Teodorowski
+ * 
+ * 		PW, Wydzia³ Elektryczny - Informatyka - semestr VI
+ *
+ * 2017-06-13
+ */
+
 @Service("CooperationService")
 public class CooperationService {
 	

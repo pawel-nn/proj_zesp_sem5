@@ -17,6 +17,14 @@ import org.springframework.web.bind.annotation.*;
 import projApp.formDTO.NewPasswordDTO;
 import projApp.service.UserService;
 
+/**
+ * @authors Pawe³ Miszkiel & Rafa³ Teodorowski
+ * 
+ * 		PW, Wydzia³ Elektryczny - Informatyka - semestr VI
+ *
+ * 2017-06-13
+ */
+
 @Controller
 public class MainController {
 	

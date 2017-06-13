@@ -13,6 +13,13 @@ import javax.persistence.Table;
 
 import projApp.model.event.Event;
 
+/**
+ * @authors Pawe³ Miszkiel & Rafa³ Teodorowski
+ * 
+ * 		PW, Wydzia³ Elektryczny - Informatyka - semestr VI
+ *
+ * 2017-06-13
+ */
 
 @Entity
 @Table(name = "event_documents")

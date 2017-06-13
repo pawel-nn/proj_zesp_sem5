@@ -4,6 +4,14 @@ import java.util.Date;
 
 import javax.validation.constraints.NotNull;
 
+/**
+ * @authors Pawe³ Miszkiel & Rafa³ Teodorowski
+ * 
+ * 		PW, Wydzia³ Elektryczny - Informatyka - semestr VI
+ *
+ * 2017-06-13
+ */
+
 public class CooperationDTO {
 
 	private Integer cooperationId;

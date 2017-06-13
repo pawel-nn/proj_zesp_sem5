@@ -17,6 +17,14 @@ import projApp.model.client.Client;
 import projApp.model.employee.Employee;
 import projApp.model.event.Event;
 
+/**
+ * @authors Pawe³ Miszkiel & Rafa³ Teodorowski
+ * 
+ * 		PW, Wydzia³ Elektryczny - Informatyka - semestr VI
+ *
+ * 2017-06-13
+ */
+
 @Entity
 @Table(name = "event_messages")
 public class EventMessage {

@@ -28,6 +28,14 @@ import projApp.formDTO.EmployeeUpdateDTO;
 import projApp.model.employee.Employee;
 import projApp.service.UserService;
 
+/**
+ * @authors Pawe³ Miszkiel & Rafa³ Teodorowski
+ * 
+ * 		PW, Wydzia³ Elektryczny - Informatyka - semestr VI
+ *
+ * 2017-06-13
+ */
+
 @Controller
 public class EmployeeProfileController {
 

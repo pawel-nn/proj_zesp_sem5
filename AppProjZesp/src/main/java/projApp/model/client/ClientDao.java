@@ -7,6 +7,14 @@ import org.springframework.stereotype.Repository;
 
 import projApp.model.client.Client;
 
+/**
+ * @authors Pawe³ Miszkiel & Rafa³ Teodorowski
+ * 
+ * 		PW, Wydzia³ Elektryczny - Informatyka - semestr VI
+ *
+ * 2017-06-13
+ */
+
 @Transactional
 @Repository
 public interface ClientDao extends CrudRepository<Client, Integer> {

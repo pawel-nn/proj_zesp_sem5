@@ -15,6 +15,14 @@ import javax.persistence.Table;
 
 import projApp.model.user.UserRole;
 
+/**
+ * @authors Pawe³ Miszkiel & Rafa³ Teodorowski
+ * 
+ * 		PW, Wydzia³ Elektryczny - Informatyka - semestr VI
+ *
+ * 2017-06-13
+ */
+
 @Entity
 @Table(name = "spring_users") 
 public class User {

@@ -15,6 +15,14 @@ import javax.persistence.Table;
 
 import projApp.model.user.User;
 
+/**
+ * @authors Pawe³ Miszkiel & Rafa³ Teodorowski
+ * 
+ * 		PW, Wydzia³ Elektryczny - Informatyka - semestr VI
+ *
+ * 2017-06-13
+ */
+
 @Entity
 @Table(name = "employees")
 public class Employee {

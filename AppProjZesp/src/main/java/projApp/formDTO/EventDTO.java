@@ -8,6 +8,14 @@ import javax.validation.constraints.Size;
 
 import projApp.model.eventDocument.EventDocument;
 
+/**
+ * @authors Pawe³ Miszkiel & Rafa³ Teodorowski
+ * 
+ * 		PW, Wydzia³ Elektryczny - Informatyka - semestr VI
+ *
+ * 2017-06-13
+ */
+
 public class EventDTO {
 
 	private Integer eventId;

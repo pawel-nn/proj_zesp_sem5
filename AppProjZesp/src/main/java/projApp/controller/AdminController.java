@@ -17,6 +17,14 @@ import projApp.service.UserService;
 import projApp.formDTO.EmployeeDTO;
 import projApp.model.user.User;
 
+/**
+ * @authors Pawe³ Miszkiel & Rafa³ Teodorowski
+ * 
+ * 		PW, Wydzia³ Elektryczny - Informatyka - semestr VI
+ *
+ * 2017-06-13
+ */
+
 @Controller
 public class AdminController {
 	

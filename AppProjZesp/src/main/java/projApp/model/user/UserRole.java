@@ -12,6 +12,13 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
+/**
+ * @authors Pawe³ Miszkiel & Rafa³ Teodorowski
+ * 
+ * 		PW, Wydzia³ Elektryczny - Informatyka - semestr VI
+ *
+ * 2017-06-13
+ */
 
 @Entity
 @Table(name = "spring_user_roles", uniqueConstraints = @UniqueConstraint( columnNames = { "role", "username" }))

@@ -34,6 +34,14 @@ import projApp.model.eventDocument.EventDocument;
 import projApp.service.EventService;
 import projApp.service.UserService;
 
+/**
+ * @authors Pawe³ Miszkiel & Rafa³ Teodorowski
+ * 
+ * 		PW, Wydzia³ Elektryczny - Informatyka - semestr VI
+ *
+ * 2017-06-13
+ */
+
 @Controller
 public class EmployeeEventController {
 	
