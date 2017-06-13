@@ -1,7 +1,7 @@
 /* Opis: Strony - tylko event */
 /*  */
 /*  Style definition   : Common page elements     */
-
+/*
 body {
 	margin-left: 3cm;
 	margin-right: 5cm;
@@ -12,12 +12,12 @@ body {
 #pageContent {
 	margin-left: 1cm;
 }
-
+*/
 #pageBreak {
-    margin-top:  20px;
-    margin-down: 20px;
+    margin-top:  10px;
+    margin-down: 10px;
 }
-
+/*
 .myNewClass {
 	margin-top: 2cm;
 	margin-bottom: 2cm;
@@ -68,4 +68,4 @@ table tr:hover td {
 
 
 
-/*  <<< END >>>        : ????                */
+/*  <<< END >>>        : ????                */ */
