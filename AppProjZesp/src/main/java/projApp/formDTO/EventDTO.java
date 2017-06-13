@@ -6,7 +6,7 @@ import java.util.List;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-import projApp.model.document.EventDocument;
+import projApp.model.eventDocument.EventDocument;
 
 public class EventDTO {
 

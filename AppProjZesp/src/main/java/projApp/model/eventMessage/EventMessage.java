@@ -30,7 +30,6 @@ public class EventMessage {
 	public EventMessage() {};
 	
 	public EventMessage(String message, Employee employee, Client client, Event event) {
-		this.eventMessageId = eventMessageId;
 		this.message = message;
 		this.employee = employee;
 		this.client = client;

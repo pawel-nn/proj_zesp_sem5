@@ -50,7 +50,7 @@ public class EmployeeProfileController {
     }
     
     @GetMapping(value = "/employee/data/images/{photoName}", produces = "image/png")
-    public ResponseEntity<byte[]> registerEmployee(@PathVariable(value="photoName") String photoName, EmployeeUpdateDTO employeeUpdateDTO, Model model) {	
+    public ResponseEntity<byte[]> getEmployeePhoto(@PathVariable(value="photoName") String photoName, EmployeeUpdateDTO employeeUpdateDTO, Model model) {	
 		String filePath = dirPath + File.separator + photoName + ".png";
 		File photo = new File(filePath);
 		byte[] bytes = new byte[(int) photo.length()];

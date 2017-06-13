@@ -19,7 +19,7 @@ import javax.persistence.OrderBy;
 import javax.persistence.Table;
 
 import projApp.model.cooperation.Cooperation;
-import projApp.model.document.EventDocument;
+import projApp.model.eventDocument.EventDocument;
 import projApp.model.eventMessage.EventMessage;
 
 
@@ -111,7 +111,7 @@ public class Event {
 		return eventDocuments;
 	}
 
-	public void setEventDocuments(List<EventDocument> eventDocumentId) {
+	public void setEventDocuments(List<EventDocument> eventDocuments) {
 		this.eventDocuments = eventDocuments;
 	}
 

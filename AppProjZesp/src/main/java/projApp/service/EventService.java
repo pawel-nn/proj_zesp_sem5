@@ -13,11 +13,12 @@ import projApp.model.client.Client;
 import projApp.model.client.ClientDao;
 import projApp.model.cooperation.Cooperation;
 import projApp.model.cooperation.CooperationDao;
-import projApp.model.document.EventDocument;
 import projApp.model.employee.Employee;
 import projApp.model.employee.EmployeeDao;
 import projApp.model.event.Event;
 import projApp.model.event.EventDao;
+import projApp.model.eventDocument.EventDocument;
+import projApp.model.eventDocument.EventDocumentDao;
 import projApp.model.eventMessage.EventMessage;
 
 @Service("EventService")
@@ -34,6 +35,9 @@ public class EventService {
 	
 	@Autowired
 	private ClientDao clientDao;
+	
+	@Autowired
+	private EventDocumentDao eventDaocumentDao;
 	
 	public Event getEmployeeEvent(String username, Integer eventId) {
 		Event event;
@@ -54,6 +58,7 @@ public class EventService {
 		try {
 			Cooperation cooperation = cooperationDao.findByCooperationId(edto.getCooperationId());
 			Date date = new Date();
+			cooperation.setDateOfLastEvent(date);
 			event = new Event(edto.getSubject(), edto.getEventType(), edto.getContent(), date, cooperation, null);
 			event = eventDao.save(event);
 		}
@@ -85,7 +90,7 @@ public class EventService {
 		try {
 			event = eventDao.findByEventId(eventId);
 			List<EventDocument> edList = event.getEventDocuments();
-			EventDocument ed = new EventDocument( eddto.getName(), eddto.getType(), eddto.getPath(), eddto.getDescription());
+			EventDocument ed = new EventDocument( eddto.getName(), eddto.getType(), eddto.getPath(), eddto.getDescription(), event);
 			edList.add(ed);
 			event.setEventDocuments(edList);
 			eventDao.save(event);
@@ -94,6 +99,10 @@ public class EventService {
 			return null;
 		}
 		return event.getEventId();
+	}
+
+	public EventDocument getEventDocument(Integer eventDocumentId) {
+		return eventDaocumentDao.findByEventDocumentId(eventDocumentId);
 	}
 	
 }

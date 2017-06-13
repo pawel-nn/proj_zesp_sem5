@@ -1,8 +1,7 @@
-package projApp.model.document;
+package projApp.model.eventDocument;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -16,7 +15,7 @@ import projApp.model.event.Event;
 
 
 @Entity
-@Table(name = "documents")
+@Table(name = "event_documents")
 public class EventDocument {
 
 	private Integer eventDocumentId;
@@ -28,19 +27,21 @@ public class EventDocument {
 	
 	public EventDocument() {}
 	
-	public EventDocument(String name, String type, String path, String description) {
+	public EventDocument(String name, String type, String path, String description, Event event) {
 		this.name = name;
 		this.type = type;
 		this.path = path;
 		this.description = description;
+		this.event = event;
 	}
 	
-	public EventDocument(Integer eventDocumentId, String name, String type, String path, String description) {
+	public EventDocument(Integer eventDocumentId, String name, String type, String path, String description, Event event) {
 		this.eventDocumentId= eventDocumentId;
 		this.name = name;
 		this.type = type;
 		this.path = path;
 		this.description = description;
+		this.event = event;
 	}
 
 	@Id
@@ -54,7 +55,7 @@ public class EventDocument {
 		this.eventDocumentId = eventDocumentId;
 	}
 	
-	@Column(name = "name", nullable = false, length = 45)
+	@Column(name = "name", nullable = false, length = 90)
 	public String getName() {
 		return name;
 	}
@@ -72,7 +73,7 @@ public class EventDocument {
 		this.type = type;
 	}
 
-	@Column(name = "path", nullable = false, length = 45)
+	@Column(name = "path", nullable = false, length = 120)
 	public String getPath() {
 		return path;
 	}
@@ -90,7 +91,7 @@ public class EventDocument {
 		this.description = description;
 	}
 	
-	@ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.ALL})
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn (name="event_id", nullable=false)
 	public Event getEvent() {
 		return event;
